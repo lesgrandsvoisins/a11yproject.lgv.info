@@ -1,0 +1,22 @@
+<div class="c-homepage-card">
+	<div class="c-homepage-card__image-link" onclick="location.href='/agenda/{{ agendaItem.title | slugify | url }}/'">
+		<img
+			class="c-homepage-card__image"
+			alt="{{ agendaItem.alt }}"
+			src="img/agenda/{{ agendaItem.image }}" />
+	</div>
+	<p class="u-font-size-body-small u-text-transform-uppercase c-homepage-card__author">
+		{{ agendaItem.author }}
+	</p>
+	<h3 class="u-font-size-body-medium c-homepage-card__title" onclick="location.href='/agenda/{{ agendaItem.title | slugify | url }}/'">
+		{{ agendaItem.title }}
+	</h3>
+	<p class="c-homepage-card__description">
+		{{ agendaItem.description }}
+	</p>
+	<p>
+		<a class="c-homepage-card__cta" href="/agenda/{{ agendaItem.title | slugify | url }}/">
+			{{ agendaItem.cta }}
+		</a>
+	</p>
+</div>

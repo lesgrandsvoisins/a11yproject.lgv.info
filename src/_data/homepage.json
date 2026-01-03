@@ -1,29 +1,26 @@
 {
-	"featuredResources": [
-		{
-			"title": "Testing Accessibility",
-			"author": "Marcy Sutton",
-			"description": "A self-paced workshop designed to teach you the principles and effective patterns of accessibility, from design to deployment.",
-			"image": "testing-accessibility.jpg",
-			"alt": "A notebook with hand-written phrases of 'Testing Accessibility', 'P.O.U.R. Perceivable, Operable, Understandable, Robust', and Automated Testing. There are also badges showing illustrations of a trail sign, a ski lift, a wheelchair in front of a scenic vista, a ladybug, and a bird. There is also a sketch of a lighthouse.",
-			"cta": "Learn more about this workshop"
-		},
-		{
-			"title": "Introduction to Web Accessibility",
-			"author": "Michele Williams",
-			"description": "Understanding how people use their computing devices is vital to understanding the diversity of disability in technology. In this video, Michele explains what “making technology accessible” means.",
-			"image": "introduction-to-web-accessibility.jpg",
-			"alt": "Photo of Michele Williams.",
-			"cta": "Learn more about this video"
-		}
-	],
-	"spotlight": [
-		{
-			"name": "Frank Elavsky",
-			"role": "PhD student and researcher",
-			"description": "Frank is a researcher, designer, engineer, and standards contributor with an interest in the intersection of data work and accessibility.",
-			"image": "frank-elavsky.jpg",
-			"cta": "Meet Frank"
-		}
-	]
+    "agendaItems": [{
+            "title": "Permanence le lundi",
+            "author": "Chris Mann",
+            "description": "Permanence le lundi de 12h à 19h30 Paris 14e (Alésia) et en ligne",
+            "image": "perm-lundi.jpg",
+            "alt": "Participez à ces ateliers conviviaux d'entraide numérique pour vous-même ou pour votre organisation. Vous pouvez y avancer vos projets et vos savoir-faire aussi en aidant d'autres avec les leurs.",
+            "cta": "Voir les détails de la permanence le lundi"
+        },
+        {
+            "title": "22e Conseil des Voisins le 22 Janvier (jeudi 16h)",
+            "author": "Chris Mann",
+            "description": "Les Grands Voisins propose le 22 janvier de 16h00 à 17h30 -- et à d'autres moments dans la semaine avant et après si besoin -- de se réunir en Conseil des Voisins.",
+            "image": "22e-conseil.jpg",
+            "alt": "22e Conseil des Voisins",
+            "cta": "Voir les détails puis vous y inscrire"
+        }
+    ],
+    "spotlight": [{
+        "name": "Frank Elavsky",
+        "role": "PhD student and researcher",
+        "description": "Frank is a researcher, designer, engineer, and standards contributor with an interest in the intersection of data work and accessibility.",
+        "image": "frank-elavsky.jpg",
+        "cta": "Meet Frank"
+    }]
 }

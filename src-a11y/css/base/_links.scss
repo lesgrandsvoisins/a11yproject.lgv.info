@@ -1,0 +1,39 @@
+// links
+//
+// Initial styles applied to anchor elements without a class applied to them.
+// Link colors should be distinct for each state, and have a good color contrast
+// ratio.
+//
+// Styleguide Base.link
+
+a {
+	// Style links that don't have a class declared on them
+	&:not([class]) {
+		@include link-states(link-text);
+
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+
+	// Display links when the `<a>` element has no text value but the href
+	// attribute has a link
+	&[href^="http"]:empty::before {
+		content: attr(href);
+	}
+
+	// External links
+	// &[rel~="external"],
+	// &[rel~="noopener"],
+	// &[href^="http"] {
+	// }
+
+	// Downloads
+	// &[download] {
+	// }
+
+	// Email
+	// &[href^="mailto"] {
+	// }
+}

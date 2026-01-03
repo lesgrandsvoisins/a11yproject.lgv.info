@@ -1,0 +1,17 @@
+$scheme-override-light: ("nav-background": "pine-shade",
+    "card-heading-text": "pine",
+    "button-background": "wood-tint",
+    "button-text": "black",
+    "button-focus-background": "wood",
+    "sponsors-background": "pine-tint",
+);
+
+$scheme-override-dark: ("card-heading-text": "pine-tint-muted",
+    "featured-card-background": "sea-muted",
+    "button-background": "wood-tint-muted",
+    "button-text": "black",
+    "button-focus-background": "wood",
+    "sponsors-background": "black"
+);
+
+@include color-scheme("pine-wood", $scheme-override-light, $scheme-override-dark);

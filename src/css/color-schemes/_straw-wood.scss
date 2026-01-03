@@ -1,0 +1,17 @@
+$scheme-override-light: ("nav-background": "black",
+    "hero-background": "straw",
+    "hero-background-text": "straw-shade",
+    "hero-content-background": "white",
+    "hero-content-accent": "wood-shade",
+    "hero-content-text": "black",
+);
+
+$scheme-override-dark: ("nav-background": "black",
+    "hero-background": "straw-shade-muted",
+    "hero-background-text": "straw-shade",
+    "hero-content-background": "charcoal",
+    "hero-content-accent": "wood-shade-muted",
+    "hero-content-text": "gray-tint",
+);
+
+@include color-scheme("straw-wood", $scheme-override-light, $scheme-override-dark);

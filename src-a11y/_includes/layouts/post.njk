@@ -1,0 +1,85 @@
+---
+layout: layouts/base.njk
+templateClass: template-post
+colorScheme: green
+---
+
+<div class="l-post">
+	<header class="l-post__header">
+		<div class="l-post__category c-post__category">
+			<p class="u-font-size-body u-text-transform-uppercase">
+				<a class="u-font-size-body c-post__category__link" href="/posts/#{{ category | slugify | url }}">
+					{{ category }}
+				</a>
+			</p>
+		</div>
+
+		<h1 id="title" class="l-post__title c-post__title">
+			{{ title | safe }}
+		</h1>
+
+		<p id="metadata" class="u-font-size-body-small l-post__metadata c-post__metadata">
+			{% if author %}
+				<span class="c-post__metadata--author">
+					<span class="u-text-transform-uppercase">By:&#8194;</span><a class="c-post__metadata-link" href="/authors/#{{ author | slugify | url }}">{{ author }}</a><span class="u-hide-visually">.</span>
+				</span>
+			{% endif %}
+			{% if date %}
+				<span class="c-post__metadata--published">
+					<span class="u-text-transform-uppercase">Published:&#8194;</span><time datetime="{{ page.date | htmlDateString }}">{{ page.date | dateReadable }}</time><span class="u-hide-visually">.</span>
+				</span>
+			{% endif %}
+		</p>
+	</header>
+
+	<div data-content id="short-answer" class="l-post__body">
+
+		{% set tocMarkup = content | toc | safe %}
+		{% set hasToc = tocMarkup.length > 0 %}
+		{% if hasToc %}
+			{% include "nav/toc.njk" %}
+		{% endif %}
+
+		<div class="l-post__content">
+			<div  data-content class="c-content c-content--post">
+				{{ content | safe }}
+
+				<p class="c-last-updated__body">
+					{% if updated_by %}
+						This post was last updated {% if last_updated %} on <time datetime="{{ last_updated | htmlDateString }}">{{ last_updated | dateReadable }}</time> {% endif %} by <a href="/authors/#{{ updated_by | slugify | url }}">{{ updated_by }}</a>.
+					{% endif %}
+					{% if thanks %}
+						{{ thanks | safe }}
+					{% endif %}
+				</p>
+
+				{% if further_reading %}
+					{% include "further-reading.njk" %}
+				{% endif %}
+			</div>
+
+			{%- if collection -%}
+				{%- set collectionObject = collections.postCollections[collection.slug] -%}
+				<div class="c-post-collection">
+					<h2 class="u-font-size-body-small u-text-transform-uppercase c-post-collection__title">Collection: {{ collectionObject.collection.data.title }}</h2>
+					<ol class="c-post-collection__list">
+						{%- for post in collectionObject.posts -%}
+							{%- set currentPost = false -%}
+							{%- if post.data.title == title -%}
+								{%- set currentPost = true -%}
+							{%- endif -%}
+							<li class="c-post-collection__item">
+								<a class="c-post-collection__link" href="{{ post.url }}" {% if currentPost %}aria-current="page"{% endif %}>{{ post.data.title }}</a>
+							</li>
+						{%- endfor -%}
+					</ol>
+				</div>
+			{%- endif -%}
+
+		<div>
+	</div>
+
+	{% include "nav/recommended-reading.njk" %}
+</div>
+
+{% include "post-metadata.njk" %}

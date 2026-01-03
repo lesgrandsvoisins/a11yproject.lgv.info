@@ -1,0 +1,32 @@
+.c-blm-banner {
+	background-color: #211009;
+	color: map-get($colors, sand);
+	font-family: $font-family-secondary;
+	padding: 0.25rem map-get($global-bleed, small);
+	text-align: center;
+
+	// User Queries
+	@media screen and (-ms-high-contrast: active) {
+		background-color: windowText;
+		color: window;
+	}
+}
+
+
+.c-blm-banner__link {
+	color: map-get($colors, "white");
+
+	&:focus {
+		background-color: map-get($colors, "white");
+		color: map-get($colors, "black");
+		outline: $border-thin solid map-get($colors, "white");
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	// User Queries
+	@media screen and (-ms-high-contrast: active) {
+		color: window;
+	}
+}

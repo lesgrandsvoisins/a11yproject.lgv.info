@@ -1,0 +1,21 @@
+$scheme-override-light: ("nav-background": "sea-shade",
+    "hero-background": "sea-shade",
+    "hero-background-text": "straw",
+    "hero-content-background": "sea-shade",
+    "hero-content-accent": "straw-tint",
+    "hero-content-text": "straw-tint",
+    "toc-summary": "sea-shade",
+    "sponsors-background": "sea-tint",
+);
+
+$scheme-override-dark: ("nav-background": "sea-shade-muted",
+    "hero-background": "sea-shade-muted",
+    "hero-background-text": "straw-shade-muted",
+    "hero-content-background": "sea-shade-muted",
+    "hero-content-accent": "straw-tint-muted",
+    "hero-content-text": "straw-tint",
+    "toc-summary": "sea-tint-muted",
+    "sponsors-background": "sea-shade-muted",
+);
+
+@include color-scheme("sea-straw", $scheme-override-light, $scheme-override-dark);

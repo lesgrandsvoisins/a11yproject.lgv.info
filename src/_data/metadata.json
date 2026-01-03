@@ -1,16 +1,16 @@
 {
-	"title": "The A11Y Project",
-	"url": "https://a11yproject.com",
-	"feed": {
-		"subtitle": "A community-driven effort to make digital accessibility easier.",
-		"filename": "feed.xml",
-		"path": "/feed/feed.xml",
-		"url": "https://a11yproject.com/feed/feed.xml",
-		"id": "https://a11yproject.com/"
-	},
-	"author": {
-		"name": "Dave Rupert",
-		"email": "hello@a11yproject.com"
-	},
-	"logo": "/google-touch-icon.png"
+    "title": "Le Numérique Créatif des Grands Voisins",
+    "url": "https://www.parislenuage.com/",
+    "feed": {
+        "subtitle": "Entraide par salles de sociabilité numérique et Paris le nuage.",
+        "filename": "feed.xml",
+        "path": "/feed/feed.xml",
+        "url": "https://www.parislenuage.com/feed/feed.xml",
+        "id": "https://www.parislenuage.com/"
+    },
+    "author": {
+        "name": "Chris Mann",
+        "email": "chris@lesgrandsvoisins.com"
+    },
+    "logo": "https://www.lesgrandsvoisins.com/medias/img/lesgv/logo-lesgrandsvoisins-800-400-white.png"
 }
