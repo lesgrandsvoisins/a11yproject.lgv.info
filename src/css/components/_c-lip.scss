@@ -1,3 +1,7 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.supports";
+
 // Header Cap
 //
 // The Header cap provides a "lip" area that sticks out below the header,
@@ -13,9 +17,9 @@
 	height: 2rem;
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			height: unset;
 		}
 	}
@@ -23,9 +27,9 @@
 
 
 .c-lip__fill {
-	@supports #{$supports-grid} {
+	@supports #{variables.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			.template-posts &,
 			.template-checklist &,
 			.template-resources &,
@@ -34,7 +38,7 @@
 			.template-authors &,
 			.template-spotlight &,
 			.template-contribute {
-				@include var(background-color, hero-background);
+				@include mixins.var(background-color, hero-background);
 			}
 		}
 	}

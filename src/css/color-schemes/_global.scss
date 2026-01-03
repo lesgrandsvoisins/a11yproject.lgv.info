@@ -1,3 +1,5 @@
+@use "../logic/mixins.dark-mode";
+
 // We want to make sure all colors are defined here in this file
 // to make sure that we know of all the different color variables we have globally,
 // but each color can be overridden in particular color schemes as needed.
@@ -184,7 +186,7 @@ $scheme-dark: ("body-background": "charcoal",
     }
 }
 
-@include dark-mode() {
+@include mixins.dark-mode() {
     --image-filter: saturate(0.7);
 
     @each $name,

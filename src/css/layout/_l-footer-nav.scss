@@ -1,17 +1,20 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.supports";
+
 .l-footer-nav {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables.$supports-flex} {
 		// Breakpoints
-		@include mappy-bp(palm-small) {
+		@include mappy-breakpoints.mappy-bp(palm-small) {
 			display: flex;
 			flex-flow: row wrap;
 		}
 
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			justify-content: space-between;
 		}
 
-		@include mappy-bp(lap-medium) {
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
 			justify-content: flex-start;
 		}
 	}

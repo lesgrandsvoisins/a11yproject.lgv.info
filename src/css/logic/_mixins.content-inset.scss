@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "variables.global";
+
 // post-content-inset
 //
 // Controls left and right margins for post content.
@@ -6,6 +9,6 @@
 //
 // Styleguide Logic.Mixins.post-content-inset
 @mixin post-content-inset($size) {
-	margin-left: map-get($global-post-content-inset, $size);
-	margin-right: map-get($global-post-content-inset, $size);
+	margin-left: map.get(variables.$global-post-content-inset, $size);
+	margin-right: map.get(variables.$global-post-content-inset, $size);
 }

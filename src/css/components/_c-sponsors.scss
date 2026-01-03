@@ -1,12 +1,18 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.global";
+@use "../logic/variables.supports" as variables3;
+
 .c-sponsors {
-	@include var(background-color, sponsors-background);
+	@include mixins.var(background-color, sponsors-background);
 }
 
 
 .c-sponsor__link {
-	width: $global-sponsor-width;
+	width: variables.$global-sponsor-width;
 	margin-bottom: 1rem;
-	@include var(color, body-text);
+	@include mixins.var(color, body-text);
 
 	&:last-of-type {
 		margin-bottom: 0;
@@ -14,13 +20,13 @@
 
 	// States
 	&:focus {
-		outline: $border-thin solid currentColor;
+		outline: variables2.$border-thin solid currentColor;
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables3.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(palm-medium) {
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
 			margin-bottom: 0;
 		}
 	}

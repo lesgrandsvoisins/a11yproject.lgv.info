@@ -1,3 +1,15 @@
+@use "../logic/functions.em";
+@use "../logic/mixins.link-states" as mixins3;
+@use "../logic/mixins.shift-click" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables4;
+@use "../logic/variables.animation-easing" as variables5;
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-families" as variables6;
+@use "../logic/variables.font-weights";
+@use "../logic/variables.line-heights" as variables3;
+@use "../logic/variables.supports" as variables7;
+
 $_c-input-margin-top: 1.5rem;
 
 
@@ -8,31 +20,31 @@ $_c-input-margin-top: 1.5rem;
 
 .c-form__label {
 	display: inline-block;
-	font-weight: $font-weight-bold;
+	font-weight: variables.$font-weight-bold;
 	margin-top: $_c-input-margin-top;
 	padding-bottom: 0.25rem;
 }
 
 
 .c-form__input {
-	@include var(background-color, body-background);
-	@include var(color, body-text);
-	border: $border-thinnest solid;
-	@include var(border-color, input-border);
-	line-height: $line-height-single;
+	@include mixins.var(background-color, body-background);
+	@include mixins.var(color, body-text);
+	border: variables2.$border-thinnest solid;
+	@include mixins.var(border-color, input-border);
+	line-height: variables3.$line-height-single;
 	padding: 0.5rem;
-	transition: background-color $animation-duration-shorter $animation-easing-character;
+	transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
 	width: 100%;
 
 	&:hover,
 	&:active {
-		@include var(background-color, input-hover-background);
+		@include mixins.var(background-color, input-hover-background);
 	}
 
 	&:focus {
-		@include var(border-color, input-focus-border);
-		outline: $border-thinner solid;
-		@include var(outline-color, input-focus-border);
+		@include mixins.var(border-color, input-focus-border);
+		outline: variables2.$border-thinner solid;
+		@include mixins.var(outline-color, input-focus-border);
 	}
 
 	&:active {
@@ -47,39 +59,39 @@ $_c-input-margin-top: 1.5rem;
 
 
 .c-form__input--multiline {
-	line-height: $line-height-loose;
+	line-height: variables3.$line-height-loose;
 	min-height: 15rem;
 }
 
 
 .c-form__button {
-	@include var(background-color, button-background);
+	@include mixins.var(background-color, button-background);
 	border: none;
 	border-radius: 0.25rem;
-	@include var(color, button-text);
+	@include mixins.var(color, button-text);
 	cursor: pointer;
-	font-family: $font-family-secondary;
+	font-family: variables6.$font-family-secondary;
 	margin-top: $_c-input-margin-top * 1.5;
 	min-width: 20ch;
 	padding: 0.75rem 1.25rem;
 	text-transform: uppercase;
-	transition: background-color $animation-duration-shorter $animation-easing-character;
+	transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
 
 	// States
 	&:hover {
-		@include var(background-color, button-focus-background);
+		@include mixins.var(background-color, button-focus-background);
 	}
 
 	&:focus {
-		@include var(background-color, button-focus-background);
+		@include mixins.var(background-color, button-focus-background);
 		box-shadow:
-			0 0 0 em(2) var(--color-body-background),
-			0 0 0 em(4) var(--color-button-background);
-		outline: $border-thin solid transparent;
+			0 0 0 functions.em(2) var(--color-body-background),
+			0 0 0 functions.em(4) var(--color-button-background);
+		outline: variables2.$border-thin solid transparent;
 	}
 
 	&:active {
-		@include shift-click();
+		@include mixins2.shift-click();
 	}
 
 	// User Queries
@@ -90,7 +102,7 @@ $_c-input-margin-top: 1.5rem;
 
 
 .c-form__vendor {
-	@include link-states(body-text);
+	@include mixins3.link-states(body-text);
 
 	&:hover,
 	&:focus {
@@ -106,8 +118,8 @@ $_c-input-margin-top: 1.5rem;
 
 
 .c-form__error-wrapper {
-	border: $border-thin solid;
-	@include var(border-color, error);
+	border: variables2.$border-thin solid;
+	@include mixins.var(border-color, error);
 	padding: 0.5rem;
 
 	.c-form__error-list {
@@ -121,18 +133,18 @@ $_c-input-margin-top: 1.5rem;
 }
 
 .c-form__input[aria-invalid]{
-	border: $border-thinner solid;
-	@include var(border-color, error);
+	border: variables2.$border-thinner solid;
+	@include mixins.var(border-color, error);
 }
 
 .c-form__progress {
-	@include var(background-color, progress-background);
+	@include mixins.var(background-color, progress-background);
 	min-height: 2rem;
 	margin-bottom: 3rem;
 	max-width: 68ch;
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables7.$supports-flex} {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -141,13 +153,13 @@ $_c-input-margin-top: 1.5rem;
 
 
 .c-form__progress-fill {
-	@include var(background-color, progress-bar);
+	@include mixins.var(background-color, progress-bar);
 }
 
 
 .c-form__progress-label {
-	@include var(background-color, body-background);
-	font-family: $font-family-secondary;
+	@include mixins.var(background-color, body-background);
+	font-family: variables6.$font-family-secondary;
 	margin-top: 0;
 	padding-left: 1rem;
 }

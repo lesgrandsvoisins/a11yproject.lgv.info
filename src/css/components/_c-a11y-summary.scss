@@ -1,3 +1,10 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.borders";
+@use "../logic/variables.font-families" as variables3;
+@use "../logic/variables.font-sizes" as variables2;
+@use "../logic/variables.font-tracking" as variables4;
+
 // A11Y Banner
 //
 // The A11Y Banner boldly and directly explains what the neuronym "A11Y" is, as
@@ -6,20 +13,20 @@
 //
 // Style guide: Components.banner-a11y
 .c-a11y-summary {
-    @include var(background-color, hero-content-background);
-    border-top: $border-thicker solid;
-    @include var(border-color, hero-content-accent);
-    @include var(color, hero-content-text);
+    @include mixins.var(background-color, hero-content-background);
+    border-top: variables.$border-thicker solid;
+    @include mixins.var(border-color, hero-content-accent);
+    @include mixins.var(color, hero-content-text);
 
     padding: 1.5rem;
     margin: 1rem 0;
 
     // Breakpoints
-    @include mappy-bp(palm-small) {
+    @include mappy-breakpoints.mappy-bp(palm-small) {
         margin: 3rem 0;
     }
 
-    @include mappy-bp(palm-large) {
+    @include mappy-breakpoints.mappy-bp(palm-large) {
         padding: 2rem 7rem 2.75rem;
     }
 }
@@ -31,58 +38,58 @@
 
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
-        font-size: $font-size-heading-tiny;
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
+        font-size: variables2.$font-size-heading-tiny;
     }
 
-    @include mappy-bp(palm-medium) {
-        font-size: $font-size-heading-medium;
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        font-size: variables2.$font-size-heading-medium;
     }
 
-    @include mappy-bp(palm-large) {
-        font-size: $font-size-heading-larger;
+    @include mappy-breakpoints.mappy-bp(palm-large) {
+        font-size: variables2.$font-size-heading-larger;
     }
 }
 
 .c-a11y-summary__accessibility {
     display: block;
-    font-family: $font-family-secondary;
-    font-size: $font-size-heading-medium;
-    letter-spacing: $font-tracking-slight;
+    font-family: variables3.$font-family-secondary;
+    font-size: variables2.$font-size-heading-medium;
+    letter-spacing: variables4.$font-tracking-slight;
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
-        letter-spacing: $font-tracking-loose;
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
+        letter-spacing: variables4.$font-tracking-loose;
     }
 
-    @include mappy-bp(palm-large) {
-        font-size: $font-size-heading-large;
+    @include mappy-breakpoints.mappy-bp(palm-large) {
+        font-size: variables2.$font-size-heading-large;
     }
 }
 
 .c-a11y-summary__11-characters {
-    font-size: $font-size-heading-tiny;
+    font-size: variables2.$font-size-heading-tiny;
     width: 11rem;
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
         width: 15.25rem;
     }
 
-    @include mappy-bp(palm-medium) {
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
         width: 17rem;
     }
 }
 
 .c-a11y-summary__mission {
-    font-family: $font-family-secondary;
-    font-size: $font-size-body;
+    font-family: variables3.$font-family-secondary;
+    font-size: variables2.$font-size-body;
     margin-top: 2rem;
     max-width: 40ch;
     text-align: center;
 
     // Breakpoints
-    @include mappy-bp(palm-medium) {
-        font-size: $font-size-body-medium;
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        font-size: variables2.$font-size-body-medium;
     }
 }

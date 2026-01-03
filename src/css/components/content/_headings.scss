@@ -1,20 +1,29 @@
+@use "sass:map";
+@use "../../imports/mappy-breakpoints";
+@use "../../logic/mixins.headings" as mixins2;
+@use "../../logic/mixins.var";
+@use "../../logic/variables.font-tracking" as variables3;
+@use "../../logic/variables.font-weights" as variables4;
+@use "../../logic/variables.global" as variables2;
+@use "../../logic/variables.line-heights";
+
 // Namespace
 .c-content {
 	h1,
 	h2,
 	h3 {
-		line-height: $line-height-tight;
+		line-height: variables.$line-height-tight;
 		overflow-wrap: break-word;
 
 		// Breakpoints
-		@include mappy-bp(lap-medium) {
-			margin-left: map-get($global-post-content-inset, small) * -1;
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
+			margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
 		}
 	}
 
 	h2,
 	h3 {
-		@include var(color, heading-text);
+		@include mixins.var(color, heading-text);
 	}
 
 
@@ -29,26 +38,26 @@
 	//
 	// Style guide: Components.post.h2
 	h2 {
-		@include heading-large();
+		@include mixins2.heading-large();
 
 		code {
-			letter-spacing: $font-tracking-tighter;
+			letter-spacing: variables3.$font-tracking-tighter;
 		}
 	}
 
 
 	h3 {
-		@include heading-medium();
+		@include mixins2.heading-medium();
 	}
 
 
 	h4 {
-		@include heading-small();
+		@include mixins2.heading-small();
 	}
 
 	h5 {
-		@include var(color, text-accent);
-		font-weight: $font-weight-bold;
+		@include mixins.var(color, text-accent);
+		font-weight: variables4.$font-weight-bold;
 		margin-bottom: -4ch;
 	}
 }

@@ -1,3 +1,5 @@
+@use "../logic/variables.font-sizes";
+
 // Font Sizes
 //
 // Use these utility classes to control font sizes.
@@ -14,7 +16,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-body-tiny {
-	font-size: $font-size-body-tiny;
+	font-size: variables.$font-size-body-tiny;
 }
 
 
@@ -27,7 +29,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-body-small {
-	font-size: $font-size-body-small;
+	font-size: variables.$font-size-body-small;
 }
 
 
@@ -40,7 +42,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-body {
-	font-size: $font-size-body;
+	font-size: variables.$font-size-body;
 }
 
 
@@ -53,7 +55,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-body-medium {
-	font-size: $font-size-body-medium;
+	font-size: variables.$font-size-body-medium;
 }
 
 
@@ -66,7 +68,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-body-large {
-	font-size: $font-size-body-large;
+	font-size: variables.$font-size-body-large;
 }
 
 
@@ -79,7 +81,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-tiny {
-	font-size: $font-size-heading-tiny;
+	font-size: variables.$font-size-heading-tiny;
 }
 
 
@@ -92,7 +94,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-small {
-	font-size: $font-size-heading-small;
+	font-size: variables.$font-size-heading-small;
 }
 
 
@@ -105,7 +107,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-medium {
-	font-size: $font-size-heading-medium;
+	font-size: variables.$font-size-heading-medium;
 }
 
 
@@ -118,7 +120,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-large {
-	font-size: $font-size-heading-large;
+	font-size: variables.$font-size-heading-large;
 }
 
 
@@ -131,7 +133,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-larger {
-	font-size: $font-size-heading-larger;
+	font-size: variables.$font-size-heading-larger;
 }
 
 
@@ -144,7 +146,7 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-largest {
-	font-size: $font-size-heading-largest;
+	font-size: variables.$font-size-heading-largest;
 }
 
 
@@ -157,5 +159,5 @@
 //
 // Styleguide Utilities.Type Alignment.u-text-transform-none
 .u-font-size-heading-huge {
-	font-size: $font-size-heading-huge;
+	font-size: variables.$font-size-heading-huge;
 }

@@ -1,9 +1,23 @@
+@use "sass:map";
+@use "../logic/functions.z";
+@use "../logic/mixins.hide" as mixins2;
+@use "../logic/mixins.preserve-list-semantics" as mixins3;
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables7;
+@use "../logic/variables.animation-easing" as variables8;
+@use "../logic/variables.borders" as variables3;
+@use "../logic/variables.font-families";
+@use "../logic/variables.font-tracking" as variables2;
+@use "../logic/variables.global" as variables6;
+@use "../logic/variables.line-heights" as variables5;
+@use "../logic/variables.supports" as variables4;
+
 // tableOfContents.js
 // http://github.com/cferdinandi/table-of-contents
 .v-toc {
 	margin-right: 2rem;
 	position: relative;
-	z-index: z(component);
+	z-index: functions.z(component);
 
 	// States
 	&[open] {
@@ -25,15 +39,15 @@
 
 .v-toc__summary {
 	cursor: pointer;
-	font-family: $font-family-secondary;
-	letter-spacing: $font-tracking-slight;
-	@include var(color, toc-summary);
+	font-family: variables.$font-family-secondary;
+	letter-spacing: variables2.$font-tracking-slight;
+	@include mixins.var(color, toc-summary);
 
 	// States
 	&:focus {
-		@include var(background-color, toc-summary);
-		@include var(color, link-focus-text);
-		outline: $border-thicker solid transparent;
+		@include mixins.var(background-color, toc-summary);
+		@include mixins.var(color, link-focus-text);
+		outline: variables3.$border-thicker solid transparent;
 
 		.v-toc__title {
 			text-decoration: none;
@@ -47,7 +61,7 @@
 
 .v-toc__summary-inner {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables4.$supports-flex} {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -66,7 +80,7 @@
 	font-weight: 700;
 	margin-left: 0.5rem;
 	/* stylelint-disable-next-line property-no-unknown */
-	text-decoration-thickness: $border-thinnest;
+	text-decoration-thickness: variables3.$border-thinnest;
 	text-underline-offset: 0.5em;
 
 	// States
@@ -81,11 +95,11 @@
 
 	// Text-level formatting
 	h2 {
-		@include hide("visually");
+		@include mixins2.hide("visually");
 	}
 
 	ol {
-		@include preserve-list-semantics();
+		@include mixins3.preserve-list-semantics();
 
 		padding-top: none;
 		list-style-type: none;
@@ -96,14 +110,14 @@
 	}
 
 	li {
-		font-family: $font-family-secondary;
+		font-family: variables.$font-family-secondary;
 		font-weight: 700;
-		letter-spacing: $font-tracking-slight;
-		line-height: $line-height-tighter;
+		letter-spacing: variables2.$font-tracking-slight;
+		line-height: variables5.$line-height-tighter;
 		margin-bottom: 1.25rem; // EXCEPTION: Applying a bottom margin instead of top to ensure columns line up properly.
 
 		// Supports
-		@supports #{$supports-flex} {
+		@supports #{variables4.$supports-flex} {
 			margin-bottom: 0;
 		}
 
@@ -122,13 +136,13 @@
 				margin-top: 1rem;
 
 				// Supports
-				@supports #{$supports-flex} {
+				@supports #{variables4.$supports-flex} {
 					margin-top: 0;
 				}
 			}
 
 			&:last-of-type {
-				margin-bottom: map-get($global-bleed, small);
+				margin-bottom: map.get(variables6.$global-bleed, small);
 			}
 
 			// Contexts
@@ -140,28 +154,28 @@
 	}
 
 	a[href] {
-		@include var(color, toc-link-text);
+		@include mixins.var(color, toc-link-text);
 		text-decoration: none;
 		transition:
-			$animation-duration-short $animation-easing-character color,
-			$animation-duration-short $animation-easing-character border;
+			variables7.$animation-duration-short variables8.$animation-easing-character color,
+			variables7.$animation-duration-short variables8.$animation-easing-character border;
 
 		// Supports
-		@supports #{$supports-flex} {
+		@supports #{variables4.$supports-flex} {
 			border-bottom: none;
 			display: flex;
 
 			&::after {
 				content: "";
 				flex: 1 1;
-				border-bottom: $border-thick solid transparent;
+				border-bottom: variables3.$border-thick solid transparent;
 				margin: auto auto auto 0.5rem;
 			}
 
 			// States
 			&:hover::after,
 			&:focus::after {
-				@include var(border-bottom-color, toc-indicator);
+				@include mixins.var(border-bottom-color, toc-indicator);
 			}
 		}
 
@@ -170,7 +184,7 @@
 		&:focus {
 			background-color: transparent;
 			outline-color: transparent;
-			@include var(color, toc-link-focus-text);
+			@include mixins.var(color, toc-link-focus-text);
 		}
 	}
 

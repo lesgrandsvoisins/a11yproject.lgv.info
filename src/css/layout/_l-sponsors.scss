@@ -1,25 +1,30 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.global";
+@use "../logic/variables.supports" as variables2;
+
 .l-sponsors {
 	margin-top: 8rem;
-	padding: map-get($global-bleed, large);
+	padding: map.get(variables.$global-bleed, large);
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 
 		// Breakpoints
-		@include mappy-bp(palm-medium) {
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
 			flex-direction: row;
 		}
 	}
 
-	@supports #{$supports-grid} {
+	@supports #{variables2.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(palm-medium) {
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
 			display: grid;
 			gap: 1rem;
-			grid-template-columns: repeat(auto-fill, $global-sponsor-width);
+			grid-template-columns: repeat(auto-fill, variables.$global-sponsor-width);
 		}
 	}
 }

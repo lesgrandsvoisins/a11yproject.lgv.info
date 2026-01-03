@@ -1,5 +1,14 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.preserve-list-semantics";
+@use "../logic/mixins.var" as mixins3;
+@use "../logic/variables.font-families";
+@use "../logic/variables.font-sizes" as variables3;
+@use "../logic/variables.line-heights" as variables4;
+@use "../logic/variables.supports" as variables2;
+
 .c-footer {
-	font-family: $font-family-secondary;
+	font-family: variables.$font-family-secondary;
 }
 
 
@@ -7,22 +16,22 @@
 	margin-top: 2rem;
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		// Breakpoints
-		@include mappy-bp(palm-small) {
+		@include mappy-breakpoints.mappy-bp(palm-small) {
 			width: 50%;
 		}
 
-		@include mappy-bp(palm-medium) {
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
 			width: 33%;
 		}
 
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			width: initial;
 			margin-right: 2rem;
 		}
 
-		@include mappy-bp(lap-medium) {
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
 			margin-right: 5rem;
 		}
 	}
@@ -35,7 +44,7 @@
 
 
 .c-footer__list {
-	@include preserve-list-semantics();
+	@include mixins.preserve-list-semantics();
 
 	margin-top: 1rem;
 	margin-left: 0.4rem;
@@ -48,7 +57,7 @@
 
 
 .c-footer__link {
-	@include link-states(footer-link-text);
+	@include mixins2.link-states(footer-link-text);
 
 	text-decoration: none;
 
@@ -61,27 +70,27 @@
 
 
 .c-footer__tagline {
-	@include var(color, footer-tagline-text);
-	font-family: $font-family-primary;
-	font-size: $font-size-heading-small;
-	line-height: $line-height-single;
+	@include mixins3.var(color, footer-tagline-text);
+	font-family: variables.$font-family-primary;
+	font-size: variables3.$font-size-heading-small;
+	line-height: variables4.$line-height-single;
 	margin-top: 2rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
-		font-size: $font-size-body-medium;
+	@include mappy-breakpoints.mappy-bp(palm-small) {
+		font-size: variables3.$font-size-body-medium;
 		margin-top: 0;
 	}
 
-	@include mappy-bp(lap-small) {
-		font-size: $font-size-heading-medium;
+	@include mappy-breakpoints.mappy-bp(lap-small) {
+		font-size: variables3.$font-size-heading-medium;
 		margin-top: 3.5rem;
 	}
 }
 
 
 .c-footer__copyright-link {
-	@include link-states(footer-link-text);
+	@include mixins2.link-states(footer-link-text);
 
 	// States
 	&:hover {

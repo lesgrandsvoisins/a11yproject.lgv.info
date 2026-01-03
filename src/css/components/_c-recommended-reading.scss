@@ -1,15 +1,25 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables5;
+@use "../logic/variables.animation-easing" as variables6;
+@use "../logic/variables.borders" as variables3;
+@use "../logic/variables.font-sizes" as variables7;
+@use "../logic/variables.global";
+@use "../logic/variables.line-heights" as variables4;
+@use "../logic/variables.supports" as variables2;
+
 .c-recommended-reading {
 	margin-top: 4ex;
-	max-width: $global-type-measure;
+	max-width: variables.$global-type-measure;
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		display: flex;
 		flex-direction: row;
 		gap: 1rem;
 
 		// Breakpoints
-		@include mappy-bp(palm-small) {
+		@include mappy-breakpoints.mappy-bp(palm-small) {
 			gap: 1.5rem;
 		}
 	}
@@ -18,7 +28,7 @@
 
 .c-recommended-reading__wrapper {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		display: flex;
 		flex-direction: row;
 		width: 50%;
@@ -27,15 +37,15 @@
 
 
 .c-recommended-reading__link {
-	border-top: $border-thicker solid currentColor;
-	@include var(background-color, post-rec-background);
-	@include var(color, post-rec-accent);
-	line-height: $line-height-tight;
+	border-top: variables3.$border-thicker solid currentColor;
+	@include mixins.var(background-color, post-rec-background);
+	@include mixins.var(color, post-rec-accent);
+	line-height: variables4.$line-height-tight;
 	padding: 1rem;
 	text-decoration: none;
 	transition:
-		background-color $animation-duration-shorter $animation-easing-character,
-		color $animation-duration-shorter $animation-easing-character;
+		background-color variables5.$animation-duration-shorter variables6.$animation-easing-character,
+		color variables5.$animation-duration-shorter variables6.$animation-easing-character;
 
 	// States
 	&:focus {
@@ -44,16 +54,16 @@
 
 	&:hover,
 	&:focus {
-		@include var(background-color, post-rec-accent);
+		@include mixins.var(background-color, post-rec-accent);
 
 		.c-recommended-reading__category,
 		.c-recommended-reading__title {
-			@include var(color, post-rec-focus-text);
+			@include mixins.var(color, post-rec-focus-text);
 		}
 	}
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
+	@include mappy-breakpoints.mappy-bp(palm-small) {
 		padding: 1rem 1.5rem;
 	}
 
@@ -65,20 +75,20 @@
 
 
 .c-recommended-reading__category {
-	border-bottom: $border-thin dotted currentColor;
+	border-bottom: variables3.$border-thin dotted currentColor;
 	display: block;
 	padding-bottom: 0.75rem;
 }
 
 
 .c-recommended-reading__title {
-	@include var(color, post-rec-text);
+	@include mixins.var(color, post-rec-text);
 	display: block;
-	font-size: $font-size-body-tiny;
+	font-size: variables7.$font-size-body-tiny;
 	margin-top: 1rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
-		font-size: $font-size-body;
+	@include mappy-breakpoints.mappy-bp(palm-small) {
+		font-size: variables7.$font-size-body;
 	}
 }

@@ -1,19 +1,24 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.global";
+@use "../logic/variables.supports" as variables2;
+
 .l-simple {
-	padding: map-get($global-bleed, large) map-get($global-bleed, small);
+	padding: map.get(variables.$global-bleed, large) map.get(variables.$global-bleed, small);
 
 	// Breakpoints
-	@include mappy-bp(wrist-large) {
-		padding-right: map-get($global-bleed, large);
-		padding-left: map-get($global-bleed, large);
+	@include mappy-breakpoints.mappy-bp(wrist-large) {
+		padding-right: map.get(variables.$global-bleed, large);
+		padding-left: map.get(variables.$global-bleed, large);
 	}
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		display: flex;
 		align-items: center;
 
 		// Breakpoints
-		@include mappy-bp(palm-large) {
+		@include mappy-breakpoints.mappy-bp(palm-large) {
 			justify-content: center;
 		}
 	}

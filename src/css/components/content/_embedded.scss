@@ -1,10 +1,12 @@
+@use "../c-post";
+
 // Namespace
 .c-content {
 	// Embedded CodePen
 	//
 	// Style guide: Components.post.codepen
 	iframe[src^="https://codepen.io/"] {
-		margin-top: $_c-post-vertical-spacing !important;
+		margin-top: c-post.$c-post-vertical-spacing !important;
 		height: 20rem;
 	}
 
@@ -13,8 +15,8 @@
 	//
 	// Style guide: Components.post.tweet
 	.twitter-tweet {
-		margin-top: $_c-post-vertical-spacing !important;
-		margin-bottom: $_c-post-breathing-room !important;
+		margin-top: c-post.$c-post-vertical-spacing !important;
+		margin-bottom: c-post.$c-post-breathing-room !important;
 	}
 
 
@@ -22,7 +24,7 @@
 	//
 	// Style guide: Components.post.video
 	.video--16-9 {
-		margin-top: $_c-post-vertical-spacing !important;
+		margin-top: c-post.$c-post-vertical-spacing !important;
 		position: relative;
 		padding-bottom: 56.25%; // 16:9 ratio
 		height: 0;

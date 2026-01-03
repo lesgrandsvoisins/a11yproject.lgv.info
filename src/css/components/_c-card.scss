@@ -1,7 +1,10 @@
-$_card-inset: 1.5rem;
-$_card-outline: $border-thinner solid;
+@use "../logic/variables.borders";
+@use "../logic/variables.global" as variables2;
+
+$card-inset: 1.5rem;
+$_card-outline: variables.$border-thinner solid;
 
 .c-card__wrapper {
 	margin-bottom: 3rem;
-	max-width: $global-type-measure * 1.1;
+	max-width: variables2.$global-type-measure * 1.1;
 }

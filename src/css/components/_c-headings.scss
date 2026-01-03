@@ -1,3 +1,11 @@
+@use "../logic/mixins.headings" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.font-families";
+@use "../logic/variables.font-sizes" as variables3;
+@use "../logic/variables.font-tracking" as variables5;
+@use "../logic/variables.font-weights" as variables2;
+@use "../logic/variables.line-heights" as variables4;
+
 // Headings
 //
 // Headings are used to identify sections of content. They are [incredibly important for assistive technology](https://webdesign.tutsplus.com/articles/the-importance-of-heading-levels-for-assistive-technology--cms-31753).
@@ -16,9 +24,9 @@
 .c-heading-small,
 .c-heading-smaller,
 .c-heading-smallest {
-	@include var(color, heading-text);
-	font-family: $font-family-primary;
-	font-weight: $font-weight-normal;
+	@include mixins.var(color, heading-text);
+	font-family: variables.$font-family-primary;
+	font-weight: variables2.$font-weight-normal;
 }
 
 
@@ -50,16 +58,16 @@
 //
 // Style guide: Components.Headings.heading-largest
 .c-heading-largest {
-	@include heading-largest();
+	@include mixins2.heading-largest();
 }
 
 .c-heading-largest--generic {
-	@include var(color, heading-text-accent);
+	@include mixins.var(color, heading-text-accent);
 
 	& ~ .c-subtitle {
-		font-family: $font-family-secondary;
-		font-size: $font-size-body-large;
-		line-height: $line-height-tight;
+		font-family: variables.$font-family-secondary;
+		font-size: variables3.$font-size-body-large;
+		line-height: variables4.$line-height-tight;
 	}
 }
 
@@ -75,9 +83,9 @@
 //
 // Style guide: Components.Headings.heading-larger
 .c-heading-larger {
-	font-size: $font-size-heading-medium;
-	letter-spacing: $font-tracking-tight;
-	line-height: $line-height-tight;
+	font-size: variables3.$font-size-heading-medium;
+	letter-spacing: variables5.$font-tracking-tight;
+	line-height: variables4.$line-height-tight;
 }
 
 
@@ -92,7 +100,7 @@
 //
 // Style guide: Components.Headings.heading-large
 .c-heading-large {
-	@include heading-large();
+	@include mixins2.heading-large();
 }
 
 
@@ -107,7 +115,7 @@
 //
 // Style guide: Components.Headings.heading-medium
 .c-heading-medium {
-	@include heading-medium();
+	@include mixins2.heading-medium();
 }
 
 
@@ -122,7 +130,7 @@
 //
 // Style guide: Components.Headings.heading-small
 .c-heading-small {
-	@include heading-small();
+	@include mixins2.heading-small();
 }
 
 

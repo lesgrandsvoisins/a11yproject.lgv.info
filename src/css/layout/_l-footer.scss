@@ -1,10 +1,16 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.hide";
+@use "../logic/variables.global";
+@use "../logic/variables.supports" as variables2;
+
 .l-footer {
-	padding: 2rem map-get($global-bleed, small) 4rem map-get($global-bleed, small);
+	padding: 2rem map.get(variables.$global-bleed, small) 4rem map.get(variables.$global-bleed, small);
 
 	// Breakpoints
-	@include mappy-bp(palm-medium) {
-		padding-left: map-get($global-bleed, large);
-		padding-right: map-get($global-bleed, large);
+	@include mappy-breakpoints.mappy-bp(palm-medium) {
+		padding-left: map.get(variables.$global-bleed, large);
+		padding-right: map.get(variables.$global-bleed, large);
 	}
 }
 
@@ -17,34 +23,34 @@
 	margin-top: 3rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
-		@include hide(remove); // [1]
+	@include mappy-breakpoints.mappy-bp(palm-small) {
+		@include mixins.hide(remove); // [1]
 	}
 
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		margin-top: 6rem;
 	}
 
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		display: unset;
 	}
 }
 
 
 .l-footer__meta--nav {
-	@include hide(remove); // [1]
+	@include mixins.hide(remove); // [1]
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
+	@include mappy-breakpoints.mappy-bp(palm-small) {
 		// Supports
-		@supports #{$supports-flex} {
+		@supports #{variables2.$supports-flex} {
 			display: flex;
 			flex-direction: column;
 		}
 	}
 
-	@include mappy-bp(lap-small) {
-		@include hide(remove); // [1]
+	@include mappy-breakpoints.mappy-bp(lap-small) {
+		@include mixins.hide(remove); // [1]
 	}
 }
 
@@ -56,12 +62,12 @@
 
 .l-footer__tagline-copyright {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		display: flex;
 		flex-direction: column;
 
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			flex-direction: row;
 			justify-content: space-between;
 			margin-top: 1rem;
@@ -73,9 +79,9 @@
 .l-footer__copyright {
 	margin-top: 2rem;
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-top: 0;
 		}
 	}
@@ -86,11 +92,11 @@
 	margin-top: 1rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
+	@include mappy-breakpoints.mappy-bp(palm-small) {
 		margin-top: auto;
 	}
 
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		margin-top: 0;
 	}
 }

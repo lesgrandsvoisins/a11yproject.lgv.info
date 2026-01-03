@@ -1,10 +1,15 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.supports";
+
 .l-lip {
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			display: grid;
-			grid-template-columns: map-get($global-bleed, large) $global-grid-columns map-get($global-bleed, large);
+			grid-template-columns: map.get(variables2.$global-bleed, large) variables2.$global-grid-columns map.get(variables2.$global-bleed, large);
 			grid-template-rows: 3rem;
 			grid-template-areas: ". hollow fill fill";
 		}

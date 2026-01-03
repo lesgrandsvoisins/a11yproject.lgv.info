@@ -1,20 +1,27 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-sizes";
+@use "../logic/variables.global" as variables3;
+
 .c-dos-donts {
 	margin-top: 1.5rem;
 
 	// Text-level formatting
 	p {
-		@include var(background-color, card-background);
+		@include mixins.var(background-color, card-background);
 		padding: 1rem 1.5rem;
 	}
 
 	strong {
-		font-size: $font-size-body-small;
+		font-size: variables.$font-size-body-small;
 		text-transform: uppercase;
 	}
 
 	abbr {
-		border-bottom: $border-thinnest dotted;
-		@include var(border-color, do-accent);
+		border-bottom: variables2.$border-thinnest dotted;
+		@include mixins.var(border-color, do-accent);
 	}
 
 	p:first-of-type {
@@ -22,24 +29,24 @@
 	}
 
 	p:nth-child(odd) {
-		border-left: $border-thick solid;
-		@include var(border-color, do-accent);
+		border-left: variables2.$border-thick solid;
+		@include mixins.var(border-color, do-accent);
 	}
 
 	p:nth-child(even) {
-		border-left: $border-thick solid;
-		@include var(border-color, dont-accent);
+		border-left: variables2.$border-thick solid;
+		@include mixins.var(border-color, dont-accent);
 		margin-top: 1.25ex;
 
 		// User queries
 		@media screen and (-ms-high-contrast: active) {
-			border-left: $border-thick solid highlight;
+			border-left: variables2.$border-thick solid highlight;
 		}
 	}
 
 	// Breakpoints
-	@include mappy-bp(palm-large) {
-		margin-left: map-get($global-post-content-inset, small) * -1.75;
-		max-width: calc(#{$global-type-measure} * 1.25);
+	@include mappy-breakpoints.mappy-bp(palm-large) {
+		margin-left: map.get(variables3.$global-post-content-inset, small) * -1.75;
+		max-width: calc(#{variables3.$global-type-measure} * 1.25);
 	}
 }

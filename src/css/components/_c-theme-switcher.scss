@@ -1,3 +1,5 @@
+@use "../logic/mixins.var";
+
 .c-theme-switcher {
 	border: none;
 	margin: 0;
@@ -18,7 +20,7 @@
 
 
 .c-theme-switcher__input {
-	@include var(accent-color, input-accent);
+	@include mixins.var(accent-color, input-accent);
 }
 
 

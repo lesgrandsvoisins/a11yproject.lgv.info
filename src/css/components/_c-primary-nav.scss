@@ -1,13 +1,22 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.preserve-list-semantics" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables4;
+@use "../logic/variables.animation-easing" as variables5;
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-families" as variables3;
+@use "../logic/variables.supports";
+
 // Primary Navigation
 //
 // Style guide: Components.Navigation.primary-nav
 .c-primary-nav {
-	@include var(background-color, nav-background);
+	@include mixins.var(background-color, nav-background);
 }
 
 
 .c-primary-nav__list {
-	@include preserve-list-semantics();
+	@include mixins2.preserve-list-semantics();
 }
 
 
@@ -16,23 +25,23 @@
 	text-align: center;
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables.$supports-flex} {
 		margin-top: 1rem;
 		margin-left: 0;
 		width: 33%;
 
 		// Breakpoints
-		@include mappy-bp(palm-small) {
+		@include mappy-breakpoints.mappy-bp(palm-small) {
 			margin-right: 0.5rem;
 			width: initial;
 			flex-grow: 1;
 		}
 
-		@include mappy-bp(palm-medium) {
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
 			margin-right: 1rem;
 		}
 
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-top: 0;
 		}
 	}
@@ -41,8 +50,8 @@
 		margin-right: 0;
 
 		.c-primary-nav__link {
-			@include var(background-color, nav-cta-background);
-			@include var(color, nav-cta-text);
+			@include mixins.var(background-color, nav-cta-background);
+			@include mixins.var(color, nav-cta-text);
 			border-bottom: none;
 
 			// States
@@ -52,8 +61,8 @@
 			}
 
 			&:focus {
-				@include var(background-color, nav-cta-text);
-				@include var(color, nav-cta-background);
+				@include mixins.var(background-color, nav-cta-text);
+				@include mixins.var(color, nav-cta-background);
 			}
 
 			&[aria-current="page"] {
@@ -65,12 +74,12 @@
 
 
 .c-primary-nav__link {
-	border-bottom: $border-thinner solid transparent;
-	@include var(color, nav-link-text);
-	font-family: $font-family-secondary;
+	border-bottom: variables2.$border-thinner solid transparent;
+	@include mixins.var(color, nav-link-text);
+	font-family: variables3.$font-family-secondary;
 	padding: 0.25rem 0.5rem;
 	text-decoration: none;
-	transition: $animation-duration-short $animation-easing-character border-bottom-color;
+	transition: variables4.$animation-duration-short variables5.$animation-easing-character border-bottom-color;
 
 	// States
 	&:hover {
@@ -78,7 +87,7 @@
 	}
 
 	&:focus {
-		outline: $border-thinner solid currentColor;
+		outline: variables2.$border-thinner solid currentColor;
 	}
 
 	&[aria-current="page"] {
@@ -86,7 +95,7 @@
 	}
 
 	// Breakpoints
-	@include mappy-bp(palm-large) {
+	@include mappy-breakpoints.mappy-bp(palm-large) {
 		padding: 0.5rem 1rem;
 	}
 

@@ -1,3 +1,7 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.global";
+@use "../logic/variables.supports" as variables2;
+
 .l-content {
 	// Contexts
 	.template-home &,
@@ -8,7 +12,7 @@
 		padding-top: 3rem;
 
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			padding-top: 0;
 		}
 	}
@@ -17,11 +21,11 @@
 	.template-about &,
 	.template-resources &,
 	.template-generic & {
-		max-width: $global-type-measure;
+		max-width: variables.$global-type-measure;
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables2.$supports-grid} {
 		grid-area: content;
 	}
 }

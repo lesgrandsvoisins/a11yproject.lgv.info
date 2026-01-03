@@ -1,3 +1,5 @@
+@use "../imports/mappy-breakpoints";
+
 // breakpoints
 //
 // Organizes the site breakpoints. Breakpoints are declared with pixel values
@@ -7,7 +9,7 @@
 // themselves around their devices, to help keep usability top-of-mind.
 //
 // Styleguide Logic.Maps.breakpoints
-$breakpoints: (
+mappy-breakpoints.$breakpoints: (
 	"wrist-small":  320px,
 	"wrist-medium": 400px,
 	"wrist-large":  480px,

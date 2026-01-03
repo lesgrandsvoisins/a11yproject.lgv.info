@@ -1,3 +1,12 @@
+@use "../logic/mixins.preserve-list-semantics" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables2;
+@use "../logic/variables.animation-easing" as variables3;
+@use "../logic/variables.borders";
+@use "../logic/variables.font-families" as variables6;
+@use "../logic/variables.line-heights" as variables5;
+@use "../logic/variables.supports" as variables4;
+
 // Linkroll
 //
 // Style guide: Components.linkroll
@@ -7,22 +16,22 @@
 
 
 .c-linkroll__link {
-	border-left: $border-thicker solid;
-	@include var(border-color, linkroll-gray);
+	border-left: variables.$border-thicker solid;
+	@include mixins.var(border-color, linkroll-gray);
 	padding: 1.25rem 1.75rem;
 	text-decoration: none;
 	transition:
-		background-color $animation-duration-shorter $animation-easing-character,
-		color $animation-duration-shorter $animation-easing-character;
+		background-color variables2.$animation-duration-shorter variables3.$animation-easing-character,
+		color variables2.$animation-duration-shorter variables3.$animation-easing-character;
 
 	// States
 	&:hover,
 	&:focus {
-		@include var(background-color, linkroll-gray-background);
+		@include mixins.var(background-color, linkroll-gray-background);
 	}
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables4.$supports-flex} {
 		display: flex;
 		flex-direction: column;
 	}
@@ -35,68 +44,68 @@
 	&.announcements,
 	&.experience,
 	&.myth {
-		@include var(border-color, category-pink);
+		@include mixins.var(border-color, category-pink);
 
 		&:hover,
 		&:focus {
-			@include var(background-color, category-pink-background);
+			@include mixins.var(background-color, category-pink-background);
 		}
 	}
 
 	&.assistive-technology,
 	&.background {
-		@include var(border-color, category-gray);
+		@include mixins.var(border-color, category-gray);
 
 		&:hover,
 		&:focus {
-			@include var(background-color, category-gray-background);
+			@include mixins.var(background-color, category-gray-background);
 		}
 	}
 
 	&.how-to {
-		@include var(border-color, category-yellow);
+		@include mixins.var(border-color, category-yellow);
 
 		&:hover,
 		&:focus {
-			@include var(background-color, category-yellow-background);
+			@include mixins.var(background-color, category-yellow-background);
 		}
 	}
 
 	&.quick-test {
-		@include var(border-color, category-blue);
+		@include mixins.var(border-color, category-blue);
 
 		&:hover,
 		&:focus {
-			@include var(background-color, category-blue-background);
+			@include mixins.var(background-color, category-blue-background);
 		}
 	}
 
 	&.quick-tip {
-		@include var(border-color, category-green);
+		@include mixins.var(border-color, category-green);
 
 		&:hover,
 		&:focus {
-			@include var(background-color, category-green-background);
+			@include mixins.var(background-color, category-green-background);
 		}
 	}
 }
 
 
 .c-linkroll__link--featured {
-	border-top: $border-thicker solid transparent;
+	border-top: variables.$border-thicker solid transparent;
 	border-left: none;
 }
 
 
 .c-linkroll__entry {
-	@include preserve-list-semantics();
-	@include var(background-color, card-background);
+	@include mixins2.preserve-list-semantics();
+	@include mixins.var(background-color, card-background);
 	margin-top: 1.25rem;
 }
 
 
 .c-linkroll__category {
-	@include var(color, card-meta-text);
+	@include mixins.var(color, card-meta-text);
 }
 
 
@@ -106,15 +115,15 @@
 
 
 .c-linkroll__title {
-	@include var(color, card-text);
-	line-height: $line-height-tight;
+	@include mixins.var(color, card-text);
+	line-height: variables5.$line-height-tight;
 	text-decoration: none;
 }
 
 
 .c-linkroll__featured {
-	border-bottom: $border-thin dotted transparent;
-	@include var(color, card-text);
-	font-family: $font-family-secondary;
+	border-bottom: variables.$border-thin dotted transparent;
+	@include mixins.var(color, card-text);
+	font-family: variables6.$font-family-secondary;
 	padding-bottom: 0.75rem;
 }

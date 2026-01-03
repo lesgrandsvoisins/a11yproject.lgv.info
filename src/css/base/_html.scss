@@ -1,3 +1,10 @@
+@use "../logic/mixins.var";
+@use "../logic/variables.font-families";
+@use "../logic/variables.font-weights" as variables3;
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.line-heights" as variables4;
+@use "../logic/variables.supports" as variables5;
+
 // html
 //
 // Styles applied to the `HTML` element. Largely used to set initial cascade for
@@ -5,12 +12,12 @@
 //
 // Styleguide Base.html
 html {
-	@include var(background-color, body-background);
-	@include var(color, body-text);
-	font-family: $font-family-primary;
-	font-size: $global-type-size;
-	font-weight: $font-weight-regular;
-	line-height: $line-height-loose;
+	@include mixins.var(background-color, body-background);
+	@include mixins.var(color, body-text);
+	font-family: variables.$font-family-primary;
+	font-size: variables2.$global-type-size;
+	font-weight: variables3.$font-weight-regular;
+	line-height: variables4.$line-height-loose;
 	margin: 0;
 	min-height: 100%;
 	padding: 0;
@@ -33,7 +40,7 @@ html {
 	}
 
 	// Supports
-	@supports #{$supports-hanging-punctuation} {
+	@supports #{variables5.$supports-hanging-punctuation} {
 		hanging-punctuation: first;
 	}
 

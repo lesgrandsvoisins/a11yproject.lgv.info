@@ -1,3 +1,5 @@
+@use "../logic/mixins.link-states";
+
 // links
 //
 // Initial styles applied to anchor elements without a class applied to them.
@@ -9,7 +11,7 @@
 a {
 	// Style links that don't have a class declared on them
 	&:not([class]) {
-		@include link-states(link-text);
+		@include mixins.link-states(link-text);
 
 		&:hover,
 		&:focus {

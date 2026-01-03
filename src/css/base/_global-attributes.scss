@@ -1,3 +1,5 @@
+@use "../logic/mixins.hide";
+
 // Global Attributes
 //
 // These attributes can be applied to any HTML element to control its behavior.
@@ -31,7 +33,7 @@
 //
 // Styleguide Base.Global Attributes.hidden
 [hidden] {
-	@include hide(remove);
+	@include mixins.hide(remove);
 }
 
 

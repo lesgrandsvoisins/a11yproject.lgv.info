@@ -1,3 +1,5 @@
+@use "variables.global";
+
 // rem
 //
 // Generates a `rem` value from a pixel measurement, derived from the base type
@@ -9,11 +11,11 @@
 // Styleguide Logic.Functions.rem
 @use "sass:math";
 
-@function rem($pixels, $context: $global-type-size) {
-	@if (unitless($pixels)) {
+@function rem($pixels, $context: variables.$global-type-size) {
+	@if (math.is-unitless($pixels)) {
 		$pixels: $pixels * 1px;
 	}
-	@if (unitless($context)) {
+	@if (math.is-unitless($context)) {
 		$context: $context * 1px;
 	}
 	@return math.div($pixels, $context) * 1rem;

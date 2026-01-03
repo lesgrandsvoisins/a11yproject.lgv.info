@@ -1,3 +1,6 @@
+@use "../../logic/mixins.post-content-flourish";
+@use "../../logic/variables.paths";
+
 // Namespace
 .c-content {
 	// Direct Link
@@ -21,9 +24,9 @@
 	}
 
 	.footnotes {
-		--filename: url("#{$path-to-img}/posts/section-footnotes-lightmode.svg");
-		--filename-dark: url("#{$path-to-img}/posts/section-footnotes-darkmode.svg");
-		@include post-content-flourish(62, 1.75rem);
+		--filename: url("#{variables.$path-to-img}/posts/section-footnotes-lightmode.svg");
+		--filename-dark: url("#{variables.$path-to-img}/posts/section-footnotes-darkmode.svg");
+		@include mixins.post-content-flourish(62, 1.75rem);
 
 		margin-top: 8ex;
 	}

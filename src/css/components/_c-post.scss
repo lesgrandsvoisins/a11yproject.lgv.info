@@ -1,5 +1,15 @@
-$_c-post-breathing-room: 6ex;
-$_c-post-vertical-spacing: 4ex;
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.borders";
+@use "../logic/variables.font-sizes" as variables4;
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.line-heights" as variables5;
+@use "../logic/variables.supports" as variables3;
+
+$c-post-breathing-room: 6ex;
+$c-post-vertical-spacing: 4ex;
 
 
 // Post
@@ -27,33 +37,33 @@ $_c-post-vertical-spacing: 4ex;
 //
 // Style guide: Components.post
 .c-post__category {
-	border-top: $border-thick solid currentColor;
-	@include var(color, rte-accent);
+	border-top: variables.$border-thick solid currentColor;
+	@include mixins.var(color, rte-accent);
 
 	p {
-		border-bottom: $border-thinnest solid currentColor;
-		padding: 0.5rem 0 0.5rem map-get($global-post-content-inset, small);
+		border-bottom: variables.$border-thinnest solid currentColor;
+		padding: 0.5rem 0 0.5rem map.get(variables2.$global-post-content-inset, small);
 		text-transform: uppercase;
 
 		// Breakpoints
-		@include mappy-bp(palm-medium) {
-			padding-left: map-get($global-post-content-inset, medium);
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
+			padding-left: map.get(variables2.$global-post-content-inset, medium);
 		}
 
-		@include mappy-bp(lap-medium) {
-			padding-left: map-get($global-post-content-inset, medium);
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
+			padding-left: map.get(variables2.$global-post-content-inset, medium);
 		}
 
-		@include mappy-bp(lap-large) {
-			padding-left: map-get($global-post-content-inset, large);
+		@include mappy-breakpoints.mappy-bp(lap-large) {
+			padding-left: map.get(variables2.$global-post-content-inset, large);
 		}
 
 		// Supports
-		@supports #{$supports-grid} {
+		@supports #{variables3.$supports-grid} {
 			// Breakpoints
-			@include mappy-bp(lap-medium) {
+			@include mappy-breakpoints.mappy-bp(lap-medium) {
 				padding-left: 0;
-				padding-right: map-get($global-post-content-inset, small);
+				padding-right: map.get(variables2.$global-post-content-inset, small);
 				text-align: right;
 			}
 		}
@@ -62,7 +72,7 @@ $_c-post-vertical-spacing: 4ex;
 
 
 .c-post__category__link {
-	@include link-states(rte-accent);
+	@include mixins2.link-states(rte-accent);
 	text-decoration: none;
 
 	// States
@@ -73,68 +83,68 @@ $_c-post-vertical-spacing: 4ex;
 
 
 .c-post__title {
-	@include var(color, heading-text);
-	font-size: $font-size-heading-small;
-	line-height: $line-height-tight;
-	margin: 0.75rem map-get($global-post-content-inset, small) 2rem map-get($global-post-content-inset, small);
+	@include mixins.var(color, heading-text);
+	font-size: variables4.$font-size-heading-small;
+	line-height: variables5.$line-height-tight;
+	margin: 0.75rem map.get(variables2.$global-post-content-inset, small) 2rem map.get(variables2.$global-post-content-inset, small);
 	padding-right: 1rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-medium) {
-		margin-right: map-get($global-post-content-inset, small);
-		margin-left: map-get($global-post-content-inset, medium);
+	@include mappy-breakpoints.mappy-bp(palm-medium) {
+		margin-right: map.get(variables2.$global-post-content-inset, small);
+		margin-left: map.get(variables2.$global-post-content-inset, medium);
 	}
 
-	@include mappy-bp(lap-small) {
-		font-size: $font-size-heading-largest;
-		max-width: $global-type-measure;
+	@include mappy-breakpoints.mappy-bp(lap-small) {
+		font-size: variables4.$font-size-heading-largest;
+		max-width: variables2.$global-type-measure;
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables3.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
-			margin: 1rem 0 2rem map-get($global-post-content-inset, medium);
+		@include mappy-breakpoints.mappy-bp(lap-small) {
+			margin: 1rem 0 2rem map.get(variables2.$global-post-content-inset, medium);
 		}
 
-		@include mappy-bp(lap-medium) {
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
 			margin-top: 0;
-			margin-left: map-get($global-post-content-inset, small);
+			margin-left: map.get(variables2.$global-post-content-inset, small);
 		}
 	}
 }
 
 
 .c-post__metadata {
-	border-top: $border-thinnest solid;
-	border-bottom: $border-thick solid;
-	@include var(border-color, rte-accent);
+	border-top: variables.$border-thinnest solid;
+	border-bottom: variables.$border-thick solid;
+	@include mixins.var(border-color, rte-accent);
 	list-style-type: none;
-	padding: 0.75rem map-get($global-post-content-inset, small);
+	padding: 0.75rem map.get(variables2.$global-post-content-inset, small);
 
 	// Breakpoints
-	@include mappy-bp(palm-medium) {
-		padding-left: map-get($global-post-content-inset, medium);
+	@include mappy-breakpoints.mappy-bp(palm-medium) {
+		padding-left: map.get(variables2.$global-post-content-inset, medium);
 	}
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables3.$supports-flex} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			display: flex;
 			flex-direction: row;
 		}
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables3.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
-			padding: 0.75rem map-get($global-post-content-inset, medium);
+		@include mappy-breakpoints.mappy-bp(lap-small) {
+			padding: 0.75rem map.get(variables2.$global-post-content-inset, medium);
 		}
 
-		@include mappy-bp(lap-medium) {
-			padding-left: map-get($global-post-content-inset, small);
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
+			padding-left: map.get(variables2.$global-post-content-inset, small);
 		}
 	}
 }
@@ -151,16 +161,16 @@ $_c-post-vertical-spacing: 4ex;
 	margin-bottom: 0.5rem;
 
 	// Breakpoints
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		margin-bottom: 0;
 	}
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables3.$supports-flex} {
 		flex-grow: 2;
 
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			flex-grow: 4;
 			margin-bottom: 0;
 		}
@@ -171,11 +181,11 @@ $_c-post-vertical-spacing: 4ex;
 .c-post__metadata--published,
 .c-post__metadata--updated {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables3.$supports-flex} {
 		flex-grow: 1;
 
 		// Breakpokints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-left: 0.5rem;
 		}
 	}
@@ -183,31 +193,31 @@ $_c-post-vertical-spacing: 4ex;
 
 
 .c-post__metadata-link {
-	@include link-states(heading-text);
+	@include mixins2.link-states(heading-text);
 	text-underline-offset: 0.2em;
 }
 
 
 .c-post__list-item {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables3.$supports-flex} {
 		flex-grow: 1;
 	}
 }
 
 
 .c-content {
-	line-height: $line-height-double;
+	line-height: variables5.$line-height-double;
 
 	// Breakpoints
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		margin-right: 0;
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables3.$supports-grid} {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-right: 0;
 		}
 	}

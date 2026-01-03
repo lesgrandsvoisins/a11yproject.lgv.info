@@ -1,3 +1,6 @@
+@use "../imports/mappy-breakpoints";
+@use "functions.rem";
+
 // post-content-flourish
 //
 // Adds images to specific section s of post content
@@ -8,17 +11,17 @@
 // Styleguide Logic.Mixins.post-content-inset
 @mixin post-content-flourish($height, $top-margin) {
 	// Breakpoints
-	@include mappy-bp(lap-medium) {
+	@include mappy-breakpoints.mappy-bp(lap-medium) {
 		&::before {
 			background: var(--filename) no-repeat center;
 			background-size: cover;
 			content: "";
 			display: block;
-			height: rem($height);
+			height: functions.rem($height);
 			margin-top: $top-margin;
 			position: absolute;
 				left: 1rem;
-			width: rem(164);
+			width: functions.rem(164);
 		}
 
 		@media (prefers-color-scheme: dark) {

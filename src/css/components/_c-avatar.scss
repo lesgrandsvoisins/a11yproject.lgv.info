@@ -1,9 +1,11 @@
+@use "../logic/mixins.avatar-size";
+
 
 // Photos use background images since we can't control the dimensions of
 // submitted avatars. This centers whatever is added, which hopefully creates a
 // good cropping effect.
 .c-avatar {
-	@include avatar-size("tiny");
+	@include mixins.avatar-size("tiny");
 
 	background-position: center;
 	background-size: cover;

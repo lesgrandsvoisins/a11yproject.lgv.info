@@ -1,3 +1,5 @@
+@use "variables.global";
+
 // em
 //
 // Generates an `em` value from a pixel measurement, derived from the base type
@@ -9,11 +11,11 @@
 // Styleguide Logic.Functions.em
 @use "sass:math";
 
-@function em($pixels, $context: $global-type-size) {
-	@if (unitless($pixels)) {
+@function em($pixels, $context: variables.$global-type-size) {
+	@if (math.is-unitless($pixels)) {
 		$pixels: $pixels * 1px;
 	}
-	@if (unitless($context)) {
+	@if (math.is-unitless($context)) {
 		$context: $context * 1px;
 	}
 	@return math.div($pixels, $context) * 1em;

@@ -1,3 +1,8 @@
+@use "../imports/mappy-breakpoints";
+@use "variables.font-tracking" as variables3;
+@use "variables.font-weights" as variables2;
+@use "variables.line-heights";
+
 // Headings
 //
 // Controls section content headings.
@@ -15,11 +20,11 @@
 // Styleguide Logic.Mixins.Headings.heading-largest
 @mixin heading-largest() {
 	font-size: 3rem;
-	line-height: $line-height-single;
+	line-height: variables.$line-height-single;
 	margin-bottom: 1rem;
 
 	// Breakpoints
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		font-size: 3.5rem;
 	}
 }
@@ -37,7 +42,7 @@
 	font-size: 1.75rem;
 
 	// Breakpoints
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		font-size: 2rem;
 	}
 }
@@ -52,10 +57,10 @@
 // Styleguide Logic.Mixins.Headings.heading-medium
 @mixin heading-medium() {
 	font-size: 1.25rem;
-	line-height: $line-height-tight;
+	line-height: variables.$line-height-tight;
 
 	// Breakpoints
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		font-size: 1.5rem;
 	}
 }
@@ -70,8 +75,8 @@
 // Styleguide Logic.Mixins.Headings.heading-medium
 @mixin heading-small() {
 	font-size: 1rem;
-	font-weight: $font-weight-bold;
-	letter-spacing: $font-tracking-slight;
+	font-weight: variables2.$font-weight-bold;
+	letter-spacing: variables3.$font-tracking-slight;
 	margin-bottom: -2ex;
 	text-transform: uppercase;
 }

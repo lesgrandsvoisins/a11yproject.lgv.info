@@ -33,7 +33,7 @@
 		{% include "header.njk" %}
 
 		<main id="main" class="l-main">
-
+{#
 			{% if (layout !== 'post') and (page.url !== '/') %}
 			{% set tocMarkup = content | toc | safe %}
 			{% set hasToc = tocMarkup.length > 0 %}
@@ -42,6 +42,7 @@
 					{% include "nav/toc.njk" %}
 				{% endif %}
 			{% endif %}
+			#}
 
 			{{ content | safe }}
 		</main>

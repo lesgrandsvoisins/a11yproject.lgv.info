@@ -1,3 +1,5 @@
+@use "../logic/mixins.lede";
+
 .c-lede {
-	@include lede();
+	@include mixins.lede();
 }

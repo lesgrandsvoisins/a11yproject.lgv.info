@@ -1,7 +1,12 @@
+@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.borders";
+@use "../logic/variables.font-families" as variables2;
+
 .c-post-collection {
-	border-top: $border-thicker solid currentColor;
-	@include var(background-color, post-rec-background);
-	@include var(color, post-rec-accent);
+	border-top: variables.$border-thicker solid currentColor;
+	@include mixins.var(background-color, post-rec-background);
+	@include mixins.var(color, post-rec-accent);
   counter-reset: post-collection;
   padding: 1rem 2rem;
 	max-width: 68ex;
@@ -9,7 +14,7 @@
 
 
 .c-post-collection__title {
-	border-bottom: $border-thin dotted currentColor;
+	border-bottom: variables.$border-thin dotted currentColor;
   margin-top: 0;
 	padding-bottom: 1rem;
 }
@@ -22,11 +27,11 @@
 
 
 .c-post-collection__item {
-	@include var(color, post-rec-text);
+	@include mixins.var(color, post-rec-text);
   position: relative;
   margin-top: 0.5rem;
   counter-increment: post-collection;
-  font-family: $font-family-secondary;
+  font-family: variables2.$font-family-secondary;
 
   &::before {
     content: "Part " counter(post-collection) ": ";
@@ -36,7 +41,7 @@
 
 
 .c-post-collection__link {
-	@include link-states(post-rec-accent, post-rec-focus-text);
+	@include mixins2.link-states(post-rec-accent, post-rec-focus-text);
 
 	// States
   &[aria-current] {
@@ -44,7 +49,7 @@
     color: currentColor;
 
 		&:focus {
-			@include var(color, post-rec-focus-text);
+			@include mixins.var(color, post-rec-focus-text);
 		}
   }
 }

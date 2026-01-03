@@ -1,6 +1,9 @@
+@use "../logic/mixins.var";
+@use "../logic/variables.borders";
+
 .c-divider {
-	border: $border-thin solid;
-	@include var(border-color, divider-background);
+	border: variables.$border-thin solid;
+	@include mixins.var(border-color, divider-background);
 	margin-top: 3rem;
 	margin-bottom: 3rem;
 }

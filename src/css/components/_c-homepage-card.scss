@@ -1,10 +1,22 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/functions.rem";
+@use "../logic/mixins.avatar-size" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-families" as variables3;
+@use "../logic/variables.font-tracking" as variables4;
+@use "../logic/variables.global" as variables5;
+@use "../logic/variables.line-heights" as variables6;
+@use "../logic/variables.supports";
+
 // Homepage Card
 //
 // Style guide: Components.homepage-card
 .c-homepage-card--checklist {
 
     // Supports
-    @supports #{$supports-flex} {
+    @supports #{variables.$supports-flex} {
         display: flex;
         justify-content: flex-end;
     }
@@ -19,15 +31,15 @@
 .c-homepage-card--spotlight {
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
         margin-right: 4rem;
     }
 
     // Supports
-    @supports #{$supports-flex} {
+    @supports #{variables.$supports-flex} {
 
         // Breakpoints
-        @include mappy-bp(palm-large) {
+        @include mappy-breakpoints.mappy-bp(palm-large) {
             justify-self: end;
         }
     }
@@ -38,7 +50,7 @@
 
     // States
     &:focus {
-        outline: $border-thin solid currentColor;
+        outline: variables2.$border-thin solid currentColor;
     }
 }
 
@@ -57,32 +69,32 @@ img.c-homepage-card__image {
 }
 
 .c-homepage-card__author {
-    @include var(color, card-heading-text);
-    font-family: $font-family-secondary;
-    letter-spacing: $font-tracking-slight;
+    @include mixins.var(color, card-heading-text);
+    font-family: variables3.$font-family-secondary;
+    letter-spacing: variables4.$font-tracking-slight;
     margin-top: 1.5rem;
 }
 
 
 .c-homepage-card__title {
     cursor: pointer;
-    @include var(color, heading-text);
+    @include mixins.var(color, heading-text);
     text-decoration: none;
 }
 
 
 .c-homepage-card__description {
-    font-family: $font-family-secondary;
+    font-family: variables3.$font-family-secondary;
     margin-top: 1rem;
     margin-bottom: 1rem;
     max-width: 50ch;
 }
 
 .c-homepage-card__cta {
-    border-bottom: $border-thinnest solid;
-    @include var(border-color, secondary-link-accent);
-    @include var(color, secondary-link-text);
-    font-family: $font-family-secondary;
+    border-bottom: variables2.$border-thinnest solid;
+    @include mixins.var(border-color, secondary-link-accent);
+    @include mixins.var(color, secondary-link-text);
+    font-family: variables3.$font-family-secondary;
     margin-top: 1rem;
     text-decoration: none;
 
@@ -94,19 +106,19 @@ img.c-homepage-card__image {
     }
 
     &:focus {
-        @include var(background-color, secondary-link-focus-background);
-        @include var(color, secondary-link-focus-text);
-        outline: $border-thin solid;
-        @include var(outline-color, secondary-link-focus-background);
+        @include mixins.var(background-color, secondary-link-focus-background);
+        @include mixins.var(color, secondary-link-focus-text);
+        outline: variables2.$border-thin solid;
+        @include mixins.var(outline-color, secondary-link-focus-background);
     }
 
     // Supports
-    @supports #{$supports-underlines} {
+    @supports #{variables.$supports-underlines} {
         border-bottom: none;
         text-decoration: underline;
-        @include var(text-decoration-color, secondary-link-accent);
+        @include mixins.var(text-decoration-color, secondary-link-accent);
         /* stylelint-disable-next-line property-no-unknown */
-        text-decoration-thickness: $border-thinnest;
+        text-decoration-thickness: variables2.$border-thinnest;
         text-underline-offset: 0.5rem;
     }
 }
@@ -115,29 +127,29 @@ img.c-homepage-card__image {
 .c-homepage-card__checklist {
     height: auto;
     position: relative;
-    left: map-get($global-bleed, small);
+    left: map.get(variables5.$global-bleed, small);
     filter: var(--image-filter);
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
-        left: map-get($global-bleed, large);
-        width: rem(400);
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
+        left: map.get(variables5.$global-bleed, large);
+        width: functions.rem(400);
     }
 
-    @include mappy-bp(palm-medium) {
-        width: rem(340);
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        width: functions.rem(340);
     }
 }
 
 
 .c-homepage-card__spotlight-avatar {
-    @include avatar-size("large");
+    @include mixins2.avatar-size("large");
     position: relative;
 }
 
 
 .c-homepage-card__spotlight__info {
-    @include var(background-color, featured-card-background);
+    @include mixins.var(background-color, featured-card-background);
     height: 13rem;
     margin-top: -7.5rem;
     margin-left: 4rem;
@@ -146,7 +158,7 @@ img.c-homepage-card__image {
     width: 13rem;
 
     // Supports
-    @supports #{$supports-flex} {
+    @supports #{variables.$supports-flex} {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -155,13 +167,13 @@ img.c-homepage-card__image {
 
 
 .c-homepage-card__spotlight-name {
-    font-family: $font-family-secondary;
+    font-family: variables3.$font-family-secondary;
 }
 
 
 .c-homepage-card__spotlight-role {
-    @include var(color, featured-card-heading-text);
-    font-family: $font-family-secondary;
-    letter-spacing: $font-tracking-slight;
-    line-height: $line-height-tighter;
+    @include mixins.var(color, featured-card-heading-text);
+    font-family: variables3.$font-family-secondary;
+    letter-spacing: variables4.$font-tracking-slight;
+    line-height: variables6.$line-height-tighter;
 }

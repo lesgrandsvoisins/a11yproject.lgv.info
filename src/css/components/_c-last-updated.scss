@@ -1,12 +1,15 @@
+@use "../logic/mixins.var";
+@use "../logic/variables.font-sizes";
+
 .c-last-updated {
-	@include var(color, text-accent);
-	font-size: $font-size-body-small;
+	@include mixins.var(color, text-accent);
+	font-size: variables.$font-size-body-small;
 	font-style: italic;
 }
 
 
 .c-last-updated__body {
-	@include var(color, text-accent);
-	font-size: $font-size-body-small;
+	@include mixins.var(color, text-accent);
+	font-size: variables.$font-size-body-small;
 	font-style: italic;
 }

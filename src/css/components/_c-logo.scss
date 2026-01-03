@@ -1,3 +1,10 @@
+@use "../brand/colors";
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables3;
+@use "../logic/variables.animation-easing" as variables4;
+@use "../logic/variables.borders";
+@use "../logic/variables.supports" as variables2;
+
 // Logo
 //
 // The logo is used to identify the website for branding purposes. It is made up
@@ -34,14 +41,14 @@
 // Style guide: Components.logo
 .c-logo__link {
 	display: block;
-	@include var(color, nav-link-text);
+	@include mixins.var(color, nav-link-text);
 
 	// States
 	&:hover,
 	&:focus {
 		.c-logo__icon {
 			transform: scale(1.15);
-			outline: $border-thin solid transparent;
+			outline: variables.$border-thin solid transparent;
 		}
 	}
 }
@@ -49,7 +56,7 @@
 
 .c-logo__lockup {
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables2.$supports-flex} {
 		align-items: center; // Uses `.c-logo__logotype`'s bottom margin
 		display: flex;
 		flex-direction: row;
@@ -58,8 +65,8 @@
 
 
 .c-logo__icon {
-	fill: $color-white;
-	transition: transform $animation-duration-shortest $animation-easing-character; // SEE: `.c-logo__link`'s hover/focus states
+	fill: colors.$color-white;
+	transition: transform variables3.$animation-duration-shortest variables4.$animation-easing-character; // SEE: `.c-logo__link`'s hover/focus states
 
 	// User Queries
 	@media screen and (prefers-reduced-motion: reduce) {
@@ -69,7 +76,7 @@
 
 
 .c-logo__wordmark {
-	fill: $color-white;
+	fill: colors.$color-white;
 	margin-top: 0.25rem;
 	margin-left: 0.5rem;
 }

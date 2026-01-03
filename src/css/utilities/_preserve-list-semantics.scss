@@ -1,3 +1,5 @@
+@use "../logic/mixins.preserve-list-semantics";
+
 // u-preserve-list-semantics
 //
 // Ensures that [VoiceOver will declare the presence of list items](https://unfetteredthoughts.net/2017/09/26/voiceover-and-list-style-type-none/),
@@ -13,5 +15,5 @@
 //
 // Styleguide Utilities.u-preserve-list-semantics
 .u-preserve-list-semantics {
-	@include preserve-list-semantics();
+	@include mixins.preserve-list-semantics();
 }

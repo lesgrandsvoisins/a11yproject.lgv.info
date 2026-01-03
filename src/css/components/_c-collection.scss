@@ -1,9 +1,13 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.preserve-list-semantics";
+@use "../logic/variables.font-families";
+
 .c-collection__list {
-  @include preserve-list-semantics();
+  @include mixins.preserve-list-semantics();
   counter-reset: collection-list;
 
   // Breakpoints
-  @include mappy-bp(palm-medium) {
+  @include mappy-breakpoints.mappy-bp(palm-medium) {
     margin-left: 0;
   }
 
@@ -15,7 +19,7 @@
       position: absolute;
       content: counter(collection-list) ".";
       display: block;
-      font-family: $font-family-secondary;
+      font-family: variables.$font-family-secondary;
       font-size: 3ex;
       top: 1.25rem;
       left: 0;

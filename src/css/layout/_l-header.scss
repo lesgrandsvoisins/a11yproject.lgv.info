@@ -1,6 +1,8 @@
+@use "../logic/variables.supports";
+
 .l-header {
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables.$supports-grid} {
 		grid-area: header;
 	}
 }

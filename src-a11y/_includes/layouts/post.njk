@@ -33,12 +33,13 @@ colorScheme: green
 	</header>
 
 	<div data-content id="short-answer" class="l-post__body">
-
+{#
 		{% set tocMarkup = content | toc | safe %}
 		{% set hasToc = tocMarkup.length > 0 %}
 		{% if hasToc %}
 			{% include "nav/toc.njk" %}
 		{% endif %}
+		#}
 
 		<div class="l-post__content">
 			<div  data-content class="c-content c-content--post">

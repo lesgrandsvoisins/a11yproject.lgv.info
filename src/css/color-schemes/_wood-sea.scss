@@ -1,3 +1,5 @@
+@use "../logic/mixins.color-scheme";
+
 $scheme-override-light: ("nav-background": "wood-shade",
     "hero-background": "wood-shade",
     "hero-background-text": "sea-tint",
@@ -16,4 +18,4 @@ $scheme-override-dark: ("nav-background": "wood-shade-muted",
     "sponsors-background": "wood-shade-muted",
 );
 
-@include color-scheme("wood-sea", $scheme-override-light, $scheme-override-dark);
+@include mixins.color-scheme("wood-sea", $scheme-override-light, $scheme-override-dark);

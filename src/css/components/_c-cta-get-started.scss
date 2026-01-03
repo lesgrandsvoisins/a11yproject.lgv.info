@@ -1,3 +1,16 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration" as variables8;
+@use "../logic/variables.animation-easing" as variables9;
+@use "../logic/variables.borders" as variables3;
+@use "../logic/variables.font-families" as variables4;
+@use "../logic/variables.font-sizes" as variables5;
+@use "../logic/variables.font-tracking" as variables6;
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.line-heights" as variables7;
+@use "../logic/variables.supports";
+
 // Get Started
 //
 // The Get Started call-to-action provides a large guiding prompt for a person
@@ -15,23 +28,23 @@
     bottom: 2rem;
     text-align: center;
 
-    @include mappy-bp(lap-large) {
+    @include mappy-breakpoints.mappy-bp(lap-large) {
         bottom: 2.25rem;
     }
 
     // Supports
-    @supports #{$supports-grid} {
+    @supports #{variables.$supports-grid} {
         display: grid;
-        grid-template-columns: map-get($global-bleed, small) 1fr map-get($global-bleed, small);
+        grid-template-columns: map.get(variables2.$global-bleed, small) 1fr map.get(variables2.$global-bleed, small);
         grid-template-areas: ". get-started .";
 
         // Breakpoints
-        @include mappy-bp(palm-medium) {
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
             grid-template-columns: 1fr minmax(0, 60vw) 1fr;
             grid-template-areas: ". get-started .";
         }
 
-        @include mappy-bp(lap-medium) {
+        @include mappy-breakpoints.mappy-bp(lap-medium) {
             grid-template-columns: 1fr minmax(0, 45vw) 1fr;
         }
     }
@@ -39,41 +52,41 @@
 
 
 .c-cta-get-started__link {
-    @include var(background-color, button-background);
-    border: $border-thick solid;
-    @include var(border-color, body-background);
-    @include var(color, button-text);
-    font-family: $font-family-secondary;
-    font-size: $font-size-body;
-    letter-spacing: $font-tracking-slight;
-    line-height: $line-height-tight;
+    @include mixins.var(background-color, button-background);
+    border: variables3.$border-thick solid;
+    @include mixins.var(border-color, body-background);
+    @include mixins.var(color, button-text);
+    font-family: variables4.$font-family-secondary;
+    font-size: variables5.$font-size-body;
+    letter-spacing: variables6.$font-tracking-slight;
+    line-height: variables7.$line-height-tight;
     padding: 0.75rem 1rem;
     text-align: center;
     text-decoration: none;
     transition:
-        background-color $animation-duration-shorter $animation-easing-character,
-        color $animation-duration-shorter $animation-easing-character,
-        letter-spacing $animation-duration-shorter $animation-easing-character;
+        background-color variables8.$animation-duration-shorter variables9.$animation-easing-character,
+        color variables8.$animation-duration-shorter variables9.$animation-easing-character,
+        letter-spacing variables8.$animation-duration-shorter variables9.$animation-easing-character;
 
     // States
     &:hover,
     &:focus {
-        @include var(background-color, button-focus-background);
-        outline: $border-thin solid transparent;
+        @include mixins.var(background-color, button-focus-background);
+        outline: variables3.$border-thin solid transparent;
     }
 
     &:focus {
-        letter-spacing: $font-tracking-loose;
+        letter-spacing: variables6.$font-tracking-loose;
     }
 
     // Breakpoints
-    @include mappy-bp(wrist-large) {
-        font-size: $font-size-body-medium;
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
+        font-size: variables5.$font-size-body-medium;
         padding: 1rem 2rem;
     }
 
     // Supports
-    @supports #{$supports-grid} {
+    @supports #{variables.$supports-grid} {
         grid-area: get-started;
     }
 

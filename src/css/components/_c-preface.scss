@@ -1,7 +1,11 @@
+@use "../logic/mixins.var";
+@use "../logic/variables.global";
+@use "c-card";
+
 .c-preface {
-	@include var(color, text-accent);
+	@include mixins.var(color, text-accent);
 	margin-top: 0.5rem;
 	margin-bottom: 2rem;
-	margin-left: $_card-inset;
-	max-width: $global-type-measure;
+	margin-left: c-card.$card-inset;
+	max-width: variables.$global-type-measure;
 }

@@ -1,18 +1,25 @@
+@use "../logic/mixins.var";
+@use "../logic/variables.animation-duration";
+@use "../logic/variables.animation-easing" as variables2;
+@use "../logic/variables.borders" as variables5;
+@use "../logic/variables.font-tracking" as variables4;
+@use "../logic/variables.global" as variables3;
+
 .c-card-post {
-	@include var(color, card-text);
-	@include var(background-color, card-background);
+	@include mixins.var(color, card-text);
+	@include mixins.var(background-color, card-background);
 	padding: 1.5rem 2rem;
 	transition:
-		$animation-duration-shorter $animation-easing-character background-color,
-		$animation-duration-shorter $animation-easing-character border-color,
-		$animation-duration-shorter $animation-easing-character color;
+		variables.$animation-duration-shorter variables2.$animation-easing-character background-color,
+		variables.$animation-duration-shorter variables2.$animation-easing-character border-color,
+		variables.$animation-duration-shorter variables2.$animation-easing-character color;
 
 	&:focus-within {
-		@include var(background-color, card-focus-background);
-		@include var(outline-color, card-focus-background);
+		@include mixins.var(background-color, card-focus-background);
+		@include mixins.var(outline-color, card-focus-background);
 
 		* {
-			@include var(color, card-focus-text);
+			@include mixins.var(color, card-focus-text);
 		}
 	}
 
@@ -26,13 +33,13 @@
 .c-card-post__title,
 .c-card-post__meta,
 .c-card-post__description {
-	max-width: $global-type-measure;
+	max-width: variables3.$global-type-measure;
 }
 
 
 .c-card-post__title {
-	@include var(color, card-heading-text);
-	letter-spacing: $font-tracking-tight;
+	@include mixins.var(color, card-heading-text);
+	letter-spacing: variables4.$font-tracking-tight;
 
 	// States
 	&:hover,
@@ -41,14 +48,14 @@
 	}
 
 	&:focus {
-		@include var(color, card-focus-text);
-		outline: $border-thin solid transparent;
+		@include mixins.var(color, card-focus-text);
+		outline: variables5.$border-thin solid transparent;
 	}
 }
 
 
 .c-card-post__meta {
-	@include var(color, card-meta-text);
+	@include mixins.var(color, card-meta-text);
 }
 
 
@@ -62,6 +69,6 @@
 	}
 
 	&:focus {
-		outline: $border-thin solid transparent;
+		outline: variables5.$border-thin solid transparent;
 	}
 }

@@ -1,32 +1,40 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/functions.rem";
+@use "../logic/mixins.var";
+@use "../logic/variables.font-families";
+@use "../logic/variables.font-weights" as variables4;
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.supports" as variables3;
+
 .c-wcag-explanation {
-	@include var(background-color, featured-card-background);
-	font-family: $font-family-secondary;
+	@include mixins.var(background-color, featured-card-background);
+	font-family: variables.$font-family-secondary;
 	margin-bottom: 1rem;
 	padding: 0.5rem 1.5rem 2rem;
 
 	// Breakpoints
-	@include mappy-bp(palm-small) {
+	@include mappy-breakpoints.mappy-bp(palm-small) {
 		padding: 0.5rem 4rem 2rem;
 	}
 
 	// Text-level formatting
 	p {
 		margin-top: 1.5rem;
-		max-width: $global-type-measure;
+		max-width: variables2.$global-type-measure;
 	}
 }
 
 
 .c-wcag-explanation__compliance-level {
 	margin-top: 2rem;
-	max-width: $global-type-measure;
+	max-width: variables2.$global-type-measure;
 
 	// Breakpoints
-	@include mappy-bp(palm-large) {
+	@include mappy-breakpoints.mappy-bp(palm-large) {
 		margin-top: 0.5rem;
 
 		// Supports
-		@supports #{$supports-flex} {
+		@supports #{variables3.$supports-flex} {
 			display: flex;
 
 			// HACK: There's some weird flexbox layout thing happening here.
@@ -44,17 +52,17 @@
 	width: 65%;
 
 	// Breakpoints
-	@include mappy-bp(palm-medium) {
+	@include mappy-breakpoints.mappy-bp(palm-medium) {
 		width: 45%;
 	}
 
 	// Breakpoints
-	@include mappy-bp(palm-large) {
+	@include mappy-breakpoints.mappy-bp(palm-large) {
 		// Supports
-		@supports #{$supports-flex} {
+		@supports #{variables3.$supports-flex} {
 			margin-top: 2rem;
 			margin-right: 1.5rem;
-			width: rem(320);
+			width: functions.rem(320);
 		}
 	}
 }
@@ -62,10 +70,10 @@
 
 .c-wcag-explanation__conformance-level {
 	display: block;
-	font-weight: $font-weight-bold;
+	font-weight: variables4.$font-weight-bold;
 
 	// Breakpoints
-	@include mappy-bp(palm-large) {
+	@include mappy-breakpoints.mappy-bp(palm-large) {
 		margin-top: 0;
 	}
 }

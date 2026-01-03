@@ -1,20 +1,25 @@
+@use "sass:map";
+@use "../imports/mappy-breakpoints";
+@use "../logic/variables.global" as variables2;
+@use "../logic/variables.supports";
+
 .l-toc {
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables.$supports-grid} {
 		grid-area: toc;
 	}
 
 	// Contexts
 	.template-home & {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-top: 1.25rem;
 		}
 	}
 
 	.template-generic & {
 		// Breakpoints
-		@include mappy-bp(lap-small) {
+		@include mappy-breakpoints.mappy-bp(lap-small) {
 			margin-top: 17.5rem;
 
 			.l-toc {
@@ -73,17 +78,17 @@
 	}
 
 	.template-post & {
-		margin: 0.65rem 0 0 map-get($global-bleed, small);
+		margin: 0.65rem 0 0 map.get(variables2.$global-bleed, small);
 
 		// Breakpoints
-		@include mappy-bp(palm-medium) {
-			margin-right: map-get($global-post-content-inset, "medium");
+		@include mappy-breakpoints.mappy-bp(palm-medium) {
+			margin-right: map.get(variables2.$global-post-content-inset, "medium");
 			margin-bottom: 2rem;
-			margin-left: map-get($global-post-content-inset, "medium") * 0.5;
+			margin-left: map.get(variables2.$global-post-content-inset, "medium") * 0.5;
 		}
 
-		@include mappy-bp(lap-small) {
-			margin-right: map-get($global-post-content-inset, "large");
+		@include mappy-breakpoints.mappy-bp(lap-small) {
+			margin-right: map.get(variables2.$global-post-content-inset, "large");
 			margin-left: 5.5rem;
 
 			.l-toc {
@@ -91,8 +96,8 @@
 			}
 		}
 
-		@include mappy-bp(lap-medium) {
-			margin: 0.4rem 0 0 map-get($global-bleed, small);
+		@include mappy-breakpoints.mappy-bp(lap-medium) {
+			margin: 0.4rem 0 0 map.get(variables2.$global-bleed, small);
 		}
 	}
 }

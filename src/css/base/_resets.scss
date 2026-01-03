@@ -1,3 +1,10 @@
+@use "../logic/functions.em";
+@use "../logic/mixins.responsify";
+@use "../logic/mixins.var" as mixins2;
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-sizes" as variables3;
+@use "../logic/variables.font-weights";
+
 // resets
 //
 // Opinionated overrides of browser fallbacks.
@@ -18,11 +25,11 @@ dfn[title] {
 
 b,
 strong {
-	font-weight: $font-weight-bold;
+	font-weight: variables.$font-weight-bold;
 
 	b,
 	strong {
-		font-weight: $font-weight-regular;
+		font-weight: variables.$font-weight-regular;
 	}
 }
 
@@ -58,7 +65,7 @@ object,
 audio,
 video,
 canvas {
-	@include responsify();
+	@include mixins.responsify();
 }
 
 
@@ -86,11 +93,11 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: $font-weight-regular;
+	font-weight: variables.$font-weight-regular;
 }
 
 ins {
-	border-bottom: $border-thin double;
+	border-bottom: variables2.$border-thin double;
 	text-decoration: none;
 }
 
@@ -124,14 +131,14 @@ input[type="week"],
 input datalist,
 select,
 textarea {
-	font-size: $font-size-body;
+	font-size: variables3.$font-size-body;
 	line-height: 1;
 }
 
 mark {
-	padding: em(2);
-	@include var(background-color, mark-background);
-	@include var(color, mark-text);
+	padding: functions.em(2);
+	@include mixins2.var(background-color, mark-background);
+	@include mixins2.var(color, mark-text);
 }
 
 
@@ -216,7 +223,7 @@ table {
 	thead {
 		tr {
 			th {
-				font-weight: $font-weight-regular;
+				font-weight: variables.$font-weight-regular;
 			}
 		}
 	}
@@ -225,7 +232,7 @@ table {
 
 		tr {
 			th {
-				font-weight: $font-weight-regular;
+				font-weight: variables.$font-weight-regular;
 			}
 		}
 	}

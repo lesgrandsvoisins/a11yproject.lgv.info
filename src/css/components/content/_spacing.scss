@@ -1,3 +1,11 @@
+@use "../../logic/mixins.post-content-flourish";
+@use "../../logic/variables.font-families" as variables4;
+@use "../../logic/variables.global";
+@use "../../logic/variables.line-heights" as variables5;
+@use "../../logic/variables.paths" as variables3;
+@use "../../logic/variables.supports" as variables2;
+@use "../c-post";
+
 // Namespace
 .c-content {
 	// Measure
@@ -6,7 +14,7 @@
 	ol,
 	p,
 	ul {
-		max-width: $global-type-measure;
+		max-width: variables.$global-type-measure;
 	}
 
 	// Vertical spacing
@@ -22,7 +30,7 @@
 	pre,
 	table,
 	ul {
-		margin-top: $_c-post-vertical-spacing;
+		margin-top: c-post.$c-post-vertical-spacing;
 	}
 
 	// Extra breathing room
@@ -30,7 +38,7 @@
 	figure,
 	pre,
 	table {
-		margin-bottom: $_c-post-breathing-room;
+		margin-bottom: c-post.$c-post-breathing-room;
 	}
 
 	.template-collection & {
@@ -40,20 +48,20 @@
 	}
 
 	// Supports
-	@supports #{$supports-grid} {
+	@supports #{variables2.$supports-grid} {
 		// Contexts
 		.template-post & {
 			// This selector targets only the first child paragraph of
 			// `.c-content`, allowing us to apply the tl;dr image
 			& > p:first-of-type {
-				--filename: url("#{$path-to-img}/posts/section-short-answer-lightmode.svg");
-				--filename-dark: url("#{$path-to-img}/posts/section-short-answer-darkmode.svg");
+				--filename: url("#{variables3.$path-to-img}/posts/section-short-answer-lightmode.svg");
+				--filename-dark: url("#{variables3.$path-to-img}/posts/section-short-answer-darkmode.svg");
 				font-size: 1.25rem;
-				font-family: $font-family-secondary;
-				line-height: $line-height-looser;
+				font-family: variables4.$font-family-secondary;
+				line-height: variables5.$line-height-looser;
 				margin-top: 0;
-				margin-bottom: $_c-post-vertical-spacing * 1.25;
-				@include post-content-flourish(169, 0.75rem);
+				margin-bottom: c-post.$c-post-vertical-spacing * 1.25;
+				@include mixins.post-content-flourish(169, 0.75rem);
 			}
 
 			code,

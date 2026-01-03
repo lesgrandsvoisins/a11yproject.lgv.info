@@ -1,3 +1,5 @@
+@use "../logic/mixins.color-scheme";
+
 $scheme-override-light: ("nav-background": "pine-shade",
     "card-heading-text": "pine",
     "button-background": "wood-tint",
@@ -14,4 +16,4 @@ $scheme-override-dark: ("card-heading-text": "pine-tint-muted",
     "sponsors-background": "black"
 );
 
-@include color-scheme("pine-wood", $scheme-override-light, $scheme-override-dark);
+@include mixins.color-scheme("pine-wood", $scheme-override-light, $scheme-override-dark);

@@ -1,16 +1,22 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.headings" as mixins2;
+@use "../logic/mixins.hide" as mixins3;
+@use "../logic/mixins.post-content-flourish";
+@use "../logic/variables.paths";
+
 .c-further-reading {
-	--filename: url("#{$path-to-img}/posts/section-further-reading-lightmode.svg");
-	--filename-dark: url("#{$path-to-img}/posts/section-further-reading-darkmode.svg");
-	@include post-content-flourish(132, 1.7rem);
+	--filename: url("#{variables.$path-to-img}/posts/section-further-reading-lightmode.svg");
+	--filename-dark: url("#{variables.$path-to-img}/posts/section-further-reading-darkmode.svg");
+	@include mixins.post-content-flourish(132, 1.7rem);
 
 }
 
 
 .c-further-reading__title {
-	@include heading-large();
+	@include mixins2.heading-large();
 
 	// Breakpoints
-	@include mappy-bp(lap-medium) {
-		@include hide("visually");
+	@include mappy-breakpoints.mappy-bp(lap-medium) {
+		@include mixins3.hide("visually");
 	}
 }

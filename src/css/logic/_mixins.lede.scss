@@ -1,3 +1,5 @@
+@use "variables.line-heights";
+
 // lede
 //
 // The lede is the opening sentence or paragraph of a news article, summarizing
@@ -8,6 +10,6 @@
 // Styleguide Logic.Mixins.lede
 @mixin lede() {
 	font-size: 1.15rem;
-	line-height: $line-height-double;
+	line-height: variables.$line-height-double;
 	margin-top: 0;
 }

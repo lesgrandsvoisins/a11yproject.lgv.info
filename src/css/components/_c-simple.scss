@@ -1,5 +1,13 @@
+@use "../imports/mappy-breakpoints";
+@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.var";
+@use "../logic/variables.borders" as variables2;
+@use "../logic/variables.font-families" as variables4;
+@use "../logic/variables.paths";
+@use "../logic/variables.supports" as variables3;
+
 .c-simple--404 {
-	background-image: url("#{$path-to-img}/heroes/404-lightmode.svg");
+	background-image: url("#{variables.$path-to-img}/heroes/404-lightmode.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -10,7 +18,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-		@include var(color, hero-background-text);
+		@include mixins.var(color, hero-background-text);
 	}
 
 }
@@ -18,40 +26,40 @@
 
 .c-simple__hero {
 	position: relative;
-	border-top: $border-thicker solid;
-	@include var(background-color, hero-content-background);
-	@include var(border-color, hero-content-accent);
-	@include var(color, hero-content-text);
+	border-top: variables2.$border-thicker solid;
+	@include mixins.var(background-color, hero-content-background);
+	@include mixins.var(border-color, hero-content-accent);
+	@include mixins.var(color, hero-content-text);
 	margin-top: 2rem;
 	padding: 1rem 2rem 2rem;
 	z-index: 1;
 
 	// Supports
-	@supports #{$supports-flex} {
+	@supports #{variables3.$supports-flex} {
 		margin-top: 0;
 
 		// Breakpoints
-		@include mappy-bp(palm-large) {
+		@include mappy-breakpoints.mappy-bp(palm-large) {
 			width: 60%;
 		}
 	}
 
-	@include mappy-bp(lap-small) {
+	@include mappy-breakpoints.mappy-bp(lap-small) {
 		padding: 1rem 4rem 2rem;
 	}
 
 	// Text-level formatting
 	p {
-		font-family: $font-family-secondary;
+		font-family: variables4.$font-family-secondary;
 		margin-top: 1.5rem;
 	}
 }
 
 
 .c-simple__link {
-	@include link-states(link-text);
+	@include mixins2.link-states(link-text);
 
 	/* stylelint-disable-next-line property-no-unknown */
-	text-decoration-thickness: $border-thinner;
+	text-decoration-thickness: variables2.$border-thinner;
 	text-underline-offset: 0.25em;
 }

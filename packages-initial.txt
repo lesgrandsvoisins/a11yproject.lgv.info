@@ -1,0 +1,21 @@
+OK
+
+@11ty/eleventy @11ty/eleventy-navigation @11ty/eleventy-plugin-rss @11ty/eleventy-plugin-syntaxhighlight
+
+
+sass stylelint markdown-it markdown-it-anchor markdown-it-footnote
+
+gulp gulp-autoprefixer gulp-purgecss gulp-rename  gulp-sass gulp-terser
+
+html-minifier
+
+
+KO
+
+jshint jshint-stylish
+
+gulp-stylelint gulp-cssnano gulp-jshint gulp-header gulp-svg-sprite gulp-svgmin
+
+kss
+
+eleventy-plugin-nesting-toc

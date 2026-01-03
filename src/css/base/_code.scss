@@ -1,3 +1,8 @@
+@use "../logic/functions.rem";
+@use "../logic/mixins.var";
+@use "../logic/variables.font-families";
+@use "../logic/variables.line-heights" as variables2;
+
 // Code
 //
 // Styles applied to the `code`, `kbd`, `pre`, `samp`, and `var` elements.
@@ -14,9 +19,9 @@ kbd,
 pre,
 samp,
 var {
-	font-family: $font-family-code;
+	font-family: variables.$font-family-code;
 	font-feature-settings: normal;
-	line-height: $line-height-tight;
+	line-height: variables2.$line-height-tight;
 	overflow: auto; // [1]
 	white-space: pre-wrap; // [1]
 	word-break: keep-all; // [1]
@@ -44,11 +49,11 @@ var {
 //
 // Styleguide Base.Code.kbd
 kbd {
-	@include var(background-color, kbd-background);
-	border: rem(4) solid;
-	@include var(border-color, kbd-background);
-	@include var(color, kbd-text);
-	border-radius: rem(4);
+	@include mixins.var(background-color, kbd-background);
+	border: functions.rem(4) solid;
+	@include mixins.var(border-color, kbd-background);
+	@include mixins.var(color, kbd-text);
+	border-radius: functions.rem(4);
 	box-shadow: 0 2px 1px 0 var(--color-gray-tint);
 	padding: 0 0.5ch;
 	word-break: break-word;
@@ -63,8 +68,8 @@ kbd {
 //
 // Styleguide Base.Code.pre
 pre {
-	@include var(background-color, pre-background);
-	@include var(color, pre-text);
+	@include mixins.var(background-color, pre-background);
+	@include mixins.var(color, pre-text);
 	padding: 1rem 1.5rem;
 }
 
@@ -83,7 +88,7 @@ pre {
 //
 // Styleguide Base.Code.samp
 samp {
-	@include var(background-color, samp-background);
+	@include mixins.var(background-color, samp-background);
 }
 
 // var

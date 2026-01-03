@@ -1,3 +1,5 @@
+@use "../logic/mixins.hide";
+
 // Hide
 //
 // These classes are used to remove content from a page using various
@@ -16,7 +18,7 @@
 //
 // Styleguide Utilities.Hide.u-hide-visually
 .u-hide-visually {
-	@include hide(visually);
+	@include mixins.hide(visually);
 }
 
 

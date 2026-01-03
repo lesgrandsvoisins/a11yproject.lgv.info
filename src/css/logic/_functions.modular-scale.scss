@@ -1,3 +1,5 @@
+@use "variables.global";
+
 // ms
 //
 // Generates a size value from a modular scale. Defaults to the global type size
@@ -10,7 +12,7 @@
 // Styleguide Logic.Functions.modular-scale
 @use "sass:math";
 
-@function ms($increment, $base-size: $global-type-size, $ratio: $global-type-scale) {
+@function ms($increment, $base-size: variables.$global-type-size, $ratio: variables.$global-type-scale) {
 	@for $i from 1 through $increment {
 		@if $increment > 0 {
 			$base-size: $base-size * $ratio;
@@ -19,5 +21,5 @@
 		}
 	}
 	// Returns font size in rems, rounded to `$precision`'s length
-	@return math.div(round(math.div($base-size, $global-type-size) * $precision), $precision) * 1rem;
+	@return math.div(math.round(math.div($base-size, variables.$global-type-size) * $precision), $precision) * 1rem;
 }
