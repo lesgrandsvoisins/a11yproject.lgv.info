@@ -48,22 +48,30 @@
 
     &:last-of-type {
         margin-right: 0;
+        padding: 0;
 
         .c-primary-nav__link {
+
             @include mixins.var(background-color, nav-cta-background);
             @include mixins.var(color, nav-cta-text);
 
-            & {
-                border-bottom: none;
-            }
+            // & {
+            //     border-bottom: none;
+            // }
 
             // States
-            &:hover {
-                border-bottom: none;
-                text-decoration: underline;
-            }
+            // &:hover {
+            //     border-bottom: none;
+            //     // outline: variables2.$border-thinner solid currentColor;
+            //     text-decoration: underline;
+            //     // @include mixins.var(background-color, nav-cta-text);
+            //     // @include mixins.var(background-color, nav-cta-text);
+            //     // @include mixins.var(color, nav-cta-background);
 
-            &:focus {
+            // }
+
+            &:focus,
+            &:hover {
                 @include mixins.var(background-color, nav-cta-text);
                 @include mixins.var(color, nav-cta-background);
             }
@@ -75,6 +83,24 @@
     }
 }
 
+a.c-primary-nav__link img,
+a.c-primary-nav__link picture {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+// a.c-primary-nav__link img {
+//     border-style: solid;
+//     border-width: 1px;
+//     @include mixins.var(border-color, nav-cta-text);
+// }
+
+// a.c-primary-nav__link img::hover {
+
+//     @include mixins.var(border-color, nav-cta-text);
+
+// }
 
 .c-primary-nav__link {
     border-bottom: variables2.$border-thinner solid transparent;

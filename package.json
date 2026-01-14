@@ -1,8 +1,8 @@
 {
-    "name": "the-a11y-project-lgv-info",
+    "name": "grandsvoisins",
     "description": "Les Grands Voisins sur A community-driven effort to make digital accessibility easier.",
     "homepage": "https://www.grandsvoisins.com/",
-    "version": "0.0.1-alpha2",
+    "version": "0.0.2-alpha2",
     "license": "Apache-2.0",
     "author": "Chris Mann",
     "type": "module",
