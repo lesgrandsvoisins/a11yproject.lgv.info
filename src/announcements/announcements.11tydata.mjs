@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     author: "The A11Y Project Team",
     category: "Announcement",
     layout: "post",

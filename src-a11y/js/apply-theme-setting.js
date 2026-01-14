@@ -2,7 +2,7 @@
  * A global function that the theme toggle can use to apply the current theme.
  * @param {string} override The setting that needs to applied or undefined
  */
-window.applyThemeSetting = function (override) {
+globalThis.applyThemeSetting = function (override) {
 	const currentSetting =
 		override || localStorage.getItem("user-color-scheme") || "system";
 	const currentThemeValue =
@@ -16,4 +16,4 @@ window.applyThemeSetting = function (override) {
 
 	return currentSetting;
 };
-window.applyThemeSetting();
+globalThis.applyThemeSetting();

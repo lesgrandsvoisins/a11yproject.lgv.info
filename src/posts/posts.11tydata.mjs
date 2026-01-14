@@ -1,8 +1,5 @@
-module.exports = {
-    author: "The A11Y Project Team",
-    category: "Announcement",
+export default {
     layout: "post",
-    tags: ["announcements"],
     eleventyComputed: {
         eleventyNavigation: {
             key: ({

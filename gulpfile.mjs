@@ -8,7 +8,7 @@
 
 // Settings ///////////////////////////////////////////////////////////////////
 // Turn on/off build features
-var settings = {
+const settings = {
     clean: true,
     favicons: false,
     icons: true,
@@ -25,7 +25,7 @@ var settings = {
 
 
 // Paths to project folders ///////////////////////////////////////////////////
-var paths = {
+const paths = {
     input: 'src/',
     output: 'dist/',
     scripts: {
@@ -56,38 +56,45 @@ var paths = {
 // Gulp Packages //////////////////////////////////////////////////////////////
 
 // General
-var {
+import gulp from 'gulp';
+const {
     src,
     dest,
     watch,
     series,
     parallel,
     lastRun
-} = require('gulp');
-// var kss = require('kss');
-var rename = require('gulp-rename');
+} = gulp;
+// const kss = require('kss');
+// const rename = require('gulp-rename');
+import rename from 'gulp-rename';
 
 // Scripts
-// var jshint = require('gulp-jshint');
-var terser = require('gulp-terser');
+// const jshint = require('gulp-jshint');
+// const terser = require('gulp-terser');
 
 // Styles
-var sass = require('gulp-sass')(require('sass'));
-var prefix = require('gulp-autoprefixer');
-// var minify = require('gulp-cssnano');
-// var gulpStylelint = require('gulp-stylelint');
-var purgeCSS = require('gulp-purgecss');
+// const sass = require('gulp-sass')(require('sass'));
+import * as dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+// const prefix = require('gulp-autoprefixer');
+// const minify = require('gulp-cssnano');
+// const gulpStylelint = require('gulp-stylelint');
+// const purgeCSS = require('gulp-purgecss');
+import purgeCSS from 'gulp-purgecss'
 
 // SVGs
-// var svgmin = require('gulp-svgmin');
-// var svgSprite = require('gulp-svg-sprite');
+// const svgmin = require('gulp-svgmin');
+// const svgSprite = require('gulp-svg-sprite');
 
 // BrowserSync
-var browserSync = require('browser-sync').create();
+// const browserSync = require('browser-sync').create();
+import browserSync from 'browser-sync';
 
 
 // Package Config /////////////////////////////////////////////////////////////
-var configIcons = {
+const configIcons = {
     mode: {
         symbol: {
             dest: 'img',
@@ -105,11 +112,11 @@ var configIcons = {
 // Tasks //////////////////////////////////////////////////////////////////////
 
 // Lint, minify, and concatenate scripts
-var buildScripts = function(done) {
+const buildScripts = function(done) {
     // Make sure this feature is activated before running
     if (!settings.scripts) return done();
     // Run tasks on script files
-    var scriptSrc = [paths.scripts.input];
+    const scriptSrc = [paths.scripts.input];
     if (!settings.polyfills) {
         scriptSrc.push('!' + paths.scripts.polyfills);
     }
@@ -125,7 +132,7 @@ var buildScripts = function(done) {
 
 
 // Lint scripts
-var lintScripts = function(done) {
+const lintScripts = function(done) {
     // Make sure this feature is activated before running
     if (!settings.lint) return done();
     // Lint scripts
@@ -137,7 +144,7 @@ var lintScripts = function(done) {
 };
 
 // Process, lint, and minify Sass files
-var buildStyles = function(done) {
+const buildStyles = function(done) {
     // Make sure this feature is activated before running
     if (!settings.styles) return done();
     // Run tasks on all Sass files
@@ -192,23 +199,23 @@ var buildStyles = function(done) {
                 },
             })
         )
-        // .pipe(
-        //     prefix({
-        //         cascade: true,
-        //         remove: true,
-        //     })
-        // )
-        // .pipe(dest(paths.styles.output))
+        .pipe(
+            prefix({
+                cascade: true,
+                remove: true,
+            })
+        )
+        .pipe(dest(paths.styles.output))
         .pipe(rename({
             suffix: ".min"
         }))
-        // .pipe(
-        //     minify({
-        //         discardComments: {
-        //             removeAll: true,
-        //         },
-        //     })
-        // )
+        .pipe(
+            minify({
+                discardComments: {
+                    removeAll: true,
+                },
+            })
+        )
         .pipe(dest(paths.styles.output))
         .pipe(browserSync.stream())
     );
@@ -216,7 +223,7 @@ var buildStyles = function(done) {
 
 
 // Lint styles
-var lintStyles = function(done) {
+const lintStyles = function(done) {
     // Make sure this feature is activated before running
     if (!settings.lint) return done();
     // Lint scripts
@@ -233,7 +240,7 @@ var lintStyles = function(done) {
 
 
 // Process images
-var processImages = function(done) {
+const processImages = function(done) {
     // Make sure this feature is activated before running
     if (!settings.images) return done();
     return src(paths.images.input, {
@@ -244,7 +251,7 @@ var processImages = function(done) {
 
 
 // Process icons
-var processIcons = function(done) {
+const processIcons = function(done) {
     // Make sure this feature is activated before running
     if (!settings.icons) return done();
     return src(paths.icons.input)
@@ -254,7 +261,7 @@ var processIcons = function(done) {
 
 
 // Optimize SVG files
-var buildSVGs = function(done) {
+const buildSVGs = function(done) {
     // Make sure this feature is activated before running
     if (!settings.svgs) return done();
     // Optimize SVG files
@@ -267,7 +274,7 @@ var buildSVGs = function(done) {
 
 
 // Build styleguide
-var buildStyleguide = function(done) {
+const buildStyleguide = function(done) {
     // Make sure this feature is activated before running
     if (!settings.styleguide) return done();
     // Generate styleguide with these congig options
@@ -283,7 +290,7 @@ var buildStyleguide = function(done) {
 
 
 // Watch for changes to the src directory
-var startServer = function(done) {
+const startServer = function(done) {
     // Make sure this feature is activated before running
     if (!settings.reload) return done();
     // Initialize BrowserSync
@@ -297,17 +304,17 @@ var startServer = function(done) {
 
 
 // Reload the browser when files change
-var reloadBrowser = function(done) {
+const reloadBrowser = function(done) {
     if (!settings.reload) return done();
     browserSync.reload();
     done();
 };
 
-var styles = parallel(lintStyles, buildStyles);
-var scripts = parallel(lintScripts, buildScripts);
+const styles = parallel(lintStyles, buildStyles);
+const scripts = parallel(lintScripts, buildScripts);
 
 // Watch for changes
-var watchSource = function() {
+const watchSource = function() {
     watch(paths.styles.input, styles);
     watch(paths.scripts.input, series(scripts, reloadBrowser));
     watch(paths.images.input, series(processImages, reloadBrowser));
@@ -320,18 +327,41 @@ var watchSource = function() {
 // Export Tasks ///////////////////////////////////////////////////////////////
 
 // Default task: `gulp`
-exports.default = parallel(
-    styles,
-    scripts,
-    processImages,
-    processIcons,
-    buildSVGs,
-    buildStyleguide
-)
+
+
+export default () => {
+    return parallel(
+        styles,
+        scripts,
+        processImages,
+        processIcons,
+        buildSVGs,
+        buildStyleguide
+    );
+};
+// exports.default = parallel(
+//     styles,
+//     scripts,
+//     processImages,
+//     processIcons,
+//     buildSVGs,
+//     buildStyleguide
+// )
 
 // Watch and reload: `gulp watch`
-exports.watch = series(
-    exports.default,
-    startServer,
-    watchSource
-);
+export const watchServer = () => {
+    series(
+        parallel(
+            styles,
+            scripts,
+            processImages,
+            processIcons,
+            buildSVGs,
+            buildStyleguide
+        ),
+        startServer,
+        watchSource
+    );
+};
+// };
+// exports.watch =

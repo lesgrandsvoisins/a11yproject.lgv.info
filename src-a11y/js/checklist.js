@@ -12,7 +12,7 @@
  * If someone opens the checklist page using a checklist item's "Share link" (ex: a11yproject.com/checklist/#validate-your-html) the item with the corresponding id will scroll into view. Then, if JS is enabled, this function will open its associated <details> element
  */
  function openLinkedCheckListItem() {
-	var hash = window.location.hash.substr(1);
+	var hash = globalThis.location.hash.substr(1);
 	var checklistItem =
 		hash.length > 0 &&
 		document.querySelector('[data-checklist-item-id="' + hash + '"]');

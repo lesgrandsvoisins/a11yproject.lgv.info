@@ -95,7 +95,7 @@ Copyright © 2019 Javan Makhmali
     });
   }
   function polyfillToggleEvent() {
-    if (window.MutationObserver) {
+    if (globalThis.MutationObserver) {
       new MutationObserver(function(mutations) {
         forEach.call(mutations, function(mutation) {
           var target = mutation.target, attributeName = mutation.attributeName;
@@ -121,7 +121,7 @@ Copyright © 2019 Javan Makhmali
   }
   function polyfillAccessibility() {
     setAccessibilityAttributes(document);
-    if (window.MutationObserver) {
+    if (globalThis.MutationObserver) {
       new MutationObserver(function(mutations) {
         forEach.call(mutations, function(mutation) {
           forEach.call(mutation.addedNodes, setAccessibilityAttributes);

@@ -20,7 +20,7 @@
 
 		if (settingToApply) {
 			setStatus(settingToApply);
-			window.applyThemeSetting(settingToApply);
+			globalThis.applyThemeSetting(settingToApply);
 		} else {
 			setStatus("system");
 		}

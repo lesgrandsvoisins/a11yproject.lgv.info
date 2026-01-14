@@ -1,12 +1,33 @@
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+// const pluginRss = require("@11ty/eleventy-plugin-rss");
+import pluginRss from "@11ty/eleventy-plugin-rss";
+// const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+// const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 // const eleventyPluginTOC = require("eleventy-plugin-nesting-toc");
 
-const slugify = require("slugify");
-const htmlmin = require("html-minifier");
+// const slugify = require("slugify");
+import slugify from "slugify";
+// const htmlmin = require("html-minifier");
+import htmlmin from "html-minifier";
+import getTagList from "./src/_11ty/getTagList.mjs";
 
-module.exports = function(eleventyConfig) {
+
+// let markdownIt = require("markdown-it");
+import markdownIt from "markdown-it";
+// let markdownItAnchor = require("markdown-it-anchor");
+import markdownItAnchor from "markdown-it-anchor";
+import markdownItFootnote from "markdown-it-footnote";
+// let markdownItFootnote = require("markdown-it-footnote");
+
+import {
+    eleventyImageTransformPlugin
+} from "@11ty/eleventy-img";
+
+
+export default (eleventyConfig) => {
+    // eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(pluginSyntaxHighlight);
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -140,12 +161,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/robots.txt");
     eleventyConfig.addPassthroughCopy("./src/sw.js");
 
-    eleventyConfig.addCollection("tagList", require("./src/_11ty/getTagList"));
+    eleventyConfig.addCollection("tagList", getTagList);
 
     /* Markdown Plugins */
-    let markdownIt = require("markdown-it");
-    let markdownItAnchor = require("markdown-it-anchor");
-    let markdownItFootnote = require("markdown-it-footnote");
     let options = {
         html: true,
         breaks: true,
@@ -180,7 +198,7 @@ module.exports = function(eleventyConfig) {
 
         markdownTemplateEngine: "liquid",
         htmlTemplateEngine: "njk",
-        dataTemplateEngine: "njk",
+        // dataTemplateEngine: "njk",
         passthroughFileCopy: true,
         dir: {
             input: "./src",

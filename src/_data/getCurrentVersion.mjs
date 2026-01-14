@@ -1,4 +1,4 @@
 import process from "node:process";
-module.exports = {
+export default {
     version: process.env.npm_package_version
 };
