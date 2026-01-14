@@ -7,7 +7,7 @@
     "author": "Chris Mann",
     "type": "module",
     "contributors": [
-        "Chris Mann (https://www.mann.fr)",
+        "Chris Mann (https://www.mann.fr)"
         "Dave Rupert (https://daverupert.com/)",
         "Carie Fisher (https://www.linkedin.com/in/cehfisher/)",
         "Dennis Gaebel <dennisgaebel@gmail.com> (https://droidpinkman.io/)",
@@ -26,14 +26,15 @@
         "node": ">=16"
     },
     "scripts": {
-        "watch:sass": "sass --no-source-map --watch src/css:dist/css",
-        "build:sass": "sass --no-source-map src/css:dist/css",
-        "build:eleventy": "eleventy",
-        "watch:eleventy": "eleventy --serve",
-        "clean": "del-cli dist",
-        "postbuild": "postcss dist/css/*.css -u autoprefixer cssnano -r",
-        "start": "npm-run-all clean build:sass --parallel watch:*",
-        "build": "npm-run-all clean build:sass build:eleventy"
+        "start": "pnpm run eleventy-watch & pnpm run gulp-watch",
+        "a11yproject": "pnpm start",
+        "publish": "eleventy & gulp",
+        "clean": "rm -rf ./dist",
+        "eleventy-build": "eleventy",
+        "eleventy-watch": "eleventy --incremental --watch",
+        "eleventy-debug": "DEBUG=* eleventy",
+        "gulp-build": "gulp",
+        "gulp-watch": "gulp watchServer"
     },
     "keywords": [
         "a11y",
@@ -58,10 +59,7 @@
         "@11ty/eleventy-navigation": "^1.0.5",
         "@11ty/eleventy-plugin-rss": "^2.0.4",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-        "autoprefixer": "^10.4.23",
         "browser-sync": "^3.0.4",
-        "cssnano": "^7.1.2",
-        "del-cli": "^7.0.0",
         "gulp": "^5.0.1",
         "gulp-autoprefixer": "^10.0.0",
         "gulp-purgecss": "^7.0.2",
@@ -71,8 +69,6 @@
         "markdown-it": "^14.1.0",
         "markdown-it-anchor": "^9.2.0",
         "markdown-it-footnote": "^4.0.0",
-        "postcss": "^8.5.6",
-        "postcss-cli": "^11.0.1",
         "sass": "^1.97.1",
         "slugify": "^1.6.6",
         "stylelint": "^16.26.1"
