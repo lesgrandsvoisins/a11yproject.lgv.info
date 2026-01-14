@@ -32,8 +32,8 @@
         "watch:eleventy": "eleventy --serve",
         "clean": "del-cli dist",
         "postbuild": "postcss dist/css/*.css -u autoprefixer cssnano -r",
-        "start": "npm-run-all clean build:sass --parallel watch:*",
-        "build": "npm-run-all clean build:sass build:eleventy"
+        "start": "pnpm clean; pnpm build:sass; pnpm run /^watch:.*/",
+        "build": "pnpm clean; pnpm run /^build:.*/"
     },
     "keywords": [
         "a11y",

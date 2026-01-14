@@ -12,7 +12,6 @@ import slugify from "slugify";
 import htmlmin from "html-minifier";
 import getTagList from "./src/_11ty/getTagList.mjs";
 
-
 // let markdownIt = require("markdown-it");
 import markdownIt from "markdown-it";
 // let markdownItAnchor = require("markdown-it-anchor");
@@ -24,9 +23,33 @@ import {
     eleventyImageTransformPlugin
 } from "@11ty/eleventy-img";
 
+import Image from "@11ty/eleventy-img";
 
 export default (eleventyConfig) => {
-    // eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+    eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+
+    eleventyConfig.addPassthroughCopy({
+        'src/js': 'js'
+    });
+    eleventyConfig.addPassthroughCopy({
+        'src/img': 'img'
+    });
+
+    eleventyConfig.addShortcode("image", async function(src, alt, widths = [300, 600], sizes = "") {
+        return Image(src, {
+            widths,
+            formats: ["avif", "jpeg"],
+            returnType: "html", // new in v6.0
+            htmlOptions: { // new in v6.0
+                imgAttributes: {
+                    alt, // required, though "" works fine
+                    sizes, // required with more than one width, optional if single width output
+                    loading: "lazy", // optional
+                    decoding: "async", // optional
+                }
+            }
+        });
+    });
 
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(pluginSyntaxHighlight);
