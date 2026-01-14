@@ -37,7 +37,9 @@
     },
     "keywords": [
         "a11y",
-        "lesgrandsvoisins"
+        "lesgrandsvoisins",
+        "grandsvoisins",
+        "gvois"
     ],
     "packageManager": "pnpm@10.25.0",
     "repository": {
@@ -49,9 +51,6 @@
         "> 0.25%",
         "ie >= 11"
     ],
-    "dependencies": {
-        "normalize.css": "^8.0.1"
-    },
     "devDependencies": {
         "@11ty/eleventy": "^3.1.2",
         "@11ty/eleventy-img": "^6.0.4",
@@ -62,15 +61,11 @@
         "browser-sync": "^3.0.4",
         "cssnano": "^7.1.2",
         "del-cli": "^7.0.0",
-        "gulp": "^5.0.1",
-        "gulp-autoprefixer": "^10.0.0",
-        "gulp-purgecss": "^7.0.2",
-        "gulp-rename": "^2.1.0",
-        "gulp-sass": "^6.0.1",
         "html-minifier": "^4.0.0",
         "markdown-it": "^14.1.0",
         "markdown-it-anchor": "^9.2.0",
         "markdown-it-footnote": "^4.0.0",
+        "normalize.css": "^8.0.1",
         "postcss": "^8.5.6",
         "postcss-cli": "^11.0.1",
         "sass": "^1.97.1",
