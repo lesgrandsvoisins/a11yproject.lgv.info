@@ -1,7 +1,7 @@
 @use "../logic/functions.rem";
 @use "../logic/mixins.var";
 @use "../logic/variables.font-families";
-@use "../logic/variables.line-heights" as variables2;
+@use "../logic/variables.line-heights"as variables2;
 
 // Code
 //
@@ -19,13 +19,13 @@ kbd,
 pre,
 samp,
 var {
-	font-family: variables.$font-family-code;
-	font-feature-settings: normal;
-	line-height: variables2.$line-height-tight;
-	overflow: auto; // [1]
-	white-space: pre-wrap; // [1]
-	word-break: keep-all; // [1]
-	word-wrap: break-word; // [1]
+    font-family: variables.$font-family-code;
+    font-feature-settings: normal;
+    line-height: variables2.$line-height-tight;
+    overflow: auto; // [1]
+    white-space: pre-wrap; // [1]
+    word-break: keep-all; // [1]
+    word-wrap: break-word; // [1]
 }
 
 
@@ -49,14 +49,21 @@ var {
 //
 // Styleguide Base.Code.kbd
 kbd {
-	@include mixins.var(background-color, kbd-background);
-	border: functions.rem(4) solid;
-	@include mixins.var(border-color, kbd-background);
-	@include mixins.var(color, kbd-text);
-	border-radius: functions.rem(4);
-	box-shadow: 0 2px 1px 0 var(--color-gray-tint);
-	padding: 0 0.5ch;
-	word-break: break-word;
+    @include mixins.var(background-color, kbd-background);
+
+    & {
+        border: functions.rem(4) solid;
+    }
+
+    @include mixins.var(border-color, kbd-background);
+    @include mixins.var(color, kbd-text);
+
+    & {
+        border-radius: functions.rem(4);
+        box-shadow: 0 2px 1px 0 var(--color-gray-tint);
+        padding: 0 0.5ch;
+        word-break: break-word;
+    }
 }
 
 // pre
@@ -68,9 +75,12 @@ kbd {
 //
 // Styleguide Base.Code.pre
 pre {
-	@include mixins.var(background-color, pre-background);
-	@include mixins.var(color, pre-text);
-	padding: 1rem 1.5rem;
+    @include mixins.var(background-color, pre-background);
+    @include mixins.var(color, pre-text);
+
+    & {
+        padding: 1rem 1.5rem;
+    }
 }
 
 
@@ -88,7 +98,7 @@ pre {
 //
 // Styleguide Base.Code.samp
 samp {
-	@include mixins.var(background-color, samp-background);
+    @include mixins.var(background-color, samp-background);
 }
 
 // var

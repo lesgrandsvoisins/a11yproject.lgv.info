@@ -1,9 +1,9 @@
 @use "../logic/mixins.var";
 @use "../logic/variables.font-families";
-@use "../logic/variables.font-weights" as variables3;
-@use "../logic/variables.global" as variables2;
-@use "../logic/variables.line-heights" as variables4;
-@use "../logic/variables.supports" as variables5;
+@use "../logic/variables.font-weights"as variables3;
+@use "../logic/variables.global"as variables2;
+@use "../logic/variables.line-heights"as variables4;
+@use "../logic/variables.supports"as variables5;
 
 // html
 //
@@ -12,48 +12,56 @@
 //
 // Styleguide Base.html
 html {
-	@include mixins.var(background-color, body-background);
-	@include mixins.var(color, body-text);
-	font-family: variables.$font-family-primary;
-	font-size: variables2.$global-type-size;
-	font-weight: variables3.$font-weight-regular;
-	line-height: variables4.$line-height-loose;
-	margin: 0;
-	min-height: 100%;
-	padding: 0;
-	text-size-adjust: 100%;
+    @include mixins.var(background-color, body-background);
+    @include mixins.var(color, body-text);
 
-	// Typography
-	-ms-overflow-style: scrollbar;
-	-ms-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
-	-webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
+    & {
+        font-family: variables.$font-family-primary;
+        font-size: variables2.$global-type-size;
+        font-weight: variables3.$font-weight-regular;
+        line-height: variables4.$line-height-loose;
+        margin: 0;
+        min-height: 100%;
+        padding: 0;
+        text-size-adjust: 100%;
 
-	font-kerning: normal;
-	-moz-font-feature-settings: "kern"; /* stylelint-disable-line property-no-vendor-prefix */
-	-ms-font-feature-settings: "kern"; /* stylelint-disable-line property-no-vendor-prefix */
-	-webkit-font-feature-settings: "kern"; /* stylelint-disable-line property-no-vendor-prefix */
-	font-feature-settings: "kern";
+        // Typography
+        -ms-overflow-style: scrollbar;
+        -ms-text-size-adjust: 100%;
+        /* stylelint-disable-line property-no-vendor-prefix */
+        -webkit-text-size-adjust: 100%;
+        /* stylelint-disable-line property-no-vendor-prefix */
 
-	&:lang(en-US) {
-		hyphens: auto;
-		word-break: break-word;
-	}
+        font-kerning: normal;
+        -moz-font-feature-settings: "kern";
+        /* stylelint-disable-line property-no-vendor-prefix */
+        -ms-font-feature-settings: "kern";
+        /* stylelint-disable-line property-no-vendor-prefix */
+        -webkit-font-feature-settings: "kern";
+        /* stylelint-disable-line property-no-vendor-prefix */
+        font-feature-settings: "kern";
+    }
 
-	// Supports
-	@supports #{variables5.$supports-hanging-punctuation} {
-		hanging-punctuation: first;
-	}
+    &:lang(en-US) {
+        hyphens: auto;
+        word-break: break-word;
+    }
 
-	// Media Queries
-	@media screen and (-webkit-min-device-pixel-ratio: 2),
-	screen and (min-resolution: 2dppx) {
-		/* stylelint-disable-next-line property-no-unknown */
-		font-smoothing: subpixel-antialiased; // Only apply to devices that support font smoothing: https://www.zachleat.com/web/font-smooth/
-	}
+    // Supports
+    @supports #{variables5.$supports-hanging-punctuation} {
+        hanging-punctuation: first;
+    }
 
-	// Vendor
-	/* stylelint-disable-next-line at-rule-no-vendor-prefix */
-	@-ms-viewport {
-		width: device-width; // https://msdn.microsoft.com/en-us/library/hh869615(v=vs.85).aspx
-	}
+    // Media Queries
+    @media screen and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-resolution: 2dppx) {
+        /* stylelint-disable-next-line property-no-unknown */
+        font-smoothing: subpixel-antialiased; // Only apply to devices that support font smoothing: https://www.zachleat.com/web/font-smooth/
+    }
+
+    // Vendor
+    /* stylelint-disable-next-line at-rule-no-vendor-prefix */
+    @-ms-viewport {
+        width: device-width; // https://msdn.microsoft.com/en-us/library/hh869615(v=vs.85).aspx
+    }
 }

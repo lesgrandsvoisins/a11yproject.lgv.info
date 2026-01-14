@@ -1,99 +1,107 @@
 @use "../imports/mappy-breakpoints";
-@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.link-states"as mixins2;
 @use "../logic/mixins.preserve-list-semantics";
-@use "../logic/mixins.var" as mixins3;
+@use "../logic/mixins.var"as mixins3;
 @use "../logic/variables.font-families";
-@use "../logic/variables.font-sizes" as variables3;
-@use "../logic/variables.line-heights" as variables4;
-@use "../logic/variables.supports" as variables2;
+@use "../logic/variables.font-sizes"as variables3;
+@use "../logic/variables.line-heights"as variables4;
+@use "../logic/variables.supports"as variables2;
 
 .c-footer {
-	font-family: variables.$font-family-secondary;
+    font-family: variables.$font-family-secondary;
 }
 
 
 .c-footer__subnav {
-	margin-top: 2rem;
+    margin-top: 2rem;
 
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-small) {
-			width: 50%;
-		}
+    // Supports
+    @supports #{variables2.$supports-flex} {
 
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			width: 33%;
-		}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-small) {
+            width: 50%;
+        }
 
-		@include mappy-breakpoints.mappy-bp(lap-small) {
-			width: initial;
-			margin-right: 2rem;
-		}
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            width: 33%;
+        }
 
-		@include mappy-breakpoints.mappy-bp(lap-medium) {
-			margin-right: 5rem;
-		}
-	}
+        @include mappy-breakpoints.mappy-bp(lap-small) {
+            width: initial;
+            margin-right: 2rem;
+        }
+
+        @include mappy-breakpoints.mappy-bp(lap-medium) {
+            margin-right: 5rem;
+        }
+    }
 }
 
 
 .c-footer__heading {
-	padding-left: 0.5ch;
+    padding-left: 0.5ch;
 }
 
 
 .c-footer__list {
-	@include mixins.preserve-list-semantics();
+    @include mixins.preserve-list-semantics();
 
-	margin-top: 1rem;
-	margin-left: 0.4rem;
+    & {
+        margin-top: 1rem;
+        margin-left: 0.4rem;
+    }
 
-	// Text-level formatting
-	li {
-		margin-top: 0.5rem;
-	}
+    // Text-level formatting
+    li {
+        margin-top: 0.5rem;
+    }
 }
 
 
 .c-footer__link {
-	@include mixins2.link-states(footer-link-text);
+    @include mixins2.link-states(footer-link-text);
 
-	text-decoration: none;
+    & {
+        text-decoration: none;
+    }
 
-	// States
-	&:hover,
-	&[aria-current="page"] {
-		text-decoration: underline;
-	}
+    // States
+    &:hover,
+    &[aria-current="page"] {
+        text-decoration: underline;
+    }
 }
 
 
 .c-footer__tagline {
-	@include mixins3.var(color, footer-tagline-text);
-	font-family: variables.$font-family-primary;
-	font-size: variables3.$font-size-heading-small;
-	line-height: variables4.$line-height-single;
-	margin-top: 2rem;
+    @include mixins3.var(color, footer-tagline-text);
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-small) {
-		font-size: variables3.$font-size-body-medium;
-		margin-top: 0;
-	}
+    & {
+        font-family: variables.$font-family-primary;
+        font-size: variables3.$font-size-heading-small;
+        line-height: variables4.$line-height-single;
+        margin-top: 2rem;
+    }
 
-	@include mappy-breakpoints.mappy-bp(lap-small) {
-		font-size: variables3.$font-size-heading-medium;
-		margin-top: 3.5rem;
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-small) {
+        font-size: variables3.$font-size-body-medium;
+        margin-top: 0;
+    }
+
+    @include mappy-breakpoints.mappy-bp(lap-small) {
+        font-size: variables3.$font-size-heading-medium;
+        margin-top: 3.5rem;
+    }
 }
 
 
 .c-footer__copyright-link {
-	@include mixins2.link-states(footer-link-text);
+    @include mixins2.link-states(footer-link-text);
 
-	// States
-	&:hover {
-		text-decoration: none;
-	}
+    // States
+    &:hover {
+        text-decoration: none;
+    }
 }

@@ -2,117 +2,120 @@
 @use "../../imports/mappy-breakpoints";
 @use "../../logic/functions.rem";
 @use "../../logic/mixins.preserve-list-semantics";
-@use "../../logic/variables.font-families" as variables2;
-@use "../../logic/variables.font-weights" as variables3;
+@use "../../logic/variables.font-families"as variables2;
+@use "../../logic/variables.font-weights"as variables3;
 @use "../../logic/variables.global";
 
 // Namespace
 .c-content,
 .c-person {
-	dl,
-	ul {
-		/* stylelint-disable-selector-list-comma-newline-after */
-		margin-left: map.get(variables.$global-post-content-inset, small);
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			margin-left: 0;
-		}
-	}
+    dl,
+    ul {
+        /* stylelint-disable-selector-list-comma-newline-after */
+        margin-left: map.get(variables.$global-post-content-inset, small);
 
-	// Ordered List
-	//
-	// Style guide: Components.post.ol
-	ol {
-		@include mixins.preserve-list-semantics();
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            margin-left: 0;
+        }
+    }
 
-		counter-reset: ordered-list;
-		margin-left: 1.75rem;
+    // Ordered List
+    //
+    // Style guide: Components.post.ol
+    ol {
+        @include mixins.preserve-list-semantics();
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			margin-left: 0;
-		}
+        & {
+            counter-reset: ordered-list;
+            margin-left: 1.75rem;
+        }
 
-		li {
-			counter-increment: ordered-list;
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            margin-left: 0;
+        }
 
-			&::before {
-				content: counter(ordered-list);
-				display: block;
-				font-family: variables2.$font-family-secondary;
-				font-size: 3ex;
-				height: 1rem;
-				position: relative;
-					top: functions.rem(9);
-					right: 1.75rem;
-				width: 1rem;
-			}
-		}
+        li {
+            counter-increment: ordered-list;
 
-		ol {
-			margin-top: 0;
-			margin-left: 2rem;
-			margin-bottom: 1rem;
-		}
-	}
+            &::before {
+                content: counter(ordered-list);
+                display: block;
+                font-family: variables2.$font-family-secondary;
+                font-size: 3ex;
+                height: 1rem;
+                position: relative;
+                top: functions.rem(9);
+                right: 1.75rem;
+                width: 1rem;
+            }
+        }
 
-
-	// Unordered List
-	//
-	// Style guide: Components.post.ul
-	ul {
-		@include mixins.preserve-list-semantics();
-
-		li {
-			margin-left: 1.75rem;
-
-			// Breakpoints
-			@include mappy-breakpoints.mappy-bp(lap-medium) {
-				margin-left: 0;
-			}
-
-			&::before {
-				content: "─";
-				display: block;
-				font-family: variables2.$font-family-secondary;
-				font-size: 2ex;
-				height: 1rem;
-				position: relative;
-					top: functions.rem(20);
-					right: functions.rem(36);
-				width: 1rem;
-			}
-
-			ul {
-				margin-top: 0;
-				margin-left: 2rem;
-			}
-		}
-	}
+        ol {
+            margin-top: 0;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+    }
 
 
-	// Definition List
-	//
-	// Style guide: Components.post.dl
-	dl {
-		@include mixins.preserve-list-semantics();
+    // Unordered List
+    //
+    // Style guide: Components.post.ul
+    ul {
+        @include mixins.preserve-list-semantics();
 
-		dt {
-			font-weight: variables3.$font-weight-bold;
-			margin-top: 1.5rem;
-			margin-left: map.get(variables.$global-post-content-inset, small) * -1;
-		}
+        li {
+            margin-left: 1.75rem;
 
-		dd {
-			font-family: variables2.$font-family-secondary;
-		}
-	}
+            // Breakpoints
+            @include mappy-breakpoints.mappy-bp(lap-medium) {
+                margin-left: 0;
+            }
+
+            &::before {
+                content: "─";
+                display: block;
+                font-family: variables2.$font-family-secondary;
+                font-size: 2ex;
+                height: 1rem;
+                position: relative;
+                top: functions.rem(20);
+                right: functions.rem(36);
+                width: 1rem;
+            }
+
+            ul {
+                margin-top: 0;
+                margin-left: 2rem;
+            }
+        }
+    }
+
+
+    // Definition List
+    //
+    // Style guide: Components.post.dl
+    dl {
+        @include mixins.preserve-list-semantics();
+
+        dt {
+            font-weight: variables3.$font-weight-bold;
+            margin-top: 1.5rem;
+            margin-left: map.get(variables.$global-post-content-inset, small) * -1;
+        }
+
+        dd {
+            font-family: variables2.$font-family-secondary;
+        }
+    }
 }
 
 
 .c-further-reading__source {
-	display: block;
-	font-family: variables2.$font-family-secondary;
-	margin-top: -0.25rem;
+    display: block;
+    font-family: variables2.$font-family-secondary;
+    margin-top: -0.25rem;
 }

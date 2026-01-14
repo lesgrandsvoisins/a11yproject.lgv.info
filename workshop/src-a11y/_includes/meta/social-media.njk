@@ -1,0 +1,25 @@
+<title>{% if category %}{{ category }}: {% endif %}{% if title %}{{ title | striptags }} - {% endif %}{{ metadata.title }}</title>
+<meta name="title" content="{% if title %}{{ title }} - {% endif %}{{ metadata.title }}" />
+<meta name="description" content="{% if subtitle %}{{ subtitle }}{% elif description %}{{ description }}{% else %}{{ metadata.feed.subtitle }}{% endif %}" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ metadata.url }}{{ page.url }}" />
+<meta property="og:title" content="{% if category %}{{ category }}: {% endif %}{% if title %}{{ title | striptags }} - {% endif %}{{ metadata.title }}" />
+<meta property="og:description" content="{% if subtitle %}{{ subtitle }}{% elif description %}{{ description }}{% else %}{{ metadata.feed.subtitle }}{% endif %}" />
+{% if layout == "post" %}
+	<meta property="og:image" content="{{ metadata.url }}/img/social/og-image-home.png" />
+{% else %}
+	<meta property="og:image" content="{{ metadata.url }}/img/social/og-image-{{ title | slugify }}.png" />
+{% endif %}
+<meta property="og:image:alt" content="" />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{ metadata.url }}{{ page.url }}" />
+<meta property="twitter:title" content="{% if category %}{{ category }}: {% endif %}{% if title %}{{ title | striptags }} - {% endif %}{{ metadata.title }}" />
+<meta property="twitter:description" content="{% if subtitle %}{{ subtitle }}{% elif description %}{{ description }}{% else %}{{ metadata.feed.subtitle }}{% endif %}" />
+{% if layout == "post" %}
+	<meta property="twitter:image" content="{{ metadata.url }}/img/social/og-image-home.png" />
+{% else %}
+	<meta property="twitter:image" content="{{ metadata.url }}/img/social/og-image-{{ title | slugify }}.png" />
+{% endif %}
+<meta property="twitter:image:alt" content="" />

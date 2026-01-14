@@ -3,23 +3,27 @@
 
 // link-states
 //
-	// Generates link color and hover and focus states.
+// Generates link color and hover and focus states.
 //
 // $link-color - Specifies what color to use for link styling.
 //
 // Styleguide Logic.Mixins.link-states
 @mixin link-states($link-color, $link-focus-color: "link-focus-text") {
-	@include mixins.var(color, #{$link-color});
+    @include mixins.var(color, #{$link-color});
 
-	// States
-	&:focus {
-		@include mixins.var(background-color, #{$link-color});
-		@include mixins.var(color, #{$link-focus-color});
-		outline: variables.$border-thin solid;
-		@include mixins.var(outline-color, #{$link-color});
+    // States
+    &:focus {
+        @include mixins.var(background-color, #{$link-color});
+        @include mixins.var(color, #{$link-focus-color});
 
-		&:hover {
-			text-decoration: underline;
-		}
-	}
+        & {
+            outline: variables.$border-thin solid;
+        }
+
+        @include mixins.var(outline-color, #{$link-color});
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

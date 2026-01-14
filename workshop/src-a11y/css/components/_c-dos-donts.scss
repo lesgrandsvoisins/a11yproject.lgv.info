@@ -1,0 +1,45 @@
+.c-dos-donts {
+	margin-top: 1.5rem;
+
+	// Text-level formatting
+	p {
+		@include var(background-color, card-background);
+		padding: 1rem 1.5rem;
+	}
+
+	strong {
+		font-size: $font-size-body-small;
+		text-transform: uppercase;
+	}
+
+	abbr {
+		border-bottom: $border-thinnest dotted;
+		@include var(border-color, do-accent);
+	}
+
+	p:first-of-type {
+		margin-top: 0.5rem;
+	}
+
+	p:nth-child(odd) {
+		border-left: $border-thick solid;
+		@include var(border-color, do-accent);
+	}
+
+	p:nth-child(even) {
+		border-left: $border-thick solid;
+		@include var(border-color, dont-accent);
+		margin-top: 1.25ex;
+
+		// User queries
+		@media screen and (-ms-high-contrast: active) {
+			border-left: $border-thick solid highlight;
+		}
+	}
+
+	// Breakpoints
+	@include mappy-bp(palm-large) {
+		margin-left: map-get($global-post-content-inset, small) * -1.75;
+		max-width: calc(#{$global-type-measure} * 1.25);
+	}
+}

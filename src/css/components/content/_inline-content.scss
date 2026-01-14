@@ -1,138 +1,154 @@
 @use "sass:map";
 @use "../../imports/mappy-breakpoints";
-@use "../../logic/mixins.post-content-flourish" as mixins2;
+@use "../../logic/mixins.post-content-flourish"as mixins2;
 @use "../../logic/mixins.var";
-@use "../../logic/variables.borders" as variables3;
-@use "../../logic/variables.font-families" as variables4;
-@use "../../logic/variables.global" as variables2;
-@use "../../logic/variables.line-heights" as variables5;
+@use "../../logic/variables.borders"as variables3;
+@use "../../logic/variables.font-families"as variables4;
+@use "../../logic/variables.global"as variables2;
+@use "../../logic/variables.line-heights"as variables5;
 @use "../../logic/variables.paths";
 @use "../c-post";
 
 // Namespace
 .c-content {
-	blockquote,
-	figcaption,
-	li,
-	p {
-		code {
-			@include mixins.var(background-color, code-background);
-			@include mixins.var(color, body-text);
-			border: 4px solid;
-			@include mixins.var(border-color, code-background);
-			font-size: 90%;
-			padding: 0 0.25ch;
-			word-break: normal;
 
-			// User queries
-			@media screen and (-ms-high-contrast: active) {
-				border: none;
-			}
-		}
-	}
+    blockquote,
+    figcaption,
+    li,
+    p {
+        code {
+            @include mixins.var(background-color, code-background);
+            @include mixins.var(color, body-text);
 
+            & {
+                border: 4px solid;
+            }
 
-	kbd {
-		margin-left: 0.25ch;
-		margin-right: 0.25ch;
-	}
+            @include mixins.var(border-color, code-background);
 
+            & {
+                font-size: 90%;
+                padding: 0 0.25ch;
+                word-break: normal;
+            }
 
-	// Blockquote
-	//
-	// Style guide: Components.post.blockquote
-	blockquote {
-		@include mixins.var(background-color, card-background);
-		background-image: url("#{variables.$path-to-img}/posts/blockquote.svg");
-		background-repeat: no-repeat;
-		background-position: top 1rem left -0.25rem;
-		margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
-		padding: 1.5rem 1rem;
-
-		p:first-of-type {
-			margin-bottom: 0;
-		}
-
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			background-position: 1rem 1rem;
-			padding: 1.5rem 2rem;
-		}
-
-		@include mappy-breakpoints.mappy-bp(palm-large) {
-			max-width: calc(#{variables2.$global-type-measure} * 1.25);
-		}
-
-		footer {
-			font-size: 90%;
-			margin-top: c-post.$c-post-vertical-spacing * 0.5;
-
-			cite {
-				font-style: normal;
-			}
-		}
-	}
-
-	// Image
-	// Style guide: Components.post.image
-	img {
-		margin-top: 4ex;
-		filter: var(--image-filter);
-	}
-
-	// Figure
-	//
-	// Style guide: Components.post.figure
-	figure {
-		margin-top: 4ex;
-
-		figcaption {
-			@include mixins.var(background-color, card-background);
-			@include mixins.var(color, card-text);
-			border-bottom: variables3.$border-hairline solid currentColor;
-			font-family: variables4.$font-family-secondary;
-			line-height: variables5.$line-height-tight;
-			margin-top: 0.75rem;
-			padding: 1rem;
-		}
-	}
+            // User queries
+            @media screen and (-ms-high-contrast: active) {
+                border: none;
+            }
+        }
+    }
 
 
-	// Preformatted Text
-	//
-	// Style guide: Components.post.pre
-	pre {
-		margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
-		width: calc(100% + #{map.get(variables2.$global-post-content-inset, small)} * 2);
-
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-large) {
-			max-width: calc(#{variables2.$global-type-measure} * 1.5);
-		}
-
-		code {
-			line-height: variables5.$line-height-double;
-			white-space: pre;
-		}
-	}
-
-	// Code Examples
-	//
-	// Style guide: Components.post.code-examples
-	pre[class^="language"] {
-		--filename: url("#{variables.$path-to-img}/posts/section-code-lightmode.svg");
-		--filename-dark: url("#{variables.$path-to-img}/posts/section-code-darkmode.svg");
-		@include mixins2.post-content-flourish(197, -0.5rem);
-		@include mixins.var(background-color, rte-code-background);
-
-		margin-top: 4ex;
-	}
+    kbd {
+        margin-left: 0.25ch;
+        margin-right: 0.25ch;
+    }
 
 
-	// Table
-	//
-	// Style guide: Components.post.table
-	table {
-		margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
-	}
+    // Blockquote
+    //
+    // Style guide: Components.post.blockquote
+    blockquote {
+        @include mixins.var(background-color, card-background);
+
+        & {
+            background-image: url("#{variables.$path-to-img}/posts/blockquote.svg");
+            background-repeat: no-repeat;
+            background-position: top 1rem left -0.25rem;
+            margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
+            padding: 1.5rem 1rem;
+        }
+
+        p:first-of-type {
+            margin-bottom: 0;
+        }
+
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            background-position: 1rem 1rem;
+            padding: 1.5rem 2rem;
+        }
+
+        @include mappy-breakpoints.mappy-bp(palm-large) {
+            max-width: calc(#{variables2.$global-type-measure} * 1.25);
+        }
+
+        footer {
+            font-size: 90%;
+            margin-top: c-post.$c-post-vertical-spacing * 0.5;
+
+            cite {
+                font-style: normal;
+            }
+        }
+    }
+
+    // Image
+    // Style guide: Components.post.image
+    img {
+        margin-top: 4ex;
+        filter: var(--image-filter);
+    }
+
+    // Figure
+    //
+    // Style guide: Components.post.figure
+    figure {
+        margin-top: 4ex;
+
+        figcaption {
+            @include mixins.var(background-color, card-background);
+            @include mixins.var(color, card-text);
+
+            & {
+                border-bottom: variables3.$border-hairline solid currentColor;
+                font-family: variables4.$font-family-secondary;
+                line-height: variables5.$line-height-tight;
+                margin-top: 0.75rem;
+                padding: 1rem;
+            }
+        }
+    }
+
+
+    // Preformatted Text
+    //
+    // Style guide: Components.post.pre
+    pre {
+        margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
+        width: calc(100% + #{map.get(variables2.$global-post-content-inset, small)} * 2);
+
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-large) {
+            max-width: calc(#{variables2.$global-type-measure} * 1.5);
+        }
+
+        code {
+            line-height: variables5.$line-height-double;
+            white-space: pre;
+        }
+    }
+
+    // Code Examples
+    //
+    // Style guide: Components.post.code-examples
+    pre[class^="language"] {
+        --filename: url("#{variables.$path-to-img}/posts/section-code-lightmode.svg");
+        --filename-dark: url("#{variables.$path-to-img}/posts/section-code-darkmode.svg");
+        @include mixins2.post-content-flourish(197, -0.5rem);
+        @include mixins.var(background-color, rte-code-background);
+
+        & {
+            margin-top: 4ex;
+        }
+    }
+
+
+    // Table
+    //
+    // Style guide: Components.post.table
+    table {
+        margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
+    }
 }

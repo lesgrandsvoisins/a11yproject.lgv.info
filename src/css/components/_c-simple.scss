@@ -1,65 +1,70 @@
 @use "../imports/mappy-breakpoints";
-@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.link-states"as mixins2;
 @use "../logic/mixins.var";
-@use "../logic/variables.borders" as variables2;
-@use "../logic/variables.font-families" as variables4;
+@use "../logic/variables.borders"as variables2;
+@use "../logic/variables.font-families"as variables4;
 @use "../logic/variables.paths";
-@use "../logic/variables.supports" as variables3;
+@use "../logic/variables.supports"as variables3;
 
 .c-simple--404 {
-	background-image: url("#{variables.$path-to-img}/heroes/404-lightmode.svg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
+    background-image: url("#{variables.$path-to-img}/heroes/404-lightmode.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-	& > svg {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		@include mixins.var(color, hero-background-text);
-	}
+    &>svg {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        @include mixins.var(color, hero-background-text);
+    }
 
 }
 
 
 .c-simple__hero {
-	position: relative;
-	border-top: variables2.$border-thicker solid;
-	@include mixins.var(background-color, hero-content-background);
-	@include mixins.var(border-color, hero-content-accent);
-	@include mixins.var(color, hero-content-text);
-	margin-top: 2rem;
-	padding: 1rem 2rem 2rem;
-	z-index: 1;
+    position: relative;
+    border-top: variables2.$border-thicker solid;
+    @include mixins.var(background-color, hero-content-background);
+    @include mixins.var(border-color, hero-content-accent);
+    @include mixins.var(color, hero-content-text);
 
-	// Supports
-	@supports #{variables3.$supports-flex} {
-		margin-top: 0;
+    & {
+        margin-top: 2rem;
+        padding: 1rem 2rem 2rem;
+        z-index: 1;
+    }
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-large) {
-			width: 60%;
-		}
-	}
+    // Supports
+    @supports #{variables3.$supports-flex} {
+        margin-top: 0;
 
-	@include mappy-breakpoints.mappy-bp(lap-small) {
-		padding: 1rem 4rem 2rem;
-	}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-large) {
+            width: 60%;
+        }
+    }
 
-	// Text-level formatting
-	p {
-		font-family: variables4.$font-family-secondary;
-		margin-top: 1.5rem;
-	}
+    @include mappy-breakpoints.mappy-bp(lap-small) {
+        padding: 1rem 4rem 2rem;
+    }
+
+    // Text-level formatting
+    p {
+        font-family: variables4.$font-family-secondary;
+        margin-top: 1.5rem;
+    }
 }
 
 
 .c-simple__link {
-	@include mixins2.link-states(link-text);
+    @include mixins2.link-states(link-text);
 
-	/* stylelint-disable-next-line property-no-unknown */
-	text-decoration-thickness: variables2.$border-thinner;
-	text-underline-offset: 0.25em;
+    /* stylelint-disable-next-line property-no-unknown */
+    & {
+        text-decoration-thickness: variables2.$border-thinner;
+        text-underline-offset: 0.25em;
+    }
 }

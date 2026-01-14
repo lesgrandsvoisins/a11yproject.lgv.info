@@ -2,14 +2,20 @@
 @use "../logic/variables.font-sizes";
 
 .c-changelog__version {
-	@include mixins.var(background-color, tag-background);
-	border-radius: 0.25rem;
-	margin-right: 0.5rem;
-	padding: 0.25rem 0.5rem;
+    @include mixins.var(background-color, tag-background);
+
+    & {
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
 }
 
 
 .c-changelog__date {
-	@include mixins.var(color, text-accent);
-	font-size: variables.$font-size-body-small;
+    @include mixins.var(color, text-accent);
+
+    & {
+        font-size: variables.$font-size-body-small;
+    }
 }

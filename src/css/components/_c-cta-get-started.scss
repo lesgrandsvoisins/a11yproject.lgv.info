@@ -1,14 +1,14 @@
 @use "sass:map";
 @use "../imports/mappy-breakpoints";
 @use "../logic/mixins.var";
-@use "../logic/variables.animation-duration" as variables8;
-@use "../logic/variables.animation-easing" as variables9;
-@use "../logic/variables.borders" as variables3;
-@use "../logic/variables.font-families" as variables4;
-@use "../logic/variables.font-sizes" as variables5;
-@use "../logic/variables.font-tracking" as variables6;
-@use "../logic/variables.global" as variables2;
-@use "../logic/variables.line-heights" as variables7;
+@use "../logic/variables.animation-duration"as variables8;
+@use "../logic/variables.animation-easing"as variables9;
+@use "../logic/variables.borders"as variables3;
+@use "../logic/variables.font-families"as variables4;
+@use "../logic/variables.font-sizes"as variables5;
+@use "../logic/variables.font-tracking"as variables6;
+@use "../logic/variables.global"as variables2;
+@use "../logic/variables.line-heights"as variables7;
 @use "../logic/variables.supports";
 
 // Get Started
@@ -53,26 +53,36 @@
 
 .c-cta-get-started__link {
     @include mixins.var(background-color, button-background);
-    border: variables3.$border-thick solid;
+
+    & {
+        border: variables3.$border-thick solid;
+    }
+
     @include mixins.var(border-color, body-background);
     @include mixins.var(color, button-text);
-    font-family: variables4.$font-family-secondary;
-    font-size: variables5.$font-size-body;
-    letter-spacing: variables6.$font-tracking-slight;
-    line-height: variables7.$line-height-tight;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    text-decoration: none;
-    transition:
-        background-color variables8.$animation-duration-shorter variables9.$animation-easing-character,
-        color variables8.$animation-duration-shorter variables9.$animation-easing-character,
-        letter-spacing variables8.$animation-duration-shorter variables9.$animation-easing-character;
+
+    & {
+        font-family: variables4.$font-family-secondary;
+        font-size: variables5.$font-size-body;
+        letter-spacing: variables6.$font-tracking-slight;
+        line-height: variables7.$line-height-tight;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        text-decoration: none;
+        transition:
+            background-color variables8.$animation-duration-shorter variables9.$animation-easing-character,
+            color variables8.$animation-duration-shorter variables9.$animation-easing-character,
+            letter-spacing variables8.$animation-duration-shorter variables9.$animation-easing-character;
+    }
 
     // States
     &:hover,
     &:focus {
         @include mixins.var(background-color, button-focus-background);
-        outline: variables3.$border-thin solid transparent;
+
+        & {
+            outline: variables3.$border-thin solid transparent;
+        }
     }
 
     &:focus {

@@ -1,106 +1,112 @@
 @use "../imports/mappy-breakpoints";
-@use "../logic/mixins.preserve-list-semantics" as mixins2;
+@use "../logic/mixins.preserve-list-semantics"as mixins2;
 @use "../logic/mixins.var";
-@use "../logic/variables.animation-duration" as variables4;
-@use "../logic/variables.animation-easing" as variables5;
-@use "../logic/variables.borders" as variables2;
-@use "../logic/variables.font-families" as variables3;
+@use "../logic/variables.animation-duration"as variables4;
+@use "../logic/variables.animation-easing"as variables5;
+@use "../logic/variables.borders"as variables2;
+@use "../logic/variables.font-families"as variables3;
 @use "../logic/variables.supports";
 
 // Primary Navigation
 //
 // Style guide: Components.Navigation.primary-nav
 .c-primary-nav {
-	@include mixins.var(background-color, nav-background);
+    @include mixins.var(background-color, nav-background);
 }
 
 
 .c-primary-nav__list {
-	@include mixins2.preserve-list-semantics();
+    @include mixins2.preserve-list-semantics();
 }
 
 
 .c-primary-nav__list-item {
-	margin-top: 1rem;
-	text-align: center;
+    margin-top: 1rem;
+    text-align: center;
 
-	// Supports
-	@supports #{variables.$supports-flex} {
-		margin-top: 1rem;
-		margin-left: 0;
-		width: 33%;
+    // Supports
+    @supports #{variables.$supports-flex} {
+        margin-top: 1rem;
+        margin-left: 0;
+        width: 33%;
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-small) {
-			margin-right: 0.5rem;
-			width: initial;
-			flex-grow: 1;
-		}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-small) {
+            margin-right: 0.5rem;
+            width: initial;
+            flex-grow: 1;
+        }
 
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			margin-right: 1rem;
-		}
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            margin-right: 1rem;
+        }
 
-		@include mappy-breakpoints.mappy-bp(lap-small) {
-			margin-top: 0;
-		}
-	}
+        @include mappy-breakpoints.mappy-bp(lap-small) {
+            margin-top: 0;
+        }
+    }
 
-	&:last-of-type {
-		margin-right: 0;
+    &:last-of-type {
+        margin-right: 0;
 
-		.c-primary-nav__link {
-			@include mixins.var(background-color, nav-cta-background);
-			@include mixins.var(color, nav-cta-text);
-			border-bottom: none;
+        .c-primary-nav__link {
+            @include mixins.var(background-color, nav-cta-background);
+            @include mixins.var(color, nav-cta-text);
 
-			// States
-			&:hover {
-				border-bottom: none;
-				text-decoration: underline;
-			}
+            & {
+                border-bottom: none;
+            }
 
-			&:focus {
-				@include mixins.var(background-color, nav-cta-text);
-				@include mixins.var(color, nav-cta-background);
-			}
+            // States
+            &:hover {
+                border-bottom: none;
+                text-decoration: underline;
+            }
 
-			&[aria-current="page"] {
-				text-decoration: underline;
-			}
-		}
-	}
+            &:focus {
+                @include mixins.var(background-color, nav-cta-text);
+                @include mixins.var(color, nav-cta-background);
+            }
+
+            &[aria-current="page"] {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 
 .c-primary-nav__link {
-	border-bottom: variables2.$border-thinner solid transparent;
-	@include mixins.var(color, nav-link-text);
-	font-family: variables3.$font-family-secondary;
-	padding: 0.25rem 0.5rem;
-	text-decoration: none;
-	transition: variables4.$animation-duration-short variables5.$animation-easing-character border-bottom-color;
+    border-bottom: variables2.$border-thinner solid transparent;
+    @include mixins.var(color, nav-link-text);
 
-	// States
-	&:hover {
-		border-bottom-color: currentColor;
-	}
+    & {
+        font-family: variables3.$font-family-secondary;
+        padding: 0.25rem 0.5rem;
+        text-decoration: none;
+        transition: variables4.$animation-duration-short variables5.$animation-easing-character border-bottom-color;
+    }
 
-	&:focus {
-		outline: variables2.$border-thinner solid currentColor;
-	}
+    // States
+    &:hover {
+        border-bottom-color: currentColor;
+    }
 
-	&[aria-current="page"] {
-		border-bottom-color: currentColor;
-	}
+    &:focus {
+        outline: variables2.$border-thinner solid currentColor;
+    }
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-large) {
-		padding: 0.5rem 1rem;
-	}
+    &[aria-current="page"] {
+        border-bottom-color: currentColor;
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-large) {
+        padding: 0.5rem 1rem;
+    }
+
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }

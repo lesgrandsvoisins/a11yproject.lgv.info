@@ -1,305 +1,328 @@
 @use "sass:map";
 @use "../imports/mappy-breakpoints";
-@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.link-states"as mixins2;
 @use "../logic/mixins.var";
-@use "../logic/variables.animation-duration" as variables4;
-@use "../logic/variables.animation-easing" as variables5;
-@use "../logic/variables.borders" as variables3;
-@use "../logic/variables.font-families" as variables6;
-@use "../logic/variables.font-tracking" as variables7;
+@use "../logic/variables.animation-duration"as variables4;
+@use "../logic/variables.animation-easing"as variables5;
+@use "../logic/variables.borders"as variables3;
+@use "../logic/variables.font-families"as variables6;
+@use "../logic/variables.font-tracking"as variables7;
 @use "../logic/variables.global";
-@use "../logic/variables.line-heights" as variables8;
-@use "../logic/variables.supports" as variables2;
+@use "../logic/variables.line-heights"as variables8;
+@use "../logic/variables.supports"as variables2;
 
 @use "sass:math";
 
-$_checklist-checkbox-size: (
-	small: 1.25rem,
-	large: 1.5rem
-);
-$_checklist-icon-size: (
-	small: 1rem,
-	large: 1.5rem
-);
-$_checklist-inset: (
-	small: 3rem,
-	large: 4rem
-);
-$_checklist-padding: (
-	small: 1rem,
-	large: 1.5rem
-);
+$_checklist-checkbox-size: (small: 1.25rem,
+    large: 1.5rem);
+$_checklist-icon-size: (small: 1rem,
+    large: 1.5rem);
+$_checklist-inset: (small: 3rem,
+    large: 4rem);
+$_checklist-padding: (small: 1rem,
+    large: 1.5rem);
 
 
 .c-checklist__outer-wrapper {
-	margin-bottom: 3rem;
-	max-width: variables.$global-type-measure * 1.1;
+    margin-bottom: 3rem;
+    max-width: variables.$global-type-measure * 1.1;
 }
 
 
 .c-checklist__wrapper {
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		display: flex;
-		flex-direction: row;
-	}
+
+    // Supports
+    @supports #{variables2.$supports-flex} {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 
 .c-card__wrapper .c-checklist__wrapper:first-of-type .c-checklist {
-	border-top: variables3.$border-thinnest solid;
-	@include mixins.var(border-top-color, checklist-accent);
+    border-top: variables3.$border-thinnest solid;
+    @include mixins.var(border-top-color, checklist-accent);
 }
 
 
 .c-checklist {
-	border-bottom: variables3.$border-thinnest solid;
-	border-right: variables3.$border-thinnest solid;
-	border-left: variables3.$border-thinnest solid;
-	@include mixins.var(border-color, checklist-accent);
-	list-style-image: none;
-	width: 100%;
+    border-bottom: variables3.$border-thinnest solid;
+    border-right: variables3.$border-thinnest solid;
+    border-left: variables3.$border-thinnest solid;
+    @include mixins.var(border-color, checklist-accent);
 
-	// States
-	&[open] {
-		.c-checklist__icon {
-			transform: rotate(90deg);
-		}
-	}
+    & {
+        list-style-image: none;
+        width: 100%;
+    }
 
-	&:hover {
-		.c-checklist__icon {
-			@include mixins.var(fill, checklist-hover);
-		}
-	}
+    // States
+    &[open] {
+        .c-checklist__icon {
+            transform: rotate(90deg);
+        }
+    }
 
-	// Vendor
-	// [1] Removes default browser `details` element arrow
-	& > summary {
-		list-style: none; // [1]
-	}
+    &:hover {
+        .c-checklist__icon {
+            @include mixins.var(fill, checklist-hover);
+        }
+    }
 
-	& > summary::-webkit-details-marker {
-		display: none; // [1]
-	}
+    // Vendor
+    // [1] Removes default browser `details` element arrow
+    &>summary {
+        list-style: none; // [1]
+    }
 
-	// Text-level formatting
-	code {
-		@include mixins.var(background-color, checklist-code-background);
-		@include mixins.var(color, checklist-code-text);
-		margin-left: 0.25ch;
-		margin-right: 0.25ch;
-		padding: 0.3ch 0.5ch;
+    &>summary::-webkit-details-marker {
+        display: none; // [1]
+    }
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(wrist-small wrist-large) {
-			word-break: normal;
-		}
-	}
+    // Text-level formatting
+    code {
+        @include mixins.var(background-color, checklist-code-background);
+        @include mixins.var(color, checklist-code-text);
+
+        & {
+            margin-left: 0.25ch;
+            margin-right: 0.25ch;
+            padding: 0.3ch 0.5ch;
+        }
+
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(wrist-small wrist-large) {
+            word-break: normal;
+        }
+    }
 }
 
 
 .c-checklist__summary {
-	cursor: pointer;
-	padding: map.get($_checklist-padding, small) map.get($_checklist-padding, small) map.get($_checklist-padding, small) 1rem;
+    cursor: pointer;
+    padding: map.get($_checklist-padding, small) map.get($_checklist-padding, small) map.get($_checklist-padding, small) 1rem;
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		padding: map.get($_checklist-padding, large) map.get($_checklist-padding, large) map.get($_checklist-padding, large) 1.5rem;
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        padding: map.get($_checklist-padding, large) map.get($_checklist-padding, large) map.get($_checklist-padding, large) 1.5rem;
+    }
 
-	// States
-	&:focus {
-		@include mixins.var(background-color, checklist-focus-background);
-		@include mixins.var(color, checklist-focus-text);
-		outline: variables3.$border-thin solid transparent;
+    // States
+    &:focus {
+        @include mixins.var(background-color, checklist-focus-background);
+        @include mixins.var(color, checklist-focus-text);
 
-		.c-checklist__icon {
-			@include mixins.var(color, checklist-focus-text);
-		}
-	}
+        & {
+            outline: variables3.$border-thin solid transparent;
+        }
+
+        .c-checklist__icon {
+            @include mixins.var(color, checklist-focus-text);
+        }
+    }
 }
 
 .c-checklist__summary-inner {
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		align-items: center;
-		display: flex;
-		flex-direction: row;
-	}
+
+    // Supports
+    @supports #{variables2.$supports-flex} {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .c-checklist__icon {
-	@include mixins.var(color, checklist-accent);
-	height: map.get($_checklist-icon-size, small);
-	width: map.get($_checklist-icon-size, small);
-	transition: fill variables4.$animation-duration-shorter variables5.$animation-easing-character;
+    @include mixins.var(color, checklist-accent);
 
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		flex-shrink: 0;
-	}
+    & {
+        height: map.get($_checklist-icon-size, small);
+        width: map.get($_checklist-icon-size, small);
+        transition: fill variables4.$animation-duration-shorter variables5.$animation-easing-character;
+    }
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			height: map.get($_checklist-icon-size, large);
-			width: map.get($_checklist-icon-size, large);
-		}
+    // Supports
+    @supports #{variables2.$supports-flex} {
+        flex-shrink: 0;
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        height: map.get($_checklist-icon-size, large);
+        width: map.get($_checklist-icon-size, large);
+    }
+
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 
 .c-checklist__title {
-margin-left: 1rem;
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		flex: 1;
-	}
+    margin-left: 1rem;
+
+    // Supports
+    @supports #{variables2.$supports-flex} {
+        flex: 1;
+    }
 }
 
 
 .c-checklist__checkbox {
-	// Supports
-	@supports #{variables2.$supports-flex} {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 
-	input[type="checkbox"] {
-		position: relative;
-			left: 0.2rem; // HACK: Ensures iOS checkboxes are tucked fully under the generated checkbox
-	}
+    // Supports
+    @supports #{variables2.$supports-flex} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-	// SEE: https://adrianroselli.com/2017/05/under-engineered-custom-radio-buttons-and-checkboxen.html
-	// Sets up the checkbox box
-	input[type="checkbox"] + label::before {
-		@include mixins.var(background-color, body-background);
-		border: variables3.$border-thinner solid;
-		@include mixins.var(border-color, checklist-accent);
-		box-sizing: border-box;
-		content: "";
-		cursor: pointer;
-		display: block;
-		float: left;
-		height: map.get($_checklist-checkbox-size, small);
-		margin-right: math.div(map.get($_checklist-checkbox-size, small), 1.5);
-		margin-left: math.div(map.get($_checklist-checkbox-size, small), -2); // This covers the native checkbox element
-		position: relative;
-		width: map.get($_checklist-checkbox-size, small);
+    input[type="checkbox"] {
+        position: relative;
+        left: 0.2rem; // HACK: Ensures iOS checkboxes are tucked fully under the generated checkbox
+    }
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			height: map.get($_checklist-checkbox-size, large);
-			margin-right: math.div(map.get($_checklist-checkbox-size, large), 1.5);
-			margin-left: math.div(map.get($_checklist-checkbox-size, large), -2); // This covers the native checkbox element
-			width: map.get($_checklist-checkbox-size, large);
-		}
-	}
+    // SEE: https://adrianroselli.com/2017/05/under-engineered-custom-radio-buttons-and-checkboxen.html
+    // Sets up the checkbox box
+    input[type="checkbox"]+label::before {
+        @include mixins.var(background-color, body-background);
 
-	input[type="checkbox"]:focus + label::before {
-		outline: variables3.$border-thinner solid;
-		@include mixins.var(outline-color, checklist-accent);
-		outline-offset: 0.125rem;
-	}
+        & {
+            border: variables3.$border-thinner solid;
+        }
 
-	// Positions the checkmark
-	input[type="checkbox"] + label::after {
-		content: "";
-		display: block;
-		height: map.get($_checklist-checkbox-size, small);
-		position: relative;
-			top: 0.5em;
-			left: 0.5em;
-		transform: rotate(0deg);
-		width: map.get($_checklist-checkbox-size, small);
+        @include mixins.var(border-color, checklist-accent);
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			height: map.get($_checklist-checkbox-size, large);
-			width: map.get($_checklist-checkbox-size, large);
-		}
-	}
+        & {
+            box-sizing: border-box;
+            content: "";
+            cursor: pointer;
+            display: block;
+            float: left;
+            height: map.get($_checklist-checkbox-size, small);
+            margin-right: math.div(map.get($_checklist-checkbox-size, small), 1.5);
+            margin-left: math.div(map.get($_checklist-checkbox-size, small), -2); // This covers the native checkbox element
+            position: relative;
+            width: map.get($_checklist-checkbox-size, small);
+        }
 
-	// Checked checkmark styling
-	input[type="checkbox"]:checked + label::after {
-		border-right: 0.15rem solid;
-		border-bottom: 0.15rem solid;
-		@include mixins.var(border-color, checklist-accent);
-		height: 0.6rem;
-		left: -0.225rem;
-		top: 0.2rem;
-		width: 0.3rem;
-		transform: rotate(45deg);
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            height: map.get($_checklist-checkbox-size, large);
+            margin-right: math.div(map.get($_checklist-checkbox-size, large), 1.5);
+            margin-left: math.div(map.get($_checklist-checkbox-size, large), -2); // This covers the native checkbox element
+            width: map.get($_checklist-checkbox-size, large);
+        }
+    }
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(palm-medium) {
-			height: 0.8rem;
-			left: -0.25rem;
-			width: 0.4rem;
-		}
-	}
+    input[type="checkbox"]:focus+label::before {
+        outline: variables3.$border-thinner solid;
+        @include mixins.var(outline-color, checklist-accent);
+
+        & {
+            outline-offset: 0.125rem;
+        }
+    }
+
+    // Positions the checkmark
+    input[type="checkbox"]+label::after {
+        content: "";
+        display: block;
+        height: map.get($_checklist-checkbox-size, small);
+        position: relative;
+        top: 0.5em;
+        left: 0.5em;
+        transform: rotate(0deg);
+        width: map.get($_checklist-checkbox-size, small);
+
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            height: map.get($_checklist-checkbox-size, large);
+            width: map.get($_checklist-checkbox-size, large);
+        }
+    }
+
+    // Checked checkmark styling
+    input[type="checkbox"]:checked+label::after {
+        border-right: 0.15rem solid;
+        border-bottom: 0.15rem solid;
+        @include mixins.var(border-color, checklist-accent);
+
+        & {
+            height: 0.6rem;
+            left: -0.225rem;
+            top: 0.2rem;
+            width: 0.3rem;
+            transform: rotate(45deg);
+        }
+
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(palm-medium) {
+            height: 0.8rem;
+            left: -0.25rem;
+            width: 0.4rem;
+        }
+    }
 }
 
 
 .c-checklist__citation {
-	margin-top: 0.5rem;
-	padding-left: map.get($_checklist-inset, small);
+    margin-top: 0.5rem;
+    padding-left: map.get($_checklist-inset, small);
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		padding-left: map.get($_checklist-inset, large);
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        padding-left: map.get($_checklist-inset, large);
+    }
 }
 
 
 .c-checklist__link {
-	@include mixins2.link-states(checklist-accent);
+    @include mixins2.link-states(checklist-accent);
 
-	font-family: variables6.$font-family-secondary;
-	letter-spacing: variables7.$font-tracking-slight;
-	/* stylelint-disable-next-line property-no-unknown */
-	text-decoration-thickness: variables3.$border-thinnest;
-	text-underline-offset: 0.3em;
+    & {
+        font-family: variables6.$font-family-secondary;
+        letter-spacing: variables7.$font-tracking-slight;
+        /* stylelint-disable-next-line property-no-unknown */
+        text-decoration-thickness: variables3.$border-thinnest;
+        text-underline-offset: 0.3em;
+    }
 
-	// States
-	&:hover {
-		text-decoration: none;
-	}
+    // States
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 
 .c-checklist__description {
-	line-height: variables8.$line-height-looser;
-	margin-top: 0.75rem;
-	padding-right: map.get($_checklist-padding, small);
-	padding-bottom: map.get($_checklist-padding, small);
-	padding-left: map.get($_checklist-inset, small);
+    line-height: variables8.$line-height-looser;
+    margin-top: 0.75rem;
+    padding-right: map.get($_checklist-padding, small);
+    padding-bottom: map.get($_checklist-padding, small);
+    padding-left: map.get($_checklist-inset, small);
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		padding-right: map.get($_checklist-padding, large);
-		padding-bottom: map.get($_checklist-padding, large);
-		padding-left: map.get($_checklist-inset, large);
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        padding-right: map.get($_checklist-padding, large);
+        padding-bottom: map.get($_checklist-padding, large);
+        padding-left: map.get($_checklist-inset, large);
+    }
 
-	// Text-level formatting
-	a {
-		@include mixins2.link-states(checklist-accent);
-	}
+    // Text-level formatting
+    a {
+        @include mixins2.link-states(checklist-accent);
+    }
 }
 
 .c-checklist__share-link {
-	padding-bottom: map.get($_checklist-padding, small);
-	padding-left: map.get($_checklist-inset, small);
+    padding-bottom: map.get($_checklist-padding, small);
+    padding-left: map.get($_checklist-inset, small);
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		padding-bottom: map.get($_checklist-padding, large);
-		padding-left: map.get($_checklist-inset, large);
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        padding-bottom: map.get($_checklist-padding, large);
+        padding-left: map.get($_checklist-inset, large);
+    }
 }

@@ -3,9 +3,12 @@
 @use "c-card";
 
 .c-preface {
-	@include mixins.var(color, text-accent);
-	margin-top: 0.5rem;
-	margin-bottom: 2rem;
-	margin-left: c-card.$card-inset;
-	max-width: variables.$global-type-measure;
+    @include mixins.var(color, text-accent);
+
+    & {
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        margin-left: c-card.$card-inset;
+        max-width: variables.$global-type-measure;
+    }
 }

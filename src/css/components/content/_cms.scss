@@ -3,45 +3,48 @@
 
 // Namespace
 .c-content {
-	// Direct Link
-	//
-	// Style guide: Components.post.direct-link
-	.direct-link {
-		font-size: 75%;
-		margin-left: 0.15rem;
 
-		&:hover {
-			text-decoration: none;
-		}
-	}
+    // Direct Link
+    //
+    // Style guide: Components.post.direct-link
+    .direct-link {
+        font-size: 75%;
+        margin-left: 0.15rem;
 
-	.footnote-ref {
-		vertical-align: super;
-	}
+        &:hover {
+            text-decoration: none;
+        }
+    }
 
-	.footnotes-sep {
-		display: none;
-	}
+    .footnote-ref {
+        vertical-align: super;
+    }
 
-	.footnotes {
-		--filename: url("#{variables.$path-to-img}/posts/section-footnotes-lightmode.svg");
-		--filename-dark: url("#{variables.$path-to-img}/posts/section-footnotes-darkmode.svg");
-		@include mixins.post-content-flourish(62, 1.75rem);
+    .footnotes-sep {
+        display: none;
+    }
 
-		margin-top: 8ex;
-	}
+    .footnotes {
+        --filename: url("#{variables.$path-to-img}/posts/section-footnotes-lightmode.svg");
+        --filename-dark: url("#{variables.$path-to-img}/posts/section-footnotes-darkmode.svg");
+        @include mixins.post-content-flourish(62, 1.75rem);
 
-	.footnotes-list {
-		margin-top: 1rem;
-	}
+        & {
+            margin-top: 8ex;
+        }
+    }
 
-	.footnote-item {
-		p {
-			margin-top: 0;
-		}
-	}
+    .footnotes-list {
+        margin-top: 1rem;
+    }
 
-	.footnote-backref {
-		display: none;
-	}
+    .footnote-item {
+        p {
+            margin-top: 0;
+        }
+    }
+
+    .footnote-backref {
+        display: none;
+    }
 }

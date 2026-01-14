@@ -1,170 +1,200 @@
 @use "../logic/functions.em";
-@use "../logic/mixins.link-states" as mixins3;
-@use "../logic/mixins.shift-click" as mixins2;
+@use "../logic/mixins.link-states"as mixins3;
+@use "../logic/mixins.shift-click"as mixins2;
 @use "../logic/mixins.var";
-@use "../logic/variables.animation-duration" as variables4;
-@use "../logic/variables.animation-easing" as variables5;
-@use "../logic/variables.borders" as variables2;
-@use "../logic/variables.font-families" as variables6;
+@use "../logic/variables.animation-duration"as variables4;
+@use "../logic/variables.animation-easing"as variables5;
+@use "../logic/variables.borders"as variables2;
+@use "../logic/variables.font-families"as variables6;
 @use "../logic/variables.font-weights";
-@use "../logic/variables.line-heights" as variables3;
-@use "../logic/variables.supports" as variables7;
+@use "../logic/variables.line-heights"as variables3;
+@use "../logic/variables.supports"as variables7;
 
 $_c-input-margin-top: 1.5rem;
 
 
 .c-form {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 
 .c-form__label {
-	display: inline-block;
-	font-weight: variables.$font-weight-bold;
-	margin-top: $_c-input-margin-top;
-	padding-bottom: 0.25rem;
+    display: inline-block;
+    font-weight: variables.$font-weight-bold;
+    margin-top: $_c-input-margin-top;
+    padding-bottom: 0.25rem;
 }
 
 
 .c-form__input {
-	@include mixins.var(background-color, body-background);
-	@include mixins.var(color, body-text);
-	border: variables2.$border-thinnest solid;
-	@include mixins.var(border-color, input-border);
-	line-height: variables3.$line-height-single;
-	padding: 0.5rem;
-	transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
-	width: 100%;
+    @include mixins.var(background-color, body-background);
+    @include mixins.var(color, body-text);
 
-	&:hover,
-	&:active {
-		@include mixins.var(background-color, input-hover-background);
-	}
+    & {
+        border: variables2.$border-thinnest solid;
+    }
 
-	&:focus {
-		@include mixins.var(border-color, input-focus-border);
-		outline: variables2.$border-thinner solid;
-		@include mixins.var(outline-color, input-focus-border);
-	}
+    @include mixins.var(border-color, input-border);
 
-	&:active {
-		transition: none;
-	}
+    & {
+        line-height: variables3.$line-height-single;
+        padding: 0.5rem;
+        transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
+        width: 100%;
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    &:hover,
+    &:active {
+        @include mixins.var(background-color, input-hover-background);
+    }
+
+    &:focus {
+        @include mixins.var(border-color, input-focus-border);
+
+        & {
+            outline: variables2.$border-thinner solid;
+        }
+
+        @include mixins.var(outline-color, input-focus-border);
+    }
+
+    &:active {
+        transition: none;
+    }
+
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 
 .c-form__input--multiline {
-	line-height: variables3.$line-height-loose;
-	min-height: 15rem;
+    line-height: variables3.$line-height-loose;
+    min-height: 15rem;
 }
 
 
 .c-form__button {
-	@include mixins.var(background-color, button-background);
-	border: none;
-	border-radius: 0.25rem;
-	@include mixins.var(color, button-text);
-	cursor: pointer;
-	font-family: variables6.$font-family-secondary;
-	margin-top: $_c-input-margin-top * 1.5;
-	min-width: 20ch;
-	padding: 0.75rem 1.25rem;
-	text-transform: uppercase;
-	transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
+    @include mixins.var(background-color, button-background);
 
-	// States
-	&:hover {
-		@include mixins.var(background-color, button-focus-background);
-	}
+    & {
+        border: none;
+        border-radius: 0.25rem;
+    }
 
-	&:focus {
-		@include mixins.var(background-color, button-focus-background);
-		box-shadow:
-			0 0 0 functions.em(2) var(--color-body-background),
-			0 0 0 functions.em(4) var(--color-button-background);
-		outline: variables2.$border-thin solid transparent;
-	}
+    @include mixins.var(color, button-text);
 
-	&:active {
-		@include mixins2.shift-click();
-	}
+    & {
+        cursor: pointer;
+        font-family: variables6.$font-family-secondary;
+        margin-top: $_c-input-margin-top * 1.5;
+        min-width: 20ch;
+        padding: 0.75rem 1.25rem;
+        text-transform: uppercase;
+        transition: background-color variables4.$animation-duration-shorter variables5.$animation-easing-character;
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    // States
+    &:hover {
+        @include mixins.var(background-color, button-focus-background);
+    }
+
+    &:focus {
+        @include mixins.var(background-color, button-focus-background);
+
+        & {
+            box-shadow:
+                0 0 0 functions.em(2) var(--color-body-background),
+                0 0 0 functions.em(4) var(--color-button-background);
+            outline: variables2.$border-thin solid transparent;
+        }
+    }
+
+    &:active {
+        @include mixins2.shift-click();
+    }
+
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 
 .c-form__vendor {
-	@include mixins3.link-states(body-text);
+    @include mixins3.link-states(body-text);
 
-	&:hover,
-	&:focus {
-		text-decoration: none;
-	}
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
 }
 
 
 .c-form__instructions {
-	position: relative;
-		bottom: 1rem;
+    position: relative;
+    bottom: 1rem;
 }
 
 
 .c-form__error-wrapper {
-	border: variables2.$border-thin solid;
-	@include mixins.var(border-color, error);
-	padding: 0.5rem;
+    border: variables2.$border-thin solid;
+    @include mixins.var(border-color, error);
 
-	.c-form__error-list {
-		padding: 0 1rem;
-	}
+    & {
+        padding: 0.5rem;
+    }
 
-	.c-form__error-message {
-		font-size: 0.75rem;
-		padding-top: 0.25rem;
-	}
+    .c-form__error-list {
+        padding: 0 1rem;
+    }
+
+    .c-form__error-message {
+        font-size: 0.75rem;
+        padding-top: 0.25rem;
+    }
 }
 
-.c-form__input[aria-invalid]{
-	border: variables2.$border-thinner solid;
-	@include mixins.var(border-color, error);
+.c-form__input[aria-invalid] {
+    border: variables2.$border-thinner solid;
+    @include mixins.var(border-color, error);
 }
 
 .c-form__progress {
-	@include mixins.var(background-color, progress-background);
-	min-height: 2rem;
-	margin-bottom: 3rem;
-	max-width: 68ch;
+    @include mixins.var(background-color, progress-background);
 
-	// Supports
-	@supports #{variables7.$supports-flex} {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
+    & {
+        min-height: 2rem;
+        margin-bottom: 3rem;
+        max-width: 68ch;
+    }
+
+    // Supports
+    @supports #{variables7.$supports-flex} {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 
 .c-form__progress-fill {
-	@include mixins.var(background-color, progress-bar);
+    @include mixins.var(background-color, progress-bar);
 }
 
 
 .c-form__progress-label {
-	@include mixins.var(background-color, body-background);
-	font-family: variables6.$font-family-secondary;
-	margin-top: 0;
-	padding-left: 1rem;
+    @include mixins.var(background-color, body-background);
+
+    & {
+        font-family: variables6.$font-family-secondary;
+        margin-top: 0;
+        padding-left: 1rem;
+    }
 }
 
 
 .c-form__legal {
-	margin-top: 0.25rem !important;
+    margin-top: 0.25rem !important;
 }

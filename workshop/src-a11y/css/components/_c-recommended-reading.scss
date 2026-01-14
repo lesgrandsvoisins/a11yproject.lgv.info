@@ -1,0 +1,84 @@
+.c-recommended-reading {
+	margin-top: 4ex;
+	max-width: $global-type-measure;
+
+	// Supports
+	@supports #{$supports-flex} {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+
+		// Breakpoints
+		@include mappy-bp(palm-small) {
+			gap: 1.5rem;
+		}
+	}
+}
+
+
+.c-recommended-reading__wrapper {
+	// Supports
+	@supports #{$supports-flex} {
+		display: flex;
+		flex-direction: row;
+		width: 50%;
+	}
+}
+
+
+.c-recommended-reading__link {
+	border-top: $border-thicker solid currentColor;
+	@include var(background-color, post-rec-background);
+	@include var(color, post-rec-accent);
+	line-height: $line-height-tight;
+	padding: 1rem;
+	text-decoration: none;
+	transition:
+		background-color $animation-duration-shorter $animation-easing-character,
+		color $animation-duration-shorter $animation-easing-character;
+
+	// States
+	&:focus {
+		outline: none !important;
+	}
+
+	&:hover,
+	&:focus {
+		@include var(background-color, post-rec-accent);
+
+		.c-recommended-reading__category,
+		.c-recommended-reading__title {
+			@include var(color, post-rec-focus-text);
+		}
+	}
+
+	// Breakpoints
+	@include mappy-bp(palm-small) {
+		padding: 1rem 1.5rem;
+	}
+
+	// User Queries
+	@media screen and (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
+
+.c-recommended-reading__category {
+	border-bottom: $border-thin dotted currentColor;
+	display: block;
+	padding-bottom: 0.75rem;
+}
+
+
+.c-recommended-reading__title {
+	@include var(color, post-rec-text);
+	display: block;
+	font-size: $font-size-body-tiny;
+	margin-top: 1rem;
+
+	// Breakpoints
+	@include mappy-bp(palm-small) {
+		font-size: $font-size-body;
+	}
+}

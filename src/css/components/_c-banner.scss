@@ -1,79 +1,96 @@
 @use "../logic/mixins.var";
-@use "../logic/variables.font-families" as variables2;
-@use "../logic/variables.font-tracking" as variables3;
-@use "../logic/variables.line-heights" as variables4;
+@use "../logic/variables.font-families"as variables2;
+@use "../logic/variables.font-tracking"as variables3;
+@use "../logic/variables.line-heights"as variables4;
 @use "../logic/variables.paths";
 
 $_banner-triangle-size: 1.49rem;
 
 
 .c-banner {
-	@include mixins.var(background-color, card-accent);
-	background-image: url("#{variables.$path-to-img}/resource-banner-inset-lightmode.svg");
-	background-position: center right;
-	background-repeat: no-repeat;
-	@include mixins.var(color, card-accent-text);
-	font-family: variables2.$font-family-secondary;
-	letter-spacing: variables3.$font-tracking-slight;
-	line-height: variables4.$line-height-single;
-	margin-top: 1.5rem;
-	padding: 0.1rem 1rem 0.6rem 0.3rem;
+    @include mixins.var(background-color, card-accent);
 
-	// [1] Magic number to position the triangle
-	&::before {
-		content: "";
-		border-style: solid;
-		border-color: transparent;
-		@include mixins.var(border-right-color, card-accent-shadow);
-		border-width: 0 $_banner-triangle-size $_banner-triangle-size 0;
-		display: inline-block;
-		position: relative;
-		top: 2.26rem; // [1]
-		right: 0.275rem; // [1]
-		z-index: -1;
-
-			// User Queries
-		@media screen and (-ms-high-contrast: active) {
-			display: none;
-		}
-	}
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-user-theme="light"]) & {
-			background-image: url("#{variables.$path-to-img}/resource-banner-inset-darkmode.svg");
+    & {
+        background-image: url("#{variables.$path-to-img}/resource-banner-inset-lightmode.svg");
+        background-position: center right;
+        background-repeat: no-repeat;
     }
-  }
 
-  [data-user-theme="dark"] &  {
-		background-image: url("#{variables.$path-to-img}/resource-banner-inset-darkmode.svg");
-  }
+    @include mixins.var(color, card-accent-text);
 
-	// Contexts
-	&.c-banner--resource {
-		@include mixins.var(background-color, featured-card-accent);
-		background-image: none;
-		@include mixins.var(color, featured-card-accent-text);
-		margin-top: 0;
+    & {
+        font-family: variables2.$font-family-secondary;
+        letter-spacing: variables3.$font-tracking-slight;
+        line-height: variables4.$line-height-single;
+        margin-top: 1.5rem;
+        padding: 0.1rem 1rem 0.6rem 0.3rem;
+    }
 
-		&::before {
-			@include mixins.var(border-right-color, featured-card-accent-shadow);
-		}
-	}
+    // [1] Magic number to position the triangle
+    &::before {
+        content: "";
+        border-style: solid;
+        border-color: transparent;
+        @include mixins.var(border-right-color, card-accent-shadow);
 
-	&.c-banner--post {
-		background-image: none;
-		margin-top: 0;
-	}
+        & {
+            border-width: 0 $_banner-triangle-size $_banner-triangle-size 0;
+            display: inline-block;
+            position: relative;
+            top: 2.26rem; // [1]
+            right: 0.275rem; // [1]
+            z-index: -1;
+        }
+
+        // User Queries
+        @media screen and (-ms-high-contrast: active) {
+            display: none;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root:not([data-user-theme="light"]) & {
+            background-image: url("#{variables.$path-to-img}/resource-banner-inset-darkmode.svg");
+        }
+    }
+
+    [data-user-theme="dark"] & {
+        background-image: url("#{variables.$path-to-img}/resource-banner-inset-darkmode.svg");
+    }
+
+    // Contexts
+    &.c-banner--resource {
+        @include mixins.var(background-color, featured-card-accent);
+
+        & {
+            background-image: none;
+        }
+
+        @include mixins.var(color, featured-card-accent-text);
+
+        & {
+            margin-top: 0;
+        }
+
+        &::before {
+            @include mixins.var(border-right-color, featured-card-accent-shadow);
+        }
+    }
+
+    &.c-banner--post {
+        background-image: none;
+        margin-top: 0;
+    }
 }
 
 
 .c-banner__icon {
-	fill: currentColor;
-	height: 0.75rem;
-	width: auto;
+    fill: currentColor;
+    height: 0.75rem;
+    width: auto;
 
-	// User Queries
-	@media screen and (-ms-high-contrast: active) {
-		display: none;
-	}
+    // User Queries
+    @media screen and (-ms-high-contrast: active) {
+        display: none;
+    }
 }

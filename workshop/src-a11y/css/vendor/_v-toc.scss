@@ -1,0 +1,197 @@
+// tableOfContents.js
+// http://github.com/cferdinandi/table-of-contents
+.v-toc {
+	margin-right: 2rem;
+	position: relative;
+	z-index: z(component);
+
+	// States
+	&[open] {
+		.v-toc__icon {
+			transform: rotate(90deg);
+		}
+	}
+
+	// Vendor
+	// [1] Removes default browser `details` element arrow
+	& > summary {
+		list-style: none; // [1]
+	}
+
+	& > summary::-webkit-details-marker {
+		display: none; // [1]
+	}
+}
+
+.v-toc__summary {
+	cursor: pointer;
+	font-family: $font-family-secondary;
+	letter-spacing: $font-tracking-slight;
+	@include var(color, toc-summary);
+
+	// States
+	&:focus {
+		@include var(background-color, toc-summary);
+		@include var(color, link-focus-text);
+		outline: $border-thicker solid transparent;
+
+		.v-toc__title {
+			text-decoration: none;
+		}
+
+		.v-toc__icon {
+			fill: currentColor;
+		}
+	}
+}
+
+.v-toc__summary-inner {
+	// Supports
+	@supports #{$supports-flex} {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+}
+
+.v-toc__icon {
+	fill: currentColor;
+	height: 1rem;
+	width: 1rem;
+}
+
+
+.v-toc__title {
+	display: block;
+	font-weight: 700;
+	margin-left: 0.5rem;
+	/* stylelint-disable-next-line property-no-unknown */
+	text-decoration-thickness: $border-thinnest;
+	text-underline-offset: 0.5em;
+
+	// States
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+
+.v-toc__nav {
+	padding: 0 1rem 1.55rem 0;
+
+	// Text-level formatting
+	h2 {
+		@include hide("visually");
+	}
+
+	ol {
+		@include preserve-list-semantics();
+
+		padding-top: none;
+		list-style-type: none;
+
+	ol {
+			padding-left: 1rem;
+		}
+	}
+
+	li {
+		font-family: $font-family-secondary;
+		font-weight: 700;
+		letter-spacing: $font-tracking-slight;
+		line-height: $line-height-tighter;
+		margin-bottom: 1.25rem; // EXCEPTION: Applying a bottom margin instead of top to ensure columns line up properly.
+
+		// Supports
+		@supports #{$supports-flex} {
+			margin-bottom: 0;
+		}
+
+		code {
+			text-transform: none;
+			line-height: 1.1;
+			overflow-y: hidden;
+		}
+
+		li {
+			font-weight: 400;
+			letter-spacing: 0;
+			text-transform: none;
+
+			&:first-of-type {
+				margin-top: 1rem;
+
+				// Supports
+				@supports #{$supports-flex} {
+					margin-top: 0;
+				}
+			}
+
+			&:last-of-type {
+				margin-bottom: map-get($global-bleed, small);
+			}
+
+			// Contexts
+			.template-posts &,
+			.template-collections & {
+				display: none;
+			}
+		}
+	}
+
+	a[href] {
+		@include var(color, toc-link-text);
+		text-decoration: none;
+		transition:
+			$animation-duration-short $animation-easing-character color,
+			$animation-duration-short $animation-easing-character border;
+
+		// Supports
+		@supports #{$supports-flex} {
+			border-bottom: none;
+			display: flex;
+
+			&::after {
+				content: "";
+				flex: 1 1;
+				border-bottom: $border-thick solid transparent;
+				margin: auto auto auto 0.5rem;
+			}
+
+			// States
+			&:hover::after,
+			&:focus::after {
+				@include var(border-bottom-color, toc-indicator);
+			}
+		}
+
+		// States
+		&:hover,
+		&:focus {
+			background-color: transparent;
+			outline-color: transparent;
+			@include var(color, toc-link-focus-text);
+		}
+	}
+
+	// Removing content
+	svg,
+	a.direct-link {
+		display: none !important;
+	}
+}
+
+// Hide content
+.l-toc {
+	.c-banner__icon {
+		display: none;
+	}
+
+	a + a {
+		display: none; // Removes `.direct-link` links. Class selectors won't work for some reason
+
+		.template-resources & {
+			display: inline; // Restores the featured resource name
+		}
+	}
+}

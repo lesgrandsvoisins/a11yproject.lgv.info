@@ -1,10 +1,10 @@
-@use "../logic/mixins.headings" as mixins2;
+@use "../logic/mixins.headings"as mixins2;
 @use "../logic/mixins.var";
 @use "../logic/variables.font-families";
-@use "../logic/variables.font-sizes" as variables3;
-@use "../logic/variables.font-tracking" as variables5;
-@use "../logic/variables.font-weights" as variables2;
-@use "../logic/variables.line-heights" as variables4;
+@use "../logic/variables.font-sizes"as variables3;
+@use "../logic/variables.font-tracking"as variables5;
+@use "../logic/variables.font-weights"as variables2;
+@use "../logic/variables.line-heights"as variables4;
 
 // Headings
 //
@@ -24,9 +24,12 @@
 .c-heading-small,
 .c-heading-smaller,
 .c-heading-smallest {
-	@include mixins.var(color, heading-text);
-	font-family: variables.$font-family-primary;
-	font-weight: variables2.$font-weight-normal;
+    @include mixins.var(color, heading-text);
+
+    & {
+        font-family: variables.$font-family-primary;
+        font-weight: variables2.$font-weight-normal;
+    }
 }
 
 
@@ -58,17 +61,17 @@
 //
 // Style guide: Components.Headings.heading-largest
 .c-heading-largest {
-	@include mixins2.heading-largest();
+    @include mixins2.heading-largest();
 }
 
 .c-heading-largest--generic {
-	@include mixins.var(color, heading-text-accent);
+    @include mixins.var(color, heading-text-accent);
 
-	& ~ .c-subtitle {
-		font-family: variables.$font-family-secondary;
-		font-size: variables3.$font-size-body-large;
-		line-height: variables4.$line-height-tight;
-	}
+    &~.c-subtitle {
+        font-family: variables.$font-family-secondary;
+        font-size: variables3.$font-size-body-large;
+        line-height: variables4.$line-height-tight;
+    }
 }
 
 
@@ -83,9 +86,9 @@
 //
 // Style guide: Components.Headings.heading-larger
 .c-heading-larger {
-	font-size: variables3.$font-size-heading-medium;
-	letter-spacing: variables5.$font-tracking-tight;
-	line-height: variables4.$line-height-tight;
+    font-size: variables3.$font-size-heading-medium;
+    letter-spacing: variables5.$font-tracking-tight;
+    line-height: variables4.$line-height-tight;
 }
 
 
@@ -100,7 +103,7 @@
 //
 // Style guide: Components.Headings.heading-large
 .c-heading-large {
-	@include mixins2.heading-large();
+    @include mixins2.heading-large();
 }
 
 
@@ -115,7 +118,7 @@
 //
 // Style guide: Components.Headings.heading-medium
 .c-heading-medium {
-	@include mixins2.heading-medium();
+    @include mixins2.heading-medium();
 }
 
 
@@ -130,7 +133,7 @@
 //
 // Style guide: Components.Headings.heading-small
 .c-heading-small {
-	@include mixins2.heading-small();
+    @include mixins2.heading-small();
 }
 
 

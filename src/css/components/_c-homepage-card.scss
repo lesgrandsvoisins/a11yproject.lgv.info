@@ -1,13 +1,13 @@
 @use "sass:map";
 @use "../imports/mappy-breakpoints";
 @use "../logic/functions.rem";
-@use "../logic/mixins.avatar-size" as mixins2;
+@use "../logic/mixins.avatar-size"as mixins2;
 @use "../logic/mixins.var";
-@use "../logic/variables.borders" as variables2;
-@use "../logic/variables.font-families" as variables3;
-@use "../logic/variables.font-tracking" as variables4;
-@use "../logic/variables.global" as variables5;
-@use "../logic/variables.line-heights" as variables6;
+@use "../logic/variables.borders"as variables2;
+@use "../logic/variables.font-families"as variables3;
+@use "../logic/variables.font-tracking"as variables4;
+@use "../logic/variables.global"as variables5;
+@use "../logic/variables.line-heights"as variables6;
 @use "../logic/variables.supports";
 
 // Homepage Card
@@ -70,16 +70,22 @@ img.c-homepage-card__image {
 
 .c-homepage-card__author {
     @include mixins.var(color, card-heading-text);
-    font-family: variables3.$font-family-secondary;
-    letter-spacing: variables4.$font-tracking-slight;
-    margin-top: 1.5rem;
+
+    & {
+        font-family: variables3.$font-family-secondary;
+        letter-spacing: variables4.$font-tracking-slight;
+        margin-top: 1.5rem;
+    }
 }
 
 
 .c-homepage-card__title {
     cursor: pointer;
     @include mixins.var(color, heading-text);
-    text-decoration: none;
+
+    & {
+        text-decoration: none;
+    }
 }
 
 
@@ -94,9 +100,12 @@ img.c-homepage-card__image {
     border-bottom: variables2.$border-thinnest solid;
     @include mixins.var(border-color, secondary-link-accent);
     @include mixins.var(color, secondary-link-text);
-    font-family: variables3.$font-family-secondary;
-    margin-top: 1rem;
-    text-decoration: none;
+
+    & {
+        font-family: variables3.$font-family-secondary;
+        margin-top: 1rem;
+        text-decoration: none;
+    }
 
     // States
     &:hover,
@@ -108,7 +117,11 @@ img.c-homepage-card__image {
     &:focus {
         @include mixins.var(background-color, secondary-link-focus-background);
         @include mixins.var(color, secondary-link-focus-text);
-        outline: variables2.$border-thin solid;
+
+        & {
+            outline: variables2.$border-thin solid;
+        }
+
         @include mixins.var(outline-color, secondary-link-focus-background);
     }
 
@@ -117,9 +130,12 @@ img.c-homepage-card__image {
         border-bottom: none;
         text-decoration: underline;
         @include mixins.var(text-decoration-color, secondary-link-accent);
-        /* stylelint-disable-next-line property-no-unknown */
-        text-decoration-thickness: variables2.$border-thinnest;
-        text-underline-offset: 0.5rem;
+
+        & {
+            /* stylelint-disable-next-line property-no-unknown */
+            text-decoration-thickness: variables2.$border-thinnest;
+            text-underline-offset: 0.5rem;
+        }
     }
 }
 
@@ -144,18 +160,24 @@ img.c-homepage-card__image {
 
 .c-homepage-card__spotlight-avatar {
     @include mixins2.avatar-size("large");
-    position: relative;
+
+    & {
+        position: relative;
+    }
 }
 
 
 .c-homepage-card__spotlight__info {
     @include mixins.var(background-color, featured-card-background);
-    height: 13rem;
-    margin-top: -7.5rem;
-    margin-left: 4rem;
-    padding: 1rem;
-    text-align: right;
-    width: 13rem;
+
+    & {
+        height: 13rem;
+        margin-top: -7.5rem;
+        margin-left: 4rem;
+        padding: 1rem;
+        text-align: right;
+        width: 13rem;
+    }
 
     // Supports
     @supports #{variables.$supports-flex} {
@@ -173,7 +195,10 @@ img.c-homepage-card__image {
 
 .c-homepage-card__spotlight-role {
     @include mixins.var(color, featured-card-heading-text);
-    font-family: variables3.$font-family-secondary;
-    letter-spacing: variables4.$font-tracking-slight;
-    line-height: variables6.$line-height-tighter;
+
+    & {
+        font-family: variables3.$font-family-secondary;
+        letter-spacing: variables4.$font-tracking-slight;
+        line-height: variables6.$line-height-tighter;
+    }
 }

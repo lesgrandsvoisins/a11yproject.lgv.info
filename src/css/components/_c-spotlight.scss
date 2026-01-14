@@ -1,35 +1,39 @@
 @use "../imports/mappy-breakpoints";
 @use "../logic/mixins.avatar-size";
-@use "../logic/mixins.var" as mixins2;
-@use "../logic/variables.font-families" as variables2;
-@use "../logic/variables.font-tracking" as variables3;
-@use "../logic/variables.line-heights" as variables4;
+@use "../logic/mixins.var"as mixins2;
+@use "../logic/variables.font-families"as variables2;
+@use "../logic/variables.font-tracking"as variables3;
+@use "../logic/variables.line-heights"as variables4;
 @use "../logic/variables.supports";
 
 
 .c-spotlight__hero-avatar {
-	@include mixins.avatar-size("hero");
+    @include mixins.avatar-size("hero");
 
-	// Supports
-	@supports #{variables.$supports-grid} {
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(lap-small) {
-			margin-left: auto;
-			margin-right: 3rem;
-		}
-	}
+    // Supports
+    @supports #{variables.$supports-grid} {
 
-	// User queries
-	@media screen and (-ms-high-contrast: active) {
-		-ms-high-contrast-adjust: none;
-	}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(lap-small) {
+            margin-left: auto;
+            margin-right: 3rem;
+        }
+    }
+
+    // User queries
+    @media screen and (-ms-high-contrast: active) {
+        -ms-high-contrast-adjust: none;
+    }
 }
 
 
 .c-spotlight__subheading {
-	@include mixins2.var(color, text-accent);
-	display: block;
-	font-family: variables2.$font-family-secondary;
-	letter-spacing: variables3.$font-tracking-slight;
-	line-height: variables4.$line-height-single;
+    @include mixins2.var(color, text-accent);
+
+    & {
+        display: block;
+        font-family: variables2.$font-family-secondary;
+        letter-spacing: variables3.$font-tracking-slight;
+        line-height: variables4.$line-height-single;
+    }
 }

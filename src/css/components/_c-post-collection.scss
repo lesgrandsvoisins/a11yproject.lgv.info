@@ -1,55 +1,61 @@
-@use "../logic/mixins.link-states" as mixins2;
+@use "../logic/mixins.link-states"as mixins2;
 @use "../logic/mixins.var";
 @use "../logic/variables.borders";
-@use "../logic/variables.font-families" as variables2;
+@use "../logic/variables.font-families"as variables2;
 
 .c-post-collection {
-	border-top: variables.$border-thicker solid currentColor;
-	@include mixins.var(background-color, post-rec-background);
-	@include mixins.var(color, post-rec-accent);
-  counter-reset: post-collection;
-  padding: 1rem 2rem;
-	max-width: 68ex;
+    border-top: variables.$border-thicker solid currentColor;
+    @include mixins.var(background-color, post-rec-background);
+    @include mixins.var(color, post-rec-accent);
+
+    & {
+        counter-reset: post-collection;
+        padding: 1rem 2rem;
+        max-width: 68ex;
+    }
 }
 
 
 .c-post-collection__title {
-	border-bottom: variables.$border-thin dotted currentColor;
-  margin-top: 0;
-	padding-bottom: 1rem;
+    border-bottom: variables.$border-thin dotted currentColor;
+    margin-top: 0;
+    padding-bottom: 1rem;
 }
 
 
 .c-post-collection__list {
-  margin-top: 1rem;
-  list-style-type: none;
+    margin-top: 1rem;
+    list-style-type: none;
 }
 
 
 .c-post-collection__item {
-	@include mixins.var(color, post-rec-text);
-  position: relative;
-  margin-top: 0.5rem;
-  counter-increment: post-collection;
-  font-family: variables2.$font-family-secondary;
+    @include mixins.var(color, post-rec-text);
 
-  &::before {
-    content: "Part " counter(post-collection) ": ";
-    text-transform: uppercase;
-  }
+    & {
+        position: relative;
+        margin-top: 0.5rem;
+        counter-increment: post-collection;
+        font-family: variables2.$font-family-secondary;
+    }
+
+    &::before {
+        content: "Part "counter(post-collection) ": ";
+        text-transform: uppercase;
+    }
 }
 
 
 .c-post-collection__link {
-	@include mixins2.link-states(post-rec-accent, post-rec-focus-text);
+    @include mixins2.link-states(post-rec-accent, post-rec-focus-text);
 
-	// States
-  &[aria-current] {
-    text-decoration: none;
-    color: currentColor;
+    // States
+    &[aria-current] {
+        text-decoration: none;
+        color: currentColor;
 
-		&:focus {
-			@include mixins.var(color, post-rec-focus-text);
-		}
-  }
+        &:focus {
+            @include mixins.var(color, post-rec-focus-text);
+        }
+    }
 }

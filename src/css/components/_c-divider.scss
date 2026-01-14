@@ -2,8 +2,11 @@
 @use "../logic/variables.borders";
 
 .c-divider {
-	border: variables.$border-thin solid;
-	@include mixins.var(border-color, divider-background);
-	margin-top: 3rem;
-	margin-bottom: 3rem;
+    border: variables.$border-thin solid;
+    @include mixins.var(border-color, divider-background);
+
+    & {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
 }

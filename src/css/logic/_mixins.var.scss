@@ -14,7 +14,10 @@
 // Styleguide Logic.Mixins.var
 
 @mixin var($property, $varName) {
-  $fallbackName: #{map.get(global.$scheme-light, $varName)};
-  #{$property}: #{map.get(colors.$colors, $fallbackName)};
-  #{$property}: var(--color-#{$varName});
+
+    & {
+        $fallbackName: #{map.get(global.$scheme-light, $varName)};
+        #{$property}: #{map.get(colors.$colors, $fallbackName)};
+        #{$property}: var(--color-#{$varName});
+    }
 }

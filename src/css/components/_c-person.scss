@@ -1,170 +1,186 @@
 @use "sass:map";
 @use "../imports/mappy-breakpoints";
 @use "../logic/mixins.avatar-size";
-@use "../logic/mixins.link-states" as mixins3;
-@use "../logic/mixins.var" as mixins2;
-@use "../logic/variables.animation-duration" as variables3;
-@use "../logic/variables.animation-easing" as variables4;
+@use "../logic/mixins.link-states"as mixins3;
+@use "../logic/mixins.var"as mixins2;
+@use "../logic/variables.animation-duration"as variables3;
+@use "../logic/variables.animation-easing"as variables4;
 @use "../logic/variables.borders";
-@use "../logic/variables.font-families" as variables5;
-@use "../logic/variables.font-tracking" as variables6;
-@use "../logic/variables.global" as variables2;
+@use "../logic/variables.font-families"as variables5;
+@use "../logic/variables.font-tracking"as variables6;
+@use "../logic/variables.global"as variables2;
 
-$_person-distance: (
-	small: 6rem,
-	large: 14rem
-);
+$_person-distance: (small: 6rem,
+    large: 14rem);
 
 .c-person {
-	margin-top: 2rem;
+    margin-top: 2rem;
 
-	&:first-of-type {
-		margin-top: 0;
-	}
+    &:first-of-type {
+        margin-top: 0;
+    }
 }
 
 // Photos use background images since we can't control the dimensions of
 // submitted avatars. This centers whatever is added, which hopefully creates a
 // good cropping effect.
 .c-person__photo {
-	@include mixins.avatar-size("tiny");
+    @include mixins.avatar-size("tiny");
 
-	margin-top: -2.75rem;
-	position: absolute;
-	right: calc(50% - #{map.get(mixins.$avatar_dimensions, "tiny") * 0.5});
+    & {
+        margin-top: -2.75rem;
+        position: absolute;
+        right: calc(50% - #{map.get(mixins.$avatar_dimensions, "tiny") * 0.5});
+    }
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(wrist-large) {
-		@include mixins.avatar-size("small");
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(wrist-large) {
+        @include mixins.avatar-size("small");
 
-		right: 2rem;
-	}
+        right: 2rem;
+    }
 
-	@include mappy-breakpoints.mappy-bp(palm-small) {
-		@include mixins.avatar-size("medium");
+    @include mappy-breakpoints.mappy-bp(palm-small) {
+        @include mixins.avatar-size("medium");
 
-		margin-top: -3.5rem;
-		right: 3rem;
-	}
+        & {
+            margin-top: -3.5rem;
+            right: 3rem;
+        }
+    }
 
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		@include mixins.avatar-size("medium");
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        @include mixins.avatar-size("medium");
 
-		left: 1rem;
-		margin-top: -2rem;
-	}
+        & {
+            left: 1rem;
+            margin-top: -2rem;
+        }
+    }
 
-	@include mappy-breakpoints.mappy-bp(palm-large) {
-		left: 3rem;
-	}
+    @include mappy-breakpoints.mappy-bp(palm-large) {
+        left: 3rem;
+    }
 
-	@include mappy-breakpoints.mappy-bp(lap-small) {
-		@include mixins.avatar-size("medium");
+    @include mappy-breakpoints.mappy-bp(lap-small) {
+        @include mixins.avatar-size("medium");
 
-		left: initial;
-		margin-left: 1rem;
-		right: initial;
-	}
+        & {
+            left: initial;
+            margin-left: 1rem;
+            right: initial;
+        }
+    }
 
-	@include mappy-breakpoints.mappy-bp(lap-medium) {
-		@include mixins.avatar-size("large");
+    @include mappy-breakpoints.mappy-bp(lap-medium) {
+        @include mixins.avatar-size("large");
 
-		margin-top: -3rem;
-		margin-left: -1rem;
-	}
+        & {
+            margin-top: -3rem;
+            margin-left: -1rem;
+        }
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 
-	@media screen and (-ms-high-contrast: active) {
-		-ms-high-contrast-adjust: none;
-	}
+    @media screen and (-ms-high-contrast: active) {
+        -ms-high-contrast-adjust: none;
+    }
 }
 
 
 .c-person__info {
-	border: variables.$border-thinnest solid;
-	@include mixins2.var(border-color, card-outline);
-	@include mixins2.var(background-color, card-background);
-	margin-top: 4rem;
-	min-height: 10rem;
-	padding: 1.5rem;
-	max-width: variables2.$global-type-measure;
-	transition: variables3.$animation-duration-shorter variables4.$animation-easing-character background-color;
+    border: variables.$border-thinnest solid;
+    @include mixins2.var(border-color, card-outline);
+    @include mixins2.var(background-color, card-background);
 
-	// Breakpoints
-	@include mappy-breakpoints.mappy-bp(palm-small) {
-		margin-top: 5rem;
-	}
+    & {
+        margin-top: 4rem;
+        min-height: 10rem;
+        padding: 1.5rem;
+        max-width: variables2.$global-type-measure;
+        transition: variables3.$animation-duration-shorter variables4.$animation-easing-character background-color;
+    }
 
-	@include mappy-breakpoints.mappy-bp(palm-medium) {
-		margin-left: 5rem;
-		padding-left: 3rem;
-	}
+    // Breakpoints
+    @include mappy-breakpoints.mappy-bp(palm-small) {
+        margin-top: 5rem;
+    }
 
-	@include mappy-breakpoints.mappy-bp(palm-large) {
-		margin-left: 7rem;
-	}
+    @include mappy-breakpoints.mappy-bp(palm-medium) {
+        margin-left: 5rem;
+        padding-left: 3rem;
+    }
 
-	@include mappy-breakpoints.mappy-bp(lap-medium) {
-		padding: 2rem 6rem;
-	}
+    @include mappy-breakpoints.mappy-bp(palm-large) {
+        margin-left: 7rem;
+    }
 
-	// User Queries
-	@media screen and (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
+    @include mappy-breakpoints.mappy-bp(lap-medium) {
+        padding: 2rem 6rem;
+    }
+
+    // User Queries
+    @media screen and (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 
 .c-person__link {
-	@include mixins3.link-states(card-heading-text);
-	font-family: variables5.$font-family-secondary;
-	/* stylelint-disable-next-line property-no-unknown */
-	text-decoration-thickness: variables.$border-thinnest;
-	text-underline-offset: 0.3em;
+    @include mixins3.link-states(card-heading-text);
 
-	// States
-	&:hover {
-		text-decoration: none;
-	}
+    & {
+        font-family: variables5.$font-family-secondary;
+        /* stylelint-disable-next-line property-no-unknown */
+        text-decoration-thickness: variables.$border-thinnest;
+        text-underline-offset: 0.3em;
+    }
 
-	&--primary {
-		letter-spacing: variables6.$font-tracking-slight;
-	}
+    // States
+    &:hover {
+        text-decoration: none;
+    }
+
+    &--primary {
+        letter-spacing: variables6.$font-tracking-slight;
+    }
 }
 
 
 .c-person__spotlight-link {
-	@include mixins3.link-states(card-heading-text);
+    @include mixins3.link-states(card-heading-text);
 
-	display: inline-block;
-	margin-top: 1rem;
+    & {
+        display: inline-block;
+        margin-top: 1rem;
+    }
 }
 
 
 .c-person__name {
-	font-family: variables5.$font-family-secondary;
+    font-family: variables5.$font-family-secondary;
 
-	&:target {
-		scroll-margin-top: 5rem;
+    &:target {
+        scroll-margin-top: 5rem;
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(wrist-large) {
-			scroll-margin-top: 4rem;
-		}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(wrist-large) {
+            scroll-margin-top: 4rem;
+        }
 
-		@include mappy-breakpoints.mappy-bp(lap-medium) {
-			scroll-margin-top: 5rem;
-		}
-	}
+        @include mappy-breakpoints.mappy-bp(lap-medium) {
+            scroll-margin-top: 5rem;
+        }
+    }
 }
 
 
 .c-person__biography {
-	font-family: variables5.$font-family-secondary;
-	margin-top: 1rem;
-	max-width: variables2.$global-type-measure;
+    font-family: variables5.$font-family-secondary;
+    margin-top: 1rem;
+    max-width: variables2.$global-type-measure;
 }

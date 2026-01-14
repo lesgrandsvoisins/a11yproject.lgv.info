@@ -1,63 +1,66 @@
 @use "../logic/mixins.var";
 @use "../logic/variables.animation-duration";
-@use "../logic/variables.animation-easing" as variables2;
-@use "../logic/variables.borders" as variables5;
-@use "../logic/variables.font-tracking" as variables3;
-@use "../logic/variables.global" as variables4;
-@use "../logic/variables.line-heights" as variables6;
+@use "../logic/variables.animation-easing"as variables2;
+@use "../logic/variables.borders"as variables5;
+@use "../logic/variables.font-tracking"as variables3;
+@use "../logic/variables.global"as variables4;
+@use "../logic/variables.line-heights"as variables6;
 
 .c-featured {
-	position: relative;
-	z-index: 0;
+    position: relative;
+    z-index: 0;
 
-	.c-banner {
-		background-image: none !important;
-	}
+    .c-banner {
+        background-image: none !important;
+    }
 }
 
 .c-featured__body {
-	margin-right: 0;
-	margin-bottom: 2rem;
-	margin-left: 1.5rem;
-	padding: 1.5rem 2rem;
-	@include mixins.var(background-color, featured-card-background);
-	@include mixins.var(color, featured-card-text);
-	transition:
-		variables.$animation-duration-shorter variables2.$animation-easing-character background-color,
-		variables.$animation-duration-shorter variables2.$animation-easing-character border-color,
-		variables.$animation-duration-shorter variables2.$animation-easing-character color;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+    padding: 1.5rem 2rem;
+    @include mixins.var(background-color, featured-card-background);
+    @include mixins.var(color, featured-card-text);
 
-	&:focus-within {
-		@include mixins.var(background-color, featured-card-focus-background);
+    & {
+        transition:
+            variables.$animation-duration-shorter variables2.$animation-easing-character background-color,
+            variables.$animation-duration-shorter variables2.$animation-easing-character border-color,
+            variables.$animation-duration-shorter variables2.$animation-easing-character color;
+    }
 
-		* {
-			@include mixins.var(color, featured-card-focus-text);
-		}
-	}
+    &:focus-within {
+        @include mixins.var(background-color, featured-card-focus-background);
+
+        * {
+            @include mixins.var(color, featured-card-focus-text);
+        }
+    }
 }
 
 
 .c-featured__title {
-	letter-spacing: variables3.$font-tracking-tight;
-	max-width: variables4.$global-type-measure;
-	@include mixins.var(color, featured-card-heading-text);
+    letter-spacing: variables3.$font-tracking-tight;
+    max-width: variables4.$global-type-measure;
+    @include mixins.var(color, featured-card-heading-text);
 
-	// States
-	&:hover {
-		text-decoration: none;
-	}
+    // States
+    &:hover {
+        text-decoration: none;
+    }
 
-	&:focus {
-		outline: variables5.$border-thin solid transparent;
-	}
+    &:focus {
+        outline: variables5.$border-thin solid transparent;
+    }
 }
 
 
 .c-featured__meta {
-	line-height: variables6.$line-height-tight;
+    line-height: variables6.$line-height-tight;
 }
 
 
 .c-featured__description {
-	max-width: variables4.$global-type-measure;
+    max-width: variables4.$global-type-measure;
 }

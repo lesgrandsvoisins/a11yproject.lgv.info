@@ -1,63 +1,67 @@
 @use "sass:map";
 @use "../../imports/mappy-breakpoints";
-@use "../../logic/mixins.headings" as mixins2;
+@use "../../logic/mixins.headings"as mixins2;
 @use "../../logic/mixins.var";
-@use "../../logic/variables.font-tracking" as variables3;
-@use "../../logic/variables.font-weights" as variables4;
-@use "../../logic/variables.global" as variables2;
+@use "../../logic/variables.font-tracking"as variables3;
+@use "../../logic/variables.font-weights"as variables4;
+@use "../../logic/variables.global"as variables2;
 @use "../../logic/variables.line-heights";
 
 // Namespace
 .c-content {
-	h1,
-	h2,
-	h3 {
-		line-height: variables.$line-height-tight;
-		overflow-wrap: break-word;
 
-		// Breakpoints
-		@include mappy-breakpoints.mappy-bp(lap-medium) {
-			margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
-		}
-	}
+    h1,
+    h2,
+    h3 {
+        line-height: variables.$line-height-tight;
+        overflow-wrap: break-word;
 
-	h2,
-	h3 {
-		@include mixins.var(color, heading-text);
-	}
+        // Breakpoints
+        @include mappy-breakpoints.mappy-bp(lap-medium) {
+            margin-left: map.get(variables2.$global-post-content-inset, small) * -1;
+        }
+    }
 
-
-	// Second-level Heading
-	//
-	// This is the first content sectioning element to use, as the post's title
-	// uses a `h1` element. Second-level heading styling is controlled using the
-	// `heading-beta()` mixin.
-	//
-	// Markup:
-	// <h2>How to navigate a website with a keyboard</h2>
-	//
-	// Style guide: Components.post.h2
-	h2 {
-		@include mixins2.heading-large();
-
-		code {
-			letter-spacing: variables3.$font-tracking-tighter;
-		}
-	}
+    h2,
+    h3 {
+        @include mixins.var(color, heading-text);
+    }
 
 
-	h3 {
-		@include mixins2.heading-medium();
-	}
+    // Second-level Heading
+    //
+    // This is the first content sectioning element to use, as the post's title
+    // uses a `h1` element. Second-level heading styling is controlled using the
+    // `heading-beta()` mixin.
+    //
+    // Markup:
+    // <h2>How to navigate a website with a keyboard</h2>
+    //
+    // Style guide: Components.post.h2
+    h2 {
+        @include mixins2.heading-large();
+
+        code {
+            letter-spacing: variables3.$font-tracking-tighter;
+        }
+    }
 
 
-	h4 {
-		@include mixins2.heading-small();
-	}
+    h3 {
+        @include mixins2.heading-medium();
+    }
 
-	h5 {
-		@include mixins.var(color, text-accent);
-		font-weight: variables4.$font-weight-bold;
-		margin-bottom: -4ch;
-	}
+
+    h4 {
+        @include mixins2.heading-small();
+    }
+
+    h5 {
+        @include mixins.var(color, text-accent);
+
+        & {
+            font-weight: variables4.$font-weight-bold;
+            margin-bottom: -4ch;
+        }
+    }
 }
